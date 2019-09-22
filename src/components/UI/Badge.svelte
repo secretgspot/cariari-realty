@@ -1,0 +1,73 @@
+<script>
+	export let type = 'text'; // icon | text
+	export let label;
+	export let value;
+	export let direction = 'column'; // column | row
+	export let loop = false; // for cases where object is passed
+</script>
+
+<style lang='scss'>
+	.badge {
+		display: inline-flex;
+		align-items: center;
+	}
+	.icon {
+		width: 45px;
+		height: 42px;
+	}
+	.label {
+		text-transform: uppercase;
+		font-size: 1.2em;
+		line-height: 1;
+		font-family: 'Economica', sans-serif;
+	}
+	.value {
+		font-size: 1.8em;
+		line-height: 1;
+		font-family: 'Cabin', sans-serif;
+	}
+	.row {
+		flex-direction: row-reverse;
+		justify-content: center;
+	}
+	.row .label { margin-right: 1rem; }
+	.row .value {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.column {
+		flex-direction: column;
+	}
+
+	span {
+		margin: 0 0.2rem;
+		border: 1px dashed;
+		padding: 0 0.2rem;
+		border-radius: 6px;
+		border-top: none;
+		border-bottom: none;
+		text-transform: uppercase;
+	}
+</style>
+
+<div class="badge {direction}">
+{#if type === 'icon'}
+	<img class="icon" src="images/icons/icon_{label}.svg" alt="{label}">
+	<div class="value">{value}</div>
+{:else if type === 'text'}
+	{#if loop}
+	<div class="value">
+		{#each value as val}
+			<span>{ val }</span>
+		{/each}
+	</div>
+	{:else}
+		{#if value}
+			<div class="value">{value}</div>
+		{:else}
+			<div class="value">N/A</div>
+		{/if}
+	{/if}
+	<div class="label">{label}</div>
+{/if}
+</div>

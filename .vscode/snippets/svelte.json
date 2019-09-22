@@ -1,0 +1,32 @@
+{
+	"Styles": {
+		"prefix": "snap",
+		"body": [
+			"\tbody {",
+			"\t\tmargin: 0;",
+			"\t\theight: 100vh;",
+			"\t\tdisplay: flex;",
+			"\t\talign-items: center;",
+			"\t\tjustify-content: center;",
+			"\t\tbackground: radial-gradient(circle at center, white, silver);",
+			"\t}",
+			"$1"
+		],
+		"description": "Styles for this Project"
+	},
+	"Layout": {
+		"prefix": "svlt",
+		"body": [
+			"<script>",
+			"$1",
+			"</script>",
+			"\r",
+			"<style lang='scss'>",
+			"$2",
+			"</style>",
+			"\r",
+			"$3"
+		],
+		"description": "Layout for this Project"
+	}
+}

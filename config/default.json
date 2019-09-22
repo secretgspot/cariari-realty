@@ -1,0 +1,7 @@
+{
+	"phoneNumber": "9999-9999",
+  "Firebase": {
+    "baseURL": "https://svelte-meetups-course.firebaseio.com",
+    "dbName": "cariari"
+  }
+}
