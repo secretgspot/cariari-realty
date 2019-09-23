@@ -10,7 +10,7 @@
 </script>
 
 <script>
-	// import properties from "../../components/stores/properties-store.js";
+	// import properties from "../../properties-store.js";
 	import Editor from './_Editor.svelte';
 	import Print from './_Print.svelte';
 
@@ -18,7 +18,11 @@
 	export let query;
 	export let property;
 
-	// $: console.log('[slug]>>> slug, query, property: ',  slug, query, property);
+	// console.log('#######>##: ', $properties);
+
+	// properties.addProperty(property);
+
+	// $: console.log('[properities]>>> ',  $properties);
 </script>
 
 <style>

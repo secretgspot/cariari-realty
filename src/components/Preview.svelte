@@ -9,11 +9,11 @@
 
 	const dispatch = createEventDispatcher();
 
-	$: console.log('previewProperty: ', previewProperty);
+	$: console.log('previewProperty: ', previewProperty.id);
 </script>
 
 <style>
-	#preview {
+	.preview-content {
 		background: rgba(255, 255, 255, 0.9);
 		position: relative;
 		/* width: 450px; */
@@ -84,65 +84,18 @@
 	}
 
 	@media (min-width: 60em) and (orientation: landscape) {
-		#preview { max-width: 450px; }
+		.preview-content { max-width: 450px; }
 		figure { height: 45vh; }
 		figure::before { display: none; }
 	}
-
-	@media (min-width: 60em) and (orientation: portrait) {
-
-	}
-
-/* 	@media (orientation: landscape) {
-		#preview {
-			top: 0;
-			left: 100vw;
-			width: 390px;
-			transform: translateX(-390px);
-		}
-		figure {
-			height: 72vh;
-		}
-		figure::before {
-			bottom: 0;
-			left: 0;
-		}
-	} */
-
-/* 	@media (min-width: 768px) and (orientation: landscape) {
-		figure {
-			height: 50vh;
-		}
-	}
-
-	@media (min-width: 1024px) and (orientation: landscape) {
-		#preview {
-			position: absolute;
-			width: 450px;
-			transform: translateX(-450px);
-		}
-		figure { height: 36vh; }
-		figure::before { display: none; }
-	}
-
-	@media (min-width: 1024px) and (orientation: portrait) {
-		#preview {
-			position: absolute;
-			width: 450px;
-			transform: translateX(-450px);
-		}
-		figure { height: 36vh; }
-		figure::before { display: none; }
-	} */
-
 </style>
 
-<section id="preview">
+<section class="preview-content">
 	<figure>
 		{#if previewProperty.photos}
 			<img class="image" src="{previewProperty.photos[0]}" alt="{previewProperty.msl}">
 		{:else}
-			<img src="https://via.placeholder.com/450x360?text=Your+Property+Here" alt="Property placeholder">
+			<img class="image" src="/images/placeholder/450x360.png" alt="Property placeholder">
 		{/if}
 	</figure>
 

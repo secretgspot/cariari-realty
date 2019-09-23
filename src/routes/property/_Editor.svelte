@@ -1,7 +1,7 @@
 <script>
 	import * as api from 'api.js';
 	import { goto, stores } from '@sapper/app';
-	import properties from "../../properties-store.js";
+	// import properties from "../../properties-store.js";
 	import Error from "../../components/UI/Error.svelte";
 	import Button from "../../components/UI/Button.svelte";
 	import Logo from '../../components/UI/Logo.svelte';
@@ -17,7 +17,9 @@
 	if (property.photos === undefined || property.photos.length == 0) property.photos = [];
 	if (property.features === undefined || property.features.length == 0) property.features = [];
 
-	const { session } = stores();
+	// const { session } = stores();
+	// console.log('session> ', session);
+	// console.log('$properties> ', $properties);
 
 	function addFeature(input) {
 		property.features = [...property.features, input.value];
@@ -58,11 +60,14 @@
 			console.log('response: ', response)
 		if (response.name) {
 			// Add new property to properties store
+			// properties.addProperty({...property, id: response.name}); // 🚩🚩🚩FIXIT
 
 			// page with QR code for printing
 			goto(`property/${response.name}?qr=true`);
 		} else {
 			// update store with modified property by slug as id/name
+			// properties.updateProperty(slug, response); // 🚩🚩🚩FIXIT
+			// console.log('$properties> ', $properties);
 		}
 
 		inProgress = false;
