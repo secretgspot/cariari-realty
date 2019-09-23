@@ -25,13 +25,15 @@
 
 <style>
 	#details {
-		/* display: grid;
+		/*
+		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(3, 1fr);
 		grid-template-areas:
 			"main main aside"
 			"main main aside"
-			"base base aside"; */
+			"base base aside";
+		*/
 
 		position: fixed;
 		top: 0; bottom: 0; left: 0; right: 0;
@@ -43,7 +45,7 @@
 	}
 
 	#details :global(.close) {
-		top: 240px;
+		top: 51vh;
 		width: 45px;
 		height: 45px;
 	}
@@ -58,7 +60,7 @@
 	.slide-content {
 		flex: 1;
 		background-size: cover;
-		height: 36vh;
+		height: 50vh;
 	}
 
 
@@ -115,6 +117,38 @@
 	}
 	.base .price-group :global(.badge) {
 		margin: 0.6rem;
+	}
+
+	@media (orientation: landscape) {
+		#details :global(.close) { top: 83vh; }
+
+		.slide-content {
+			height: 81vh;
+			/* background-size: cover; */
+			/* background-size: contain; */
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		#details {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+			grid-template-areas:
+				"main main aside"
+				"main main aside"
+				"base base aside";
+		}
+
+		.slide-content { height: 720px; }
+
+		.base {
+			grid-template-columns: repeat(3, minmax(auto, 1fr));
+		}
+
+		#details :global(.close) { top: 10px; }
 	}
 </style>
 

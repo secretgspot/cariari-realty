@@ -20,7 +20,7 @@
 	}
 	.backdrop {
 		/* background: rgba(255,255,255,0.18); */
-		background: rgba(0, 0, 0, 0.36);
+		background: rgba(0, 0, 0, 0.63);
 		width: 100%;
 		height: 100%;
 		position: absolute;

@@ -16,29 +16,32 @@
 	#preview {
 		background: rgba(255, 255, 255, 0.9);
 		position: relative;
-		top: 72vh;
-		bottom: 0;
-		right: 0;
 		/* width: 450px; */
 		z-index: 2;
 		display: flex;
 		flex-direction: column;
-	}
-	#preview::before {
-		content: '↕'; /* ↔  ↑↓ ⇅ ⇄ */
-		position: absolute;
-		bottom: 96%;
-		left: 50%;
-		transform: translateX(-50%);
-		font-size: 3.6em;
-		color: var(--color-white);
+		flex: 1;
 	}
 
 	figure {
 		margin: 0;
 		padding: 0;
 		width: 100%;
-		height: 50vh;
+		height: 42vh;
+		position: relative;
+	}
+	figure::before {
+		content: '↕'; /* ↔  ↑↓ ⇅ ⇄ */
+		position: absolute;
+		bottom: 0;
+		left: 0.3em;
+		transform: translate(-50%, 50%);
+		font-size: 3em;
+		color: var(--color-white);
+		text-shadow: -1px -1px 0 var(--color-black),
+									1px -1px 0 var(--color-black),
+								 -1px 1px 0 var(--color-black),
+								  1px 1px 0 var(--color-black);
 	}
 
 	.image {
@@ -75,6 +78,63 @@
 		display: flex;
 		justify-content: center;
 	}
+
+	@media (orientation: landscape) {
+		figure { height: 72vh; }
+	}
+
+	@media (min-width: 60em) and (orientation: landscape) {
+		#preview { max-width: 450px; }
+		figure { height: 45vh; }
+		figure::before { display: none; }
+	}
+
+	@media (min-width: 60em) and (orientation: portrait) {
+
+	}
+
+/* 	@media (orientation: landscape) {
+		#preview {
+			top: 0;
+			left: 100vw;
+			width: 390px;
+			transform: translateX(-390px);
+		}
+		figure {
+			height: 72vh;
+		}
+		figure::before {
+			bottom: 0;
+			left: 0;
+		}
+	} */
+
+/* 	@media (min-width: 768px) and (orientation: landscape) {
+		figure {
+			height: 50vh;
+		}
+	}
+
+	@media (min-width: 1024px) and (orientation: landscape) {
+		#preview {
+			position: absolute;
+			width: 450px;
+			transform: translateX(-450px);
+		}
+		figure { height: 36vh; }
+		figure::before { display: none; }
+	}
+
+	@media (min-width: 1024px) and (orientation: portrait) {
+		#preview {
+			position: absolute;
+			width: 450px;
+			transform: translateX(-450px);
+		}
+		figure { height: 36vh; }
+		figure::before { display: none; }
+	} */
+
 </style>
 
 <section id="preview">
