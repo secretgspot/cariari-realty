@@ -15,6 +15,8 @@
 		selectedProperty = items.find(i => i.id === id);
 	});
 
+	$: console.log('Details: ', selectedProperty);
+
 	const dispatch = createEventDispatcher();
 
 	onDestroy(() => {
@@ -55,6 +57,11 @@
 		/* background: pink; */
 		/* width: 1080px; */
 		/* height: 810px; */
+	}
+	.image .placeholder {
+		object-fit: cover;
+		width: 100%;
+		height: 100%;
 	}
 
 	.slide-content {
@@ -155,11 +162,15 @@
 <section id="details">
 
   <div class="image">
-		<Carousel>
-			{#each selectedProperty.photos as photo}
-			<div class="slide-content" style="background-image: url({photo})" />
-			{/each}
-		</Carousel>
+		{#if selectedProperty.photos}
+			<Carousel>
+				{#each selectedProperty.photos as photo}
+				<div class="slide-content" style="background-image: url({photo})" />
+				{/each}
+			</Carousel>
+		{:else}
+			<img class="placeholder" src="https://via.placeholder.com/1080x810.png?text=Placeholder" alt="image placeholder">
+		{/if}
 
 		<!-- <pre>
 		{JSON.stringify(selectedProperty.photos, null, 2)}

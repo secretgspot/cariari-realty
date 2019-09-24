@@ -44,6 +44,9 @@
 	const marker = new mapbox.Marker({ color: createColor(property) })
 		.setLngLat([lon, lat])
 		.setPopup(popup)
-		.onClick(() => { dispatch('showpreview', property.id); map.setCenter([lon, lat]); })
+		.onClick(() => {
+				dispatch('showpreview', property.id);
+				//map.setCenter([lon, lat]);
+			})
 		.addTo(map);
 </script>
