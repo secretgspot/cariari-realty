@@ -27,20 +27,16 @@
 
 <style>
 	#details {
-		/*
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: 1fr;
 		grid-template-rows: repeat(3, 1fr);
 		grid-template-areas:
-			"main main aside"
-			"main main aside"
-			"base base aside";
-		*/
-
+			"main"
+			"aside"
+			"base";
 		position: fixed;
 		top: 0; bottom: 0; left: 0; right: 0;
-		/* position: absolute; */
-		/* top: 10px; bottom: 10px; left: 10px; right: 10px; */
+		width: 100vw; height: 100vh;
 		background: #fffffffa;
 		overflow: auto;
 		z-index: 3;
@@ -54,14 +50,7 @@
 
 	.image {
 		grid-area: main;
-		/* background: pink; */
-		/* width: 1080px; */
-		/* height: 810px; */
-	}
-	.image .placeholder {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
+		width: 100vw;
 	}
 
 	.slide-content {
@@ -69,7 +58,6 @@
 		background-size: cover;
 		height: 50vh;
 	}
-
 
 	.side {
 		grid-area: aside;
@@ -79,9 +67,7 @@
 		justify-content: space-around;
 		align-items: flex-start;
 	}
-	.side .badge-group :global(.badge) {
-		margin: 0.6rem;
-	}
+
 	.side .features {
 		margin: 2rem 0;
 	}
@@ -92,6 +78,7 @@
 		border-radius: 6px;
 		display: inline-block;
 	}
+
 	.side .description {
 		max-height: 336px;
 		overflow: auto;
@@ -102,37 +89,25 @@
 		grid-area: base;
 		display: grid;
 		grid-template-columns: repeat(1, minmax(auto, 1fr));
-		/* grid-template-columns: repeat(3, minmax(auto, 1fr)); */
 		grid-gap: 1rem;
 		align-items: center;
 		padding: 1rem;
 	}
 
-	.base .badge-group {
-		display: flex;
-		justify-content: space-evenly;
-		flex-wrap: wrap;
-	}
-	.base .badge-group :global(.badge) {
-		margin: 0.6rem;
-	}
-
+	.base .badge-group,
 	.base .price-group {
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
 	}
-	.base .price-group :global(.badge) {
-		margin: 0.6rem;
-	}
+	.side .badge-group :global(.badge),
+	.base .badge-group :global(.badge),
+	.base .price-group :global(.badge) { margin: 0.6rem; }
 
 	@media (orientation: landscape) {
 		#details :global(.close) { top: 83vh; }
-
 		.slide-content {
 			height: 81vh;
-			/* background-size: cover; */
-			/* background-size: contain; */
 			background-repeat: no-repeat;
 			background-position: center;
 		}
@@ -140,43 +115,39 @@
 
 	@media (min-width: 1024px) {
 		#details {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			grid-template-rows: repeat(3, 1fr);
+			grid-template-columns: minmax(auto, 60vw) 1fr;
+			grid-template-rows: repeat(2, 1fr);
 			grid-template-areas:
-				"main main aside"
-				"main main aside"
-				"base base aside";
+				"main aside"
+				"base aside";
 		}
-
-		.slide-content { height: 720px; }
-
-		.base {
-			grid-template-columns: repeat(3, minmax(auto, 1fr));
-		}
-
 		#details :global(.close) { top: 10px; }
+		.image { width: auto; }
+		.slide-content { height: 72vh; }
+		.base { grid-template-columns: repeat(3, minmax(auto, 1fr)); }
 	}
 </style>
 
 <section id="details">
 
+	<!-- IMAGE PANE -->
   <div class="image">
-		{#if selectedProperty.photos}
-			<Carousel>
+		<Carousel>
+			{#if selectedProperty.photos}
 				{#each selectedProperty.photos as photo}
 				<div class="slide-content" style="background-image: url({photo})" />
 				{/each}
-			</Carousel>
-		{:else}
-			<img class="placeholder" src="https://via.placeholder.com/1080x810.png?text=Placeholder" alt="image placeholder">
-		{/if}
+			{:else}
+				<div class="slide-content" style="background-image: url(/images/placeholder/1080x810.png)" />
+			{/if}
+		</Carousel>
 
 		<!-- <pre>
 		{JSON.stringify(selectedProperty.photos, null, 2)}
 		</pre> -->
 	</div>
 
+	<!-- SIDE PANE -->
   <div class="side">
 
 		<div class="badge-group">
@@ -212,7 +183,7 @@
 		</div>
 		{/if}
 
-		<!-- <Ad width="728" height="90" /> -->
+		<Ad width="336" height="280" />
 
 		{#if selectedProperty.description}
 		<div class="description">
@@ -220,10 +191,10 @@
 		</div>
 		{/if}
 
-
 		<Button type="button" mode="close" on:click={() => dispatch('close')}>X</Button>
 	</div>
 
+	<!-- BASE PANE -->
   <div class="base">
 		<Badge type="text" label="msl" value="{selectedProperty.msl}" />
 
