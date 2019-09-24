@@ -123,7 +123,7 @@
 		}
 		#details :global(.close) { top: 10px; }
 		.image { width: auto; }
-		.slide-content { height: 72vh; }
+		.slide-content { height: 63vh; }
 		.base { grid-template-columns: repeat(3, minmax(auto, 1fr)); }
 	}
 </style>
