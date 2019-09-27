@@ -52,6 +52,7 @@
   });
 
   function showPreview(event) {
+    // if (!selectedProperty.id == event.detail || !isPreview) { console.log('NO || NO') }
     if (selectedProperty.id == event.detail && isPreview) {
       isPreview = false;
       selectedProperty = {};

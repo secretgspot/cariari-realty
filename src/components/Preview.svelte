@@ -90,12 +90,22 @@
 	}
 </style>
 
+<svelte:head>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+		(adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-9651184030086049",
+			enable_page_level_ads: true
+		});
+	</script>
+</svelte:head>
+
 <section class="preview-content">
 	<figure>
 		{#if previewProperty.photos}
-			<img class="image" src="{previewProperty.photos[0]}" alt="{previewProperty.msl}">
+			<img class="image" src="{previewProperty.photos[0]}" alt="{previewProperty.msl}" loading="eager">
 		{:else}
-			<img class="image" src="/images/placeholder/450x360.png" alt="Property placeholder">
+			<img class="image" src="/images/placeholder/450x360.png" alt="Property placeholder" loading="eager">
 		{/if}
 	</figure>
 

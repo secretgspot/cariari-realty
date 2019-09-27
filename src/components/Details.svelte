@@ -192,7 +192,7 @@
 		{/if}
 
 		<div class="ad-wrapper">
-			<Ad width="336" height="280" />
+			<Ad width="320" height="100" />
 		</div>
 
 		{#if selectedProperty.description}

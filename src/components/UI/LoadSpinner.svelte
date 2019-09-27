@@ -15,15 +15,14 @@
 
   .lds-dual-ring {
     display: inline-block;
-    width: 163px;
-    height: 163px;
+    width: 135px;
+    height: 142px;
   }
   .lds-dual-ring:after {
     content: " ";
     display: block;
-    width: 150px;
-    height: 150px;
-    margin: 1px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     border: 6px solid var(--color-black);
     border-color: var(--color-black) transparent var(--color-black) transparent;
