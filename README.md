@@ -39,3 +39,9 @@
 ## Cariari Realty
 
 Small app dedicated to listing properties in an area, utilizing mapboxgl, firebase and svelte.
+
+# TODO
+
+- Map Filter
+- Resolve issue with recenter/resize of a map on preview
+- Store across pages (sapper/store?)

@@ -84,6 +84,14 @@
 		overflow: auto;
 	}
 
+	.side .ad-wrapper {
+		display: flex;
+		justify-content: center;
+		flex: 1;
+		align-items: center;
+		width: 100%;
+	}
+
 	/* BASE SECTION */
 	.base {
 		grid-area: base;
@@ -183,7 +191,9 @@
 		</div>
 		{/if}
 
-		<Ad width="336" height="280" />
+		<div class="ad-wrapper">
+			<Ad width="336" height="280" />
+		</div>
 
 		{#if selectedProperty.description}
 		<div class="description">
