@@ -48,6 +48,7 @@
         properties.setProperties(loadedProperties); // doesn't have to be .reverse()
         // turn off loading indicator
         isLoading = false;
+        isSplash = false;
       });
   });
 
@@ -97,6 +98,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    background: var(--color-black);
   }
   .main-wrapper.previewing {
     grid-template-areas:

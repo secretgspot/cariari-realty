@@ -42,6 +42,8 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 
 # TODO
 
+- Rethink/redo loading/splash
 - Map Filter
 - Resolve issue with recenter/resize of a map on preview
 - Store across pages (sapper/store?)
+- List of properties (not on map)
