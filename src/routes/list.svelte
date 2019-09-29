@@ -67,7 +67,7 @@
 		height: 100%;
 		object-fit: contain;
 	}
-	summary span {
+	.land_use span {
 		margin: 0 0.3rem;
 		font-weight: bold;
 		text-decoration: underline;
@@ -127,15 +127,23 @@
 		<fieldset class:deactivated="{!property.is_active}">
 			<legend>[{property.msl}] {property.id} <Button href="property/{property.id}">Edit</Button></legend>
 
-			<div class="dates column">
-				<span>added: {property.date_listed}</span>
-				<span>updated: {property.date_updated}</span>
+			<div class="land_use">
+			{#each property.property_for as p_for}
+				<span>{p_for}</span>
+			{/each}
 			</div>
 
+			<div class="dates column">
+				<small>added: {property.date_listed}</small>
+				<small>updated: {property.date_updated}</small>
+			</div>
+
+			{#if property.photos}
 			<figure>
 				<img src="{property.photos[0]}" alt="{property.id} photo" loading="auto" width="111" height="62.44">
 				<caption>{property.photos.length} images</caption>
 			</figure>
+			{/if}
 
 			<!-- {#each Object.entries(property) as [key, value]}
 				{key} - {value}
@@ -149,11 +157,7 @@
 			</address>
 
 			<details class="column wrap">
-				<summary>
-					{#each property.property_for as p_for}
-						<span>{p_for}</span>
-					{/each}
-				</summary>
+				<summary>Details</summary>
 				<span>land use: {property.land_use}</span>
 				<span>year built: {property.year_built}</span>
 				<span>baths: {property.baths_count}</span>
@@ -170,7 +174,21 @@
 				<span>taxes: {property.taxes}</span>
 			</details>
 
+			{#if property.features}
+			<details class="features">
+				<summary>Features</summary>
+				{#each property.features as feature}
+				<span>{feature}</span>
+				{/each}
+			</details>
+			{/if}
 
+			{#if property.description}
+			<details class="description">
+				<summary>Description</summary>
+				<p>{property.description}</p>
+			</details>
+			{/if}
 		</fieldset>
 	{/each}
 	</div>

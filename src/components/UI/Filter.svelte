@@ -1,11 +1,11 @@
 <script>
 
 	export let filter = {
-		rent: 1000,
-		price: 1000000,
-		beds: 9,
-		baths: 9,
-		rooms: 9,
+		rent: 10000,
+		price: 10000000,
+		beds: 99,
+		baths: 99,
+		rooms: 99,
 		filter_for: ['Rent','Sale', 'Investment']
 	};
 
