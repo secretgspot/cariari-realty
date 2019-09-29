@@ -12,25 +12,45 @@
 <style>
 	.print-property {
 		overflow: auto;
-		height: 100vh;
+		/* height: 100vh; */
 		width: 100vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
+	@media (min-width: 768px) {
+		.print-property { height: 100vh; }
+	}
 
 	.grid-container {
 		display: grid;
-		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-template-columns: 1fr;
 		grid-template-areas:
-			"header header header header header header"
-			"intro intro contact contact qr qr"
-			"address address address location qr qr"
-			"parcel parcel interior interior prices prices"
-			"features features features features features features"
-			"description description description description description description";
+			"header"
+			"intro"
+			"contact"
+			"qr"
+			"address"
+			"location"
+			"parcel"
+			"interior"
+			"prices"
+			"features"
+			"description";
 		width: 90vw;
 		margin: 3rem auto;
+	}
+	@media (min-width: 768px) {
+		.grid-container {
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+			grid-template-areas:
+				"header header header header header header"
+				"intro intro contact contact qr qr"
+				"address address address location qr qr"
+				"parcel parcel interior interior prices prices"
+				"features features features features features features"
+				"description description description description description description";
+		}
 	}
 	.grid-container :global(.badge) { margin: 1rem; }
 	.grid-container :global(.label) { font-size: 1em; }

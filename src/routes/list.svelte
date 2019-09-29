@@ -33,7 +33,7 @@
 	};
 
 	$: filtered = filter && filterArray(fetchedProperties, filters) || [];
-	$: console.log('>> ', filtered)
+	// $: console.log('>> ', filtered)
 
 
 	function filterArray(array, filters) {
@@ -62,32 +62,66 @@
 		display: inline-flex;
 		flex-direction: column;
 	}
+	figure img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
 	summary span {
 		margin: 0 0.3rem;
 		font-weight: bold;
 		text-decoration: underline;
 	}
 
+	details > span {
+		margin: 0.2rem;
+		display: inline-block;
+		padding: 0.2rem;
+		border: 1px dotted;
+		border-radius: 9px;
+	}
+
 .grid-container {
   display: grid;
-  grid-template-columns: 1.4fr 0.6fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "list filter";
+	grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: "filter" "header" "list";
+  /* grid-template-columns: 1.4fr 0.6fr; */
+  /* grid-template-rows: 1fr; */
+  /* grid-template-areas: "list filter"; */
 }
+@media (min-width: 768px) {
+	.grid-container {
+		grid-template-columns: 1.4fr 0.6fr;
+		grid-template-rows: 1fr;
+		grid-template-areas: "header ." "list filter";
+	}
+}
+.header { grid-area: header; padding: 0 2rem; }
 
 .list {
 	grid-area: list;
 	/* background: lavender; */
 	display: grid;
 	grid-gap: 1rem;
-	grid-template-columns: minmax(auto, 50%) minmax(auto, 50%);
+	grid-template-columns: minmax(auto, 1fr);
+	/* grid-template-columns: minmax(auto, 50%) minmax(auto, 50%); */
 	padding: 1rem;
+}
+@media (min-width: 1024px) {
+.list {
+	grid-template-columns: auto auto;
+}
 }
 
 .filter { grid-area: filter; }
 </style>
 
 <div class="grid-container">
+	<div class="header">
+		<h1>{filtered.length} / {fetchedProperties.length} properties</h1>
+	</div>
+
   <div class="list">
 	{#each filtered as property (property.id)}
 		<fieldset class:deactivated="{!property.is_active}">
@@ -143,6 +177,5 @@
 
   <div class="filter">
 		<Filter bind:filter />
-		<h1>{filtered.length} / {fetchedProperties.length} properties</h1>
 	</div>
 </div>

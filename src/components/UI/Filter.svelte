@@ -18,6 +18,7 @@
 		/* color: white; */
 		/* display: inline-block; */
 		padding: 2rem;
+		margin: 0;
 		/* width: 300px; */
 		position: sticky;
   	top: 0px;
@@ -34,7 +35,7 @@
 		text-transform: uppercase;
 		font-size: 70%;
 	}
-	.row input { width: 60px; margin: 0 0.2rem}
+	.row input { width: 60px; }
 	.column {
 		display: flex;
 		flex-direction: column;
@@ -45,6 +46,8 @@
 
 	.range { margin-bottom: 2rem; }
 	.range input { margin: 0; }
+
+	.checkbox { text-align: center; }
 </style>
 
 <fieldset>
