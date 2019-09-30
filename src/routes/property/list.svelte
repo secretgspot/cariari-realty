@@ -11,19 +11,20 @@
 				id: key
 			});
 		}
-		return { fetchedProperties: loadedProperties };
+		return { fetchedProperties: loadedProperties.reverse() };
 	}
 </script>
 
 <script>
-	import Button from "../components/UI/Button.svelte";
-	import Filter from "../components/UI/Filter.svelte";
+	import Button from "../../components/UI/Button.svelte";
+	import Filter from "../../components/UI/Filter.svelte";
 
 	export let fetchedProperties;
 	// console.log('>>> ', fetchedProperties);
 	let filter;
 
 	const filters = {
+		is_active: is_active => is_active == filter.active,
 		property_for: property_for => property_for.find(x => filter.filter_for.includes(x)),
 		rent: rent => rent <= filter.rent,
 		price: price => price <= filter.price,
@@ -50,17 +51,28 @@
 </script>
 
 <style>
-	.deactivated {
-		border: 1px solid var(--color-magenta);
+	fieldset {
+		border-radius: 9px;
+		border: 1px dashed var(--color-black);
 	}
+
+	.deactivated { border: 1px solid var(--color-magenta); }
+
 	.column {
 		display: flex;
 		flex-direction: column;
 	}
 	.wrap { flex-wrap: wrap; }
+
+	.dates {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	figure {
 		display: inline-flex;
 		flex-direction: column;
+		margin: 0;
 	}
 	figure img {
 		width: 100%;
@@ -71,8 +83,10 @@
 		margin: 0 0.3rem;
 		font-weight: bold;
 		text-decoration: underline;
+		font-size: 1.5rem;
 	}
 
+	details summary { cursor: pointer; }
 	details > span {
 		margin: 0.2rem;
 		display: inline-block;
@@ -97,7 +111,17 @@
 		grid-template-areas: "header ." "list filter";
 	}
 }
-.header { grid-area: header; padding: 0 2rem; }
+.header {
+	grid-area: header;
+	padding: 0 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.header :global(a) {
+	height: fit-content;
+	flex: 0 1 auto;
+}
 
 .list {
 	grid-area: list;
@@ -120,12 +144,14 @@
 <div class="grid-container">
 	<div class="header">
 		<h1>{filtered.length} / {fetchedProperties.length} properties</h1>
+
+		<Button href="/property">Add new</Button>
 	</div>
 
   <div class="list">
 	{#each filtered as property (property.id)}
 		<fieldset class:deactivated="{!property.is_active}">
-			<legend>[{property.msl}] {property.id} <Button href="property/{property.id}">Edit</Button></legend>
+			<legend>[{property.msl}] <Button href="property/{property.id}">Edit</Button></legend>
 
 			<div class="land_use">
 			{#each property.property_for as p_for}
@@ -133,7 +159,7 @@
 			{/each}
 			</div>
 
-			<div class="dates column">
+			<div class="dates wrap">
 				<small>added: {property.date_listed}</small>
 				<small>updated: {property.date_updated}</small>
 			</div>
@@ -150,28 +176,29 @@
 			{/each} -->
 
 			<address class="column">
-				<span>{property.address}</span>
+				{#if property.address}<span>{property.address}</span>{/if}
 				<small>{property.location.lat} / {property.location.lng}</small>
-				<tel>{property.contact_phone}</tel>
-				<email>{property.contact_email}</email>
+				{#if property.contact_phone}<tel>{property.contact_phone}</tel>{/if}
+				{#if property.contact_email}<email>{property.contact_email}</email>{/if}
 			</address>
 
 			<details class="column wrap">
 				<summary>Details</summary>
-				<span>land use: {property.land_use}</span>
-				<span>year built: {property.year_built}</span>
-				<span>baths: {property.baths_count}</span>
-				<span>half baths: {property.half_baths_count}</span>
-				<span>beds: {property.beds_count}</span>
-				<span>rooms: {property.rooms_count}</span>
-				<span>parkings: {property.parking_spaces}</span>
-				<span>lot size: {property.lot_size}</span>
-				<span>building size: {property.building_size}</span>
-				<span>building style: {property.building_style}</span>
-				<span>price: {property.price}</span>
-				<span>rent: {property.rent}</span>
-				<span>fees: {property.fees}</span>
-				<span>taxes: {property.taxes}</span>
+				{#if property.id}<span>id: {property.id}</span>{/if}
+				{#if property.land_use}<span>land use: {property.land_use}</span>{/if}
+				{#if property.year_built}<span>year built: {property.year_built}</span>{/if}
+				{#if property.baths_count}<span>baths: {property.baths_count}</span>{/if}
+				{#if property.half_baths_count}<span>half baths: {property.half_baths_count}</span>{/if}
+				{#if property.beds_count}<span>beds: {property.beds_count}</span>{/if}
+				{#if property.rooms_count}<span>rooms: {property.rooms_count}</span>{/if}
+				{#if property.parking_spaces}<span>parkings: {property.parking_spaces}</span>{/if}
+				{#if property.lot_size}<span>lot size: {property.lot_size}</span>{/if}
+				{#if property.building_size}<span>building size: {property.building_size}</span>{/if}
+				{#if property.building_style}<span>building style: {property.building_style}</span>{/if}
+				{#if property.price}<span>price: {property.price}</span>{/if}
+				{#if property.rent}<span>rent: {property.rent}</span>{/if}
+				{#if property.fees}<span>fees: {property.fees}</span>{/if}
+				{#if property.taxes}<span>taxes: {property.taxes}</span>{/if}
 			</details>
 
 			{#if property.features}

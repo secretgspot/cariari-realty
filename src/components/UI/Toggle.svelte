@@ -1,6 +1,7 @@
 <script>
   export let checked = false;
   export let label = "Checked";
+  export let disabled = false;
 </script>
 
 <style>
@@ -92,7 +93,7 @@
   <div class="controls">
     <div class="toggle">
       <label class="toggle-label">
-        <input class="toggle-input" type="checkbox" bind:checked value="{label}" on:change />
+        <input class="toggle-input" type="checkbox" bind:checked value="{label}" on:change {disabled} />
         <span class="toggle-track">
           <span class="toggle-switch" />
         </span>

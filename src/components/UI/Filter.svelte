@@ -1,4 +1,5 @@
 <script>
+	import Toggle from '../UI/Toggle.svelte';
 
 	export let filter = {
 		rent: 10000,
@@ -6,7 +7,8 @@
 		beds: 99,
 		baths: 99,
 		rooms: 99,
-		filter_for: ['Rent','Sale', 'Investment']
+		filter_for: ['Rent','Sale', 'Investment'],
+		active: true
 	};
 
 </script>
@@ -88,6 +90,15 @@
 		<label>
 			rooms <input type="number" min="0" bind:value={filter.rooms}/>
 		</label>
+	</div>
+
+	<div class="row">
+		<Toggle bind:checked="{filter.active}" label="{filter.active ? 'Listed' : 'Delisted'}" />
+
+		<!-- <label class="checkbox">
+			<input type="checkbox" bind:checked="{filter.active}" />
+			<span>Active</span>
+		</label> -->
 	</div>
 </fieldset>
 

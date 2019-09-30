@@ -1,9 +1,10 @@
 <script>
 	import * as api from 'api.js';
-	import { goto, stores } from '@sapper/app';
+	import { goto } from '@sapper/app';
 	// import properties from "../../properties-store.js";
 	import Error from "../../components/UI/Error.svelte";
 	import Button from "../../components/UI/Button.svelte";
+	import Toggle from "../../components/UI/Toggle.svelte";
 	import Logo from '../../components/UI/Logo.svelte';
 
 	export let property;
@@ -130,6 +131,12 @@
 		/* grid-template-columns: repeat(3, 1fr); */
 		/* margin: 6rem 6rem 3rem; */
 	}
+	@media (min-width: 1024px) {
+		.form-wrap {
+			grid-template-columns: repeat(auto-fit, minmax(246px, 1fr));
+			width: 90vw;
+		}
+	}
 
 	fieldset {
 		border: 1px dotted #e6e6e6;
@@ -192,11 +199,14 @@
 		transform: translate(-50%, -50%);
 	}
 
+	.section-description,
+	.section-photos { grid-column: 1 / -1; }
 	.photo-list {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-		grid-template-rows: repeat(auto-fit, minmax(90px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(auto, 120px));
+		/* grid-template-rows: repeat(auto-fit, minmax(90px, 222px)); */
 		grid-gap: 1rem;
+		justify-content: center;
 		margin: 1rem 0;
 	}
 	.photo {
@@ -264,7 +274,8 @@
 
 		<fieldset>
 			<legend>Active</legend>
-			<input type="text" placeholder="ex: true" bind:value="{property.is_active}" disabled="{!query.admin}">
+			<!-- <input type="text" placeholder="ex: true" bind:value="{property.is_active}" disabled="{!query.admin}"> -->
+			<Toggle bind:checked="{property.is_active}" label="{property.is_active ? 'Listed' : 'Delisted'}" disabled="{!query.admin}" />
 		</fieldset>
 
 		<fieldset class="{property.is_active ? 'active' : 'removed'}">
@@ -394,12 +405,12 @@
 			</div>
 		</fieldset>
 
-		<fieldset>
+		<fieldset class="section-description">
 			<legend>Description</legend>
 			<textarea rows="6" placeholder="Description (max 9 sentences)" bind:value="{property.description}"></textarea>
 		</fieldset>
 
-		<fieldset>
+		<fieldset class="section-photos">
 			<legend>Photos</legend>
 			<input type="text" placeholder="ex: //placekitten.com/g/1080/810" use:enter={addPhoto}>
 			<div class="photo-list">
@@ -420,6 +431,10 @@
 		{/if}
 		{#if slug && query.admin}
 			<Button type="button" color="magenta" disabled={inProgress} on:click="{remove}">Delete</Button>
+		{/if}
+
+		{#if slug && !inProgress}
+			<Button type="button" disabled={inProgress} href="/property/{slug}?qr=true">Print</Button>
 		{/if}
 
 		<Button type="button" disabled={inProgress} on:click="{publish}">

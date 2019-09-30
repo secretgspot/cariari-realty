@@ -160,12 +160,14 @@
         accessToken="pk.eyJ1Ijoic2VjcmV0Z3Nwb3QiLCJhIjoiY2swaGQ1Y2UzMDFmNDNucHNqdGRxeHBzNSJ9.AWKJgnwQUyfggl5fKCAw_A">
 
         {#each $properties as property}
+          {#if property.is_active}
           <Marker
             on:showpreview={showPreview}
             lat={property.location.lat}
             lon={property.location.lng}
             label={property.msl}
             {property} />
+          {/if}
         {/each}
 
         <ScalingControl />

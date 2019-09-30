@@ -21,6 +21,9 @@
     cursor: pointer;
     text-decoration: none;
     flex: 1 1 auto;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
   }
 
   button:focus {
@@ -141,7 +144,7 @@
 </style>
 
 {#if href}
-  <a {href}>
+  <a class="{mode} {color}" {href}>
     <slot />
   </a>
 {:else}
