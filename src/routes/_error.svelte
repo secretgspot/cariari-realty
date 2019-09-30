@@ -1,4 +1,6 @@
 <script>
+	import { goto } from '@sapper/app';
+	import Logo from '../components/UI/Logo.svelte';
 	export let status;
 	export let error;
 
@@ -6,24 +8,38 @@
 </script>
 
 <style>
-	h1, p {
-		margin: 0 auto;
+	.error-wrapper {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	@media screen and (orientation: portrait) {
+		.logo-group { flex-direction: column; }
+	}
+	.logo-group {
+		display: flex;
+		align-items: center;
+		user-select: none;
+		cursor: pointer;
+	}
+	.logo-group h1 {
+		text-transform: uppercase;
+		font-family: 'Economica', sans-serif;
+		margin: 1rem 2rem;
 	}
 
-	h1 {
-		font-size: 2.8em;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
+	.error-group {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		padding: 2rem 3rem;
+		margin: 3rem;
+		border: 1px dotted;
+		border-radius: 9px;
 	}
 </style>
 
@@ -31,10 +47,20 @@
 	<title>{status}</title>
 </svelte:head>
 
-<h1>{status}</h1>
+<section class="error-wrapper">
+	<div class="logo-group" on:click="{() => goto('/')}">
+		<h1>Cariari</h1>
+		<Logo type="regular" color="gold" size="150" />
+		<h1>Realty</h1>
+	</div>
 
-<p>{error.message}</p>
+	<div class="error-group">
+		<h1>{status}</h1>
 
-{#if dev && error.stack}
-	<pre>{error.stack}</pre>
-{/if}
+		<p>{error.message}</p>
+
+		{#if dev && error.stack}
+			<pre>{error.stack}</pre>
+		{/if}
+	</div>
+</section>
