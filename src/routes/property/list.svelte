@@ -16,6 +16,8 @@
 </script>
 
 <script>
+	import { goto } from '@sapper/app';
+	import Logo from "../../components/UI/Logo.svelte";
 	import Button from "../../components/UI/Button.svelte";
 	import Filter from "../../components/UI/Filter.svelte";
 
@@ -31,6 +33,7 @@
 		beds_count: beds_count => beds_count <= filter.beds,
 		baths_count: baths_count => baths_count <= filter.baths,
 		rooms_count: rooms_count => rooms_count <= filter.rooms,
+		msl: msl => msl.includes(filter.msl),
 	};
 
 	$: filtered = filter && filterArray(fetchedProperties, filters) || [];
@@ -118,6 +121,9 @@
 	justify-content: space-between;
 	align-items: center;
 }
+.header h1 {
+	margin-left: 2rem;
+}
 .header :global(a) {
 	height: fit-content;
 	flex: 0 1 auto;
@@ -141,6 +147,12 @@
 .filter { grid-area: filter; }
 </style>
 
+<svelte:head>
+	<title>List of Properties</title>
+</svelte:head>
+
+<Logo type="regular" color="bw" fixed="fixed" on:click="{() => goto('/')}" />
+
 <div class="grid-container">
 	<div class="header">
 		<h1>{filtered.length} / {fetchedProperties.length} properties</h1>
@@ -151,7 +163,7 @@
   <div class="list">
 	{#each filtered as property (property.id)}
 		<fieldset class:deactivated="{!property.is_active}">
-			<legend>[{property.msl}] <Button href="property/{property.id}">Edit</Button></legend>
+			<legend><Button href="property/{property.id}">Edit</Button> [{property.msl}]</legend>
 
 			<div class="land_use">
 			{#each property.property_for as p_for}

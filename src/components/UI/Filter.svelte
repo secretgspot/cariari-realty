@@ -8,7 +8,8 @@
 		baths: 99,
 		rooms: 99,
 		filter_for: ['Rent','Sale', 'Investment'],
-		active: true
+		active: true,
+		msl: '',
 	};
 
 </script>
@@ -89,6 +90,12 @@
 
 		<label>
 			rooms <input type="number" min="0" bind:value={filter.rooms}/>
+		</label>
+	</div>
+
+	<div class="row">
+		<label>
+			msl <input type="text" bind:value="{filter.msl}" />
 		</label>
 	</div>
 

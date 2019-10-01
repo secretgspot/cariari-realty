@@ -14,7 +14,17 @@
 	export let property;
 
 	function createColor(property) {
-		let scaffold = {
+		const propClasses = {
+			'000': '#242F3E', // none
+			'001': '#FF00F7', // investment (magenta)
+			'010': '#FFC400', // rent (orange)
+			'100': '#00E5FF', // sale (cyan)
+			'011': '#FF0056', // investment + rent (burdengy)
+			'101': '#8077D5', // investment + sale (purple)
+			'110': '#80ED80',  // rent + sale (green)
+			'111': '#FFFFFF' // investment + rent + sale (white)
+		};
+		const scaffold = {
 			sale: false,
 			rent: false,
 			investment: false
@@ -22,7 +32,8 @@
 		for (let item of property.property_for) {
 			scaffold[item.toLowerCase()] = true;
 		}
-		return `#${scaffold.sale ? 'ff' : '00'}${scaffold.rent ? 'ff' : '00'}${scaffold.investment ? 'ff' : '00'}`;
+		// return `#${scaffold.sale ? 'ff' : '00'}${scaffold.rent ? 'ff' : '00'}${scaffold.investment ? 'ff' : '00'}`; // old way
+		return propClasses[`${Number(scaffold.sale)}${Number(scaffold.rent)}${Number(scaffold.investment)}`];
 	}
 
 		// Override internal functionality

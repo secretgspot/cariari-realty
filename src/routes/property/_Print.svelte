@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import { goto } from '@sapper/app';
 	import QR from "../../components/UI/QR.svelte";
 	import Badge from "../../components/UI/Badge.svelte";
@@ -7,6 +8,13 @@
 	export let property;
 	export let query = false;
 	export let slug = false;
+
+	let loc;
+
+	onMount(() => {
+		loc = location.origin;
+	});
+
 </script>
 
 <style>
@@ -60,6 +68,7 @@
 	.qr {
 		grid-area: qr;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		padding: 1rem;
@@ -98,7 +107,8 @@
 
 	<div class="grid-container">
 		<div class="qr">
-			<QR size="{180}" message="http://192.168.100.4:3000/property/{slug}?msl={property.msl}"/>
+			<QR size="{180}" message="{loc}/property/{slug}?msl={property.msl}"/>
+			<small>{loc}/property/{slug}</small>
 		</div>
 
 		<div class="address">
@@ -111,7 +121,7 @@
 		</div>
 
 		<div class="header">
-			Hello, your property has been added to our online list of properties that are currently on the market.  If you would like to update details that are missing or unlist this property from our website, please scan QR code which will take you to our editing page where you can update details and or remove it from being listed. This service is free.
+			Hello, your property has been added to our online list of properties that are currently on the market.  If you would like to update details that are missing or unlist this property from our website, please scan QR code which will take you to our editing page where you can update details and or remove it from being listed. You can visit same page by navigating to {loc}/property/{slug}  This service is free.
 		</div>
 
 		<div class="features">
