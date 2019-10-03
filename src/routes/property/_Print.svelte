@@ -108,7 +108,7 @@
 	<div class="grid-container">
 		<div class="qr">
 			<QR size="{180}" message="{loc}/property/{slug}?msl={property.msl}"/>
-			<small>{loc}/property/{slug}</small>
+			<small>{loc}/property/{slug}?msl={property.msl}</small>
 		</div>
 
 		<div class="address">
@@ -121,7 +121,7 @@
 		</div>
 
 		<div class="header">
-			Hello, your property has been added to our online list of properties that are currently on the market.  If you would like to update details that are missing or unlist this property from our website, please scan QR code which will take you to our editing page where you can update details and or remove it from being listed. You can visit same page by navigating to {loc}/property/{slug}  This service is free.
+			Hello, your property has been added to our online list of properties that are currently on the market.  If you would like to update details that are missing or unlist this property from our website, please scan QR code which will take you to our editing page where you can update details and or remove it from being listed. You can visit same page by navigating to {loc}/property/{slug}?msl={property.msl}  This service is free.
 		</div>
 
 		<div class="features">

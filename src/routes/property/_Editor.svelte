@@ -149,7 +149,7 @@
 	}
 
 	fieldset {
-		border: 1px dotted #e6e6e6;
+		border: 0px dotted #e6e6e6;
 		border-radius: 9px;
 	}
 	legend {
@@ -178,27 +178,42 @@
 		width: 100%;
 	}
 
+	fieldset.location input:first-of-type { border-bottom: 0; }
+	fieldset.location input:last-of-type {
+		border-top: 0;
+		/* border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0; */
+	}
+	/* fieldset.location :global(button) {
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+	} */
+
 	.feature-list {
 		margin: 1rem 0;
 	}
 	.feature {
 		display: inline-flex;
 		align-items: center;
-		border: 1px solid var(--color-black);
+		/* border: 1px solid var(--color-black); */
+		background: var(--color-light);
+		color: var(--color-darker);
 		border-radius: 6px;
-		padding: 0.2rem;
+		padding: 0.2rem 0.4rem 0.2rem 0.2rem;
 		margin: 0.2rem;
 	}
 	.feature .close {
 		width: 18px;
 		height: 18px;
-		color: var(--color-magenta);
-		border: 1px dotted var(--color-magenta);
+		color: var(--color-dark);
+		/* border: 1px dotted var(--color-magenta); */
 		border-radius: 9px;
 		margin-right: 0.2rem;
 		position: relative;
 		box-sizing: border-box;
 		cursor: pointer;
+		font-style: normal;
+		font-weight: bold;
 	}
 	.feature .close::after {
 		content: 'x';
@@ -323,11 +338,13 @@
 			<input type="text" placeholder="ex: Avenida 52, Provincia Heredia, La Asunción, 40703" bind:value="{property.address}">
 		</fieldset>
 
-		<fieldset>
+		<fieldset class="location">
 			<legend>Location (lat, lng)</legend>
-			<input type="text" placeholder="ex: 9.97542" bind:value="{property.location.lat}">
-			<input type="text" placeholder="ex: -84.163443" bind:value="{property.location.lng}">
+			<input type="text" placeholder="ex: 9.97542" bind:value="{property.location.lat}" disabled="{query.msl}">
+			<input type="text" placeholder="ex: -84.163443" bind:value="{property.location.lng}" disabled="{query.msl}">
+			{#if !query.msl}
 			<Button type="button" on:click="{getPosition}">Get current GPS</Button>
+			{/if}
 		</fieldset>
 
 		<fieldset>

@@ -46,7 +46,7 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - Map Filter
 - Resolve issue with recenter/resize of a map on preview
 - Store across pages (sapper/store?)
-- automatically fill MSL in add property
+- Rething access for client/admin
 
 # Feautures
 / - main map view with preview and deatails
