@@ -97,6 +97,16 @@
 		inProgress = false;
 	}
 
+	async function getMsl() {
+		const response = await api.get(`cariari.json`, null);
+		let digits = [];
+		for (let [key, value] of Object.entries(response)) {
+			digits = [...digits, Number(value.msl.substring(3))];
+			// console.log(digits);
+		}
+		property.msl = `CR-${ Math.max(...digits) + 1 }`;
+	}
+
 	function getPosition() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
@@ -280,7 +290,10 @@
 
 		<fieldset class="{property.is_active ? 'active' : 'removed'}">
 			<legend>MSL</legend>
-			<input type="text" placeholder="ex: CR-001" bind:value="{property.msl}" disabled="{query.msl}">
+			<input type="text" placeholder="ex: CR-001" bind:value="{property.msl}" disabled="{query.msl}" />
+			{#if !property.msl}
+			<Button type="button" on:click="{getMsl}">Set</Button>
+			{/if}
 		</fieldset>
 
 		<fieldset>
