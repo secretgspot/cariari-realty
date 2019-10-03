@@ -9,7 +9,7 @@
 	export let query = false;
 	export let slug = false;
 
-	let loc;
+	let loc = location ? location.origin : '';
 
 	onMount(() => {
 		loc = location.origin;

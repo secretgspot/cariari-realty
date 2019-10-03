@@ -6,7 +6,7 @@
 	export let message = '';
 
 	let canvas;
-	let qrcode = qr(message);
+	$: qrcode = qr(message);
 
 	onMount(() => {
 		const ctx = canvas.getContext('2d');

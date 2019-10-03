@@ -35,8 +35,10 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - Resolve issue with recenter/resize of a map on preview
 - Store across pages (sapper/store?)
 - Rethink access for client/admin
+- QR 1st print, QR property details for outside of property.
 
 ### Feautures
+
 | URL | Action |
 | ------ | ------ |
 | / | main map view with preview and details |
