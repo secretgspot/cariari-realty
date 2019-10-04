@@ -22,7 +22,7 @@
 	.print-property {
 		overflow: auto;
 		/* height: 100vh; */
-		width: 100vw;
+		/* width: 100vw; */
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -95,13 +95,13 @@
 	}
 
 	.property-listing {
-		width: 100vw;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		/* min-height: 100vh; */
-		padding: 3rem;
+		width: 90vw;
+		margin: 3rem auto;
 	}
 </style>
 
