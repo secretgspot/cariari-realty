@@ -9,7 +9,8 @@
 	export let query = false;
 	export let slug = false;
 
-	let loc = location ? location.origin : '';
+	// let loc = location ? location.origin : '';
+	let loc;
 
 	onMount(() => {
 		loc = location.origin;
@@ -23,11 +24,13 @@
 		/* height: 100vh; */
 		width: 100vw;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 	}
+
 	@media (min-width: 768px) {
-		.print-property { height: 100vh; }
+		.print-property { min-height: 100vh; }
 	}
 
 	.grid-container {
@@ -91,6 +94,15 @@
 		flex-wrap: wrap;
 	}
 
+	.property-listing {
+		width: 100vw;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		/* min-height: 100vh; */
+		padding: 3rem;
+	}
 </style>
 
 
@@ -164,6 +176,14 @@
 			<Badge label="rent" value="{property.rent}" />
 			<Badge label="taxes" value="{property.taxes}" />
 			<Badge label="fees" value="{property.fees}" />
+		</div>
+	</div>
+
+	<div class="property-listing">
+		<h1>Scan this QR to view details of this {property.msl} listing.</h1>
+
+		<div class="qr-wrapper">
+			<QR size="{360}" message="{loc}/{slug}"/>
 		</div>
 	</div>
 

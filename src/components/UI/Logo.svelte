@@ -1,5 +1,5 @@
 <script>
-	export let type = 'regular'; // full | regular | minimal
+	export let type = 'regular'; // full | regular | minimal | coin
 	export let color = 'gold'; // gold | bw
 	export let size = '36'; // in px
 	export let fixed = '';
@@ -17,10 +17,4 @@
 	}
 </style>
 
-{#if type === 'regular'}
-	<img class="logo regular {fixed} {color}" src="/images/logo/logo_regular_{color}.svg" width="{size}" alt="CR logo" on:click>
-{:else if type === 'minimal'}
-	<img class="logo minimal {fixed} {color}" src="/images/logo/logo_minimal_{color}.svg" width="{size}" alt="CR logo" on:click>
-{:else if type === 'full'}
-	<img class="logo full {fixed} {color}" src="/images/logo/logo_full_{color}.svg" width="{size}" alt="CR logo" on:click>
-{/if}
+<img class="logo {fixed} {color}" src="/images/logo/logo_{type}_{color}.svg" width="{size}" alt="CR logo" on:click>

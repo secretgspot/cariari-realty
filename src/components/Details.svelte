@@ -8,6 +8,7 @@
 	import { formatter } from 'helpers.js';
 
 	export let id;
+	export let btn = true;
 
 	let selectedProperty;
 
@@ -15,7 +16,7 @@
 		selectedProperty = items.find(i => i.id === id);
 	});
 
-	$: console.log('Details: ', selectedProperty);
+	// $: console.log('Details: ', selectedProperty);
 
 	const dispatch = createEventDispatcher();
 
@@ -201,7 +202,9 @@
 		</div>
 		{/if}
 
+		{#if btn}
 		<Button type="button" mode="close" on:click={() => dispatch('close')}>X</Button>
+		{/if}
 	</div>
 
 	<!-- BASE PANE -->
