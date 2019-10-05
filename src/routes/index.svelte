@@ -24,12 +24,6 @@
   let isDetails = false;
   let isLoading = true;
 
-  $: if (isPreview) {
-    console.log('resizing');
-    // mapComponent.setCenter([previewProperty.location.lng, previewProperty.location.lat]); // creates a bug
-    mapComponent.resize();
-  }
-
   // console.log('PHONE: ', process.env.phoneNumber)
   // console.log('FIREBASE: ', process.env.Firebase)
 
@@ -53,28 +47,28 @@
   });
 
   function showPreview(event) {
-    // if (!selectedProperty.id == event.detail || !isPreview) { console.log('NO || NO') }
-    if (selectedProperty.id == event.detail && isPreview) {
-      isPreview = false;
-      selectedProperty = {};
-      // mapComponent.resize(); // 🚩🚩🚩 Why doesn't work?
-    } else {
+    // if (!selectedProperty.id || !isPreview) { console.log('NO || NO') }
+    // if (selectedProperty.id == event.detail && isPreview) {
+    //   isPreview = false;
+    //   selectedProperty = {};
+    // } else {
       selectedProperty.id = event.detail;
-      isPreview = true;
       const unsubscribe = properties.subscribe(items => {
         previewProperty = items.find(i => i.id === selectedProperty.id);
       });
       unsubscribe();
-      // console.log('else> ', previewProperty.location.lng);
-		  // mapComponent.resize();
-      // mapComponent.setCenter([previewProperty.location.lng, previewProperty.location.lat], 15, 14, 17);
-    }
-    mapComponent.setCenter([previewProperty.location.lng, previewProperty.location.lat]);
+      isPreview = true;
+    // }
+      setTimeout(() => {
+        mapComponent.resize();
+      }, 0);
+      mapComponent.setCenter([previewProperty.location.lng, previewProperty.location.lat]);
+      // console.log("showPreview: ", selectedProperty.id);
   }
 
   function showDetails(event) {
     isDetails = true;
-    console.log("showDetails: ", selectedProperty.id);
+    // console.log("showDetails: ", selectedProperty.id);
   }
 
   function closeDetails() {

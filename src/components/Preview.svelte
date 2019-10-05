@@ -9,7 +9,7 @@
 
 	const dispatch = createEventDispatcher();
 
-	$: console.log('previewProperty: ', previewProperty.id);
+	// $: console.log('previewProperty: ', previewProperty.id);
 </script>
 
 <style>
@@ -29,19 +29,6 @@
 		width: 100%;
 		height: 42vh;
 		position: relative;
-	}
-	figure::before {
-		content: '↕'; /* ↔  ↑↓ ⇅ ⇄ */
-		position: absolute;
-		bottom: 0;
-		left: 0.3em;
-		transform: translate(-50%, 50%);
-		font-size: 3em;
-		color: var(--color-white);
-		text-shadow: -1px -1px 0 var(--color-black),
-									1px -1px 0 var(--color-black),
-								 -1px 1px 0 var(--color-black),
-								  1px 1px 0 var(--color-black);
 	}
 
 	.image {
@@ -86,7 +73,6 @@
 	@media (min-width: 60em) and (orientation: landscape) {
 		.preview-content { max-width: 450px; }
 		figure { height: 45vh; }
-		figure::before { display: none; }
 	}
 </style>
 

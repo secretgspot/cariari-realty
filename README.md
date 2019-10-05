@@ -28,14 +28,6 @@ MMMMMMMMMMMMMWMWXOxdolllodxOXWMMMMMMMMMMMMMMM
 
 Small app dedicated to listing properties in an area, utilizing mapboxgl, firebase and svelte.
 
-## TODO
-
- - [x] Rethink/redo loading/splash
- - [x] Map Filter
- - [ ] Resolve issue with recenter/resize of a map on preview
- - [ ] Store across pages (sapper/store?)
- - [ ] Rethink access for client/admin
-
 ### Feautures
 
 | URL | Action |
@@ -47,3 +39,10 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 | /property/id | modify property (client view), able to remove by switching active status |
 | /property/id?admin=true | modify property (admin view), able to remove from db and switch active status |
 | /property/id?qr=true | property printout sheet |
+
+## TODO
+
+- [ ] Rethink/redo loading/splash
+- [ ] Map Filter
+- [ ] Store across pages (sapper/store?)
+- [ ] Rethink access for client/admin
