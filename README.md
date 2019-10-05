@@ -28,7 +28,7 @@ MMMMMMMMMMMMMWMWXOxdolllodxOXWMMMMMMMMMMMMMMM
 
 Small app dedicated to listing properties in an area, utilizing mapboxgl, firebase and svelte.
 
-### Feautures
+### Features
 
 | URL | Action |
 | ------ | ------ |
@@ -46,3 +46,4 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Map Filter
 - [ ] Store across pages (sapper/store?)
 - [ ] Rethink access for client/admin
+- [x] Preview section scroll to top when marker selected

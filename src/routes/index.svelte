@@ -63,6 +63,7 @@
         mapComponent.resize();
       }, 0);
       mapComponent.setCenter([previewProperty.location.lng, previewProperty.location.lat]);
+      previewpane.scrollTo({top: 0, behavior: 'smooth'}); // is there better way to refer to a pane instead of id?
       // console.log("showPreview: ", selectedProperty.id);
   }
 
@@ -93,6 +94,7 @@
     height: 100vh;
     overflow: hidden;
     background: var(--color-black);
+    min-height: -webkit-fill-available;
   }
   .main-wrapper.previewing {
     grid-template-areas:
@@ -170,7 +172,7 @@
       </Map>
     </div>
 
-    <div class="preview">
+    <div class="preview" id="previewpane">
       {#if isPreview}
         <!-- Preview side panel -->
         <Preview {previewProperty} on:showdetails={showDetails} />
