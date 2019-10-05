@@ -185,6 +185,8 @@
 		<div class="qr-wrapper">
 			<QR size="{360}" message="{loc}/{slug}"/>
 		</div>
+
+		<h2>{loc}/{slug}</h2>
 	</div>
 
 <!--

@@ -30,11 +30,11 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 
 ## TODO
 
-- Rethink/redo loading/splash
-- Map Filter
-- Resolve issue with recenter/resize of a map on preview
-- Store across pages (sapper/store?)
-- Rethink access for client/admin
+ - [x] Rethink/redo loading/splash
+ - [x] Map Filter
+ - [ ] Resolve issue with recenter/resize of a map on preview
+ - [ ] Store across pages (sapper/store?)
+ - [ ] Rethink access for client/admin
 
 ### Feautures
 
