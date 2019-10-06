@@ -1,3 +1,5 @@
+# Cariari Realty
+
 ```txt
 MMMMMMMMMMMMMMMWXOxdolllodxOXWMMMMMMMMMMMMMMM
 MMMMMMMMMMMNOdc,..         ..,cdOXMMMMMMMMMMM
@@ -24,11 +26,9 @@ MMMMMMMMMMMXOdc,..         ..,cdONMMMMMMMMMMM
 MMMMMMMMMMMMMWMWXOxdolllodxOXWMMMMMMMMMMMMMMM
 ```
 
-# Cariari Realty
-
 Small app dedicated to listing properties in an area, utilizing mapboxgl, firebase and svelte.
 
-### Features
+## Features
 
 | URL | Action |
 | ------ | ------ |
@@ -37,10 +37,10 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 | /property | add new property |
 | /property/list | lists all of the properties with filter |
 | /property/id | modify property (client view), able to remove by switching active status |
-| /property/id?admin=true | modify property (admin view), able to remove from db and switch active status |
+| /property/id | modify property (admin view) after entering **konami**, able to remove from db and switch active status |
 | /property/id?qr=true | property printout sheet |
 
-## TODO
+### TODO
 
 - [ ] Rethink/redo loading/splash
 - [ ] Map Filter

@@ -1,6 +1,7 @@
 <script>
 	import * as api from 'api.js';
 	import { goto } from '@sapper/app';
+	import {isAdmin, current, pattern, konami} from 'konami.js'; // to activate $isAdmin
 	// import properties from "../../properties-store.js";
 	import Error from "../../components/UI/Error.svelte";
 	import Button from "../../components/UI/Button.svelte";
@@ -77,7 +78,7 @@
 	async function remove() {
 		inProgress = true;
 
-		const response = await (slug && query.admin
+		const response = await (slug && $isAdmin
 			? api.del(`cariari/${slug}.json`, null)
 			: api.patch(`cariari/${slug}.json`, {...property, is_active: false, date_updated: new Date()}, null));
 
@@ -276,6 +277,7 @@
 	}
 </style>
 
+<svelte:window on:keydown="{konami}"/>
 
 <svelte:head>
 	{#if slug}
@@ -299,8 +301,8 @@
 
 		<fieldset>
 			<legend>Active</legend>
-			<!-- <input type="text" placeholder="ex: true" bind:value="{property.is_active}" disabled="{!query.admin}"> -->
-			<Toggle bind:checked="{property.is_active}" label="{property.is_active ? 'Listed' : 'Delisted'}" disabled="{!query.admin}" />
+			<!-- <input type="text" placeholder="ex: true" bind:value="{property.is_active}" disabled="{!$isAdmin}"> -->
+			<Toggle bind:checked="{property.is_active}" label="{property.is_active ? 'Listed' : 'Delisted'}" disabled="{!$isAdmin}" />
 		</fieldset>
 
 		<fieldset class="{property.is_active ? 'active' : 'removed'}">
@@ -456,10 +458,10 @@
 	</div>
 
 	<footer class="buttons-group">
-		{#if slug && property.is_active && !query.admin}
+		{#if slug && property.is_active && !$isAdmin}
 			<Button type="button" color="magenta" disabled={inProgress} on:click="{remove}">Remove</Button>
 		{/if}
-		{#if slug && query.admin}
+		{#if slug && $isAdmin}
 			<Button type="button" color="magenta" disabled={inProgress} on:click="{remove}">Delete</Button>
 		{/if}
 

@@ -20,6 +20,7 @@
 	import Logo from "../../components/UI/Logo.svelte";
 	import Button from "../../components/UI/Button.svelte";
 	import Filter from "../../components/UI/Filter.svelte";
+	import {isAdmin, current, pattern, konami} from 'konami.js'; // to activate $isAdmin
 
 	export let fetchedProperties;
 	// console.log('>>> ', fetchedProperties);
@@ -38,7 +39,6 @@
 
 	$: filtered = filter && filterArray(fetchedProperties, filters) || [];
 	// $: console.log('>> ', filtered)
-
 
 	function filterArray(array, filters) {
 		const filterKeys = Object.keys(filters);
@@ -147,6 +147,8 @@
 .filter { grid-area: filter; }
 </style>
 
+<svelte:window on:keydown="{konami}"/>
+
 <svelte:head>
 	<title>List of Properties</title>
 </svelte:head>
@@ -157,13 +159,20 @@
 	<div class="header">
 		<h1>{filtered.length} / {fetchedProperties.length} properties</h1>
 
-		<Button href="/property">Add new</Button>
+		{#if $isAdmin}
+			<Button href="/property">Add new</Button>
+		{/if}
 	</div>
 
   <div class="list">
 	{#each filtered as property (property.id)}
 		<fieldset class:deactivated="{!property.is_active}">
-			<legend><Button href="property/{property.id}">Edit</Button> [{property.msl}]</legend>
+			<legend>
+				{#if $isAdmin}
+					<Button href="property/{property.id}">Edit</Button>
+				{/if}
+				[{property.msl}]
+			</legend>
 
 			<div class="land_use">
 			{#each property.property_for as p_for}

@@ -94,7 +94,7 @@
     height: 100vh;
     overflow: hidden;
     background: var(--color-black);
-    min-height: -webkit-fill-available;
+    /* min-height: -webkit-fill-available; */
   }
   .main-wrapper.previewing {
     grid-template-areas:
