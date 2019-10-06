@@ -45,5 +45,5 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Rethink/redo loading/splash
 - [ ] Map Filter
 - [ ] Store across pages (sapper/store?)
-- [ ] Rethink access for client/admin
+- [x] Rethink access for client/admin
 - [x] Preview section scroll to top when marker selected
