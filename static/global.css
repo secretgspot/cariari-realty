@@ -16,6 +16,19 @@
 	box-sizing: border-box;
 }
 
+/* Style scrollbars (webkit) */
+.scroller::-webkit-scrollbar {
+	width: 6px;
+}
+.scroller::-webkit-scrollbar-track {
+	border-radius: 3px;
+	background: var(--color-light);
+}
+.scroller::-webkit-scrollbar-thumb {
+	background-color: var(--color-black);
+	border-radius: 3px;
+}
+
 body {
 	margin: 0;
 	font-family: sans-serif;

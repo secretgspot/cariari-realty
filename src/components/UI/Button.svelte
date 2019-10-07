@@ -16,7 +16,7 @@
     height: 81px;
     padding: 0.5rem 1rem;
     color: var(--color-black);
-    border-radius: 5px;
+    border-radius: 9px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
     cursor: pointer;
     text-decoration: none;
@@ -26,9 +26,19 @@
     /* align-items: center; */
   }
 
-  button:focus {
-    outline: none;
+  /* include a border on all button but the first, to avoid a border when only one element exist */
+  button:not(:first-of-type),
+  a:not(:first-of-type) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
+  button:not(:last-of-type),
+  a:not(:last-of-type) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  button:focus { align-content: none; }
 
   button:hover,
   button:active,

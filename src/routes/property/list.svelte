@@ -25,6 +25,7 @@
 	export let fetchedProperties;
 	// console.log('>>> ', fetchedProperties);
 	let filter;
+	let view_style = 'grid';
 
 	const filters = {
 		is_active: is_active => is_active == filter.active,
@@ -101,8 +102,8 @@
 .grid-container {
   display: grid;
 	grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr;
-  grid-template-areas: "filter" "header" "list";
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "filter" "list";
   /* grid-template-columns: 1.4fr 0.6fr; */
   /* grid-template-rows: 1fr; */
   /* grid-template-areas: "list filter"; */
@@ -111,40 +112,42 @@
 	.grid-container {
 		grid-template-columns: 1.4fr 0.6fr;
 		grid-template-rows: 1fr;
-		grid-template-areas: "header ." "list filter";
+		grid-template-areas: "list filter";
 	}
 }
-.header {
-	grid-area: header;
-	padding: 0 2rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-.header h1 {
-	margin-left: 2rem;
-}
-.header :global(a) {
-	height: fit-content;
-	flex: 0 1 auto;
-}
 
-.list {
+.properties_list {
 	grid-area: list;
 	/* background: lavender; */
 	display: grid;
 	grid-gap: 1rem;
 	grid-template-columns: minmax(auto, 1fr);
 	/* grid-template-columns: minmax(auto, 50%) minmax(auto, 50%); */
-	padding: 1rem;
+	padding: 0 1rem;
 }
+/* .properties_list.list {} */
 @media (min-width: 1024px) {
-.list {
-	grid-template-columns: auto auto;
-}
+	.properties_list {
+		grid-template-columns: auto auto;
+		padding: 6rem 1rem;
+	}
+	.properties_list.list {
+		grid-template-columns: auto;
+	}
 }
 
 .filter { grid-area: filter; }
+.filter .filters-wrappers {
+	position: sticky;
+	top: 0px;
+}
+.filter .filters-menu {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+.filter .filters-menu :global(a) { height: auto; }
 </style>
 
 <svelte:window on:keydown="{konami}"/>
@@ -156,21 +159,14 @@
 <Logo type="regular" color="bw" fixed="fixed" on:click="{() => goto('/')}" />
 
 <div class="grid-container">
-	<div class="header">
-		<h1>{filtered.length} / {fetchedProperties.length} properties</h1>
-
-		{#if $isAdmin}
-			<Button href="/property">Add new</Button>
-		{/if}
-	</div>
-
-  <div class="list">
+  <div class="properties_list {view_style}">
 	{#each filtered as property (property.id)}
 		<fieldset class:deactivated="{!property.is_active}">
 			<legend>
 				{#if $isAdmin}
 					<Button href="property/{property.id}">Edit</Button>
 				{/if}
+				<Button href="/{property.id}">View</Button>
 				[{property.msl}]
 			</legend>
 
@@ -242,6 +238,28 @@
 	</div>
 
   <div class="filter">
-		<Filter bind:filter />
+		<div class="filters-wrappers">
+			<div class="filters-menu">
+				<div class="view_type">
+					<label class="radio">
+						<input type="radio" bind:group="{view_style}" value="grid" />
+						<span>☷<!-- &#9783; --></span>
+					</label>
+
+					<label class="radio">
+						<input type="radio" bind:group="{view_style}" value="list" />
+						<span>☰<!-- &#9776; --></span>
+					</label>
+				</div>
+
+				<h3>{filtered.length} / {fetchedProperties.length}</h3>
+
+				{#if $isAdmin}
+					<Button href="/property">Add new</Button>
+				{/if}
+			</div>
+
+			<Filter bind:filter />
+		</div>
 	</div>
 </div>

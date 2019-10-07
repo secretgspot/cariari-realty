@@ -83,6 +83,7 @@
 	.side .description {
 		max-height: 336px;
 		overflow: auto;
+		padding: 0 0.3rem;
 	}
 
 	.side .ad-wrapper {
@@ -197,7 +198,7 @@
 		</div>
 
 		{#if selectedProperty.description}
-		<div class="description">
+		<div class="description scroller">
 			{selectedProperty.description}
 		</div>
 		{/if}

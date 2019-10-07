@@ -23,8 +23,6 @@
 		padding: 2rem;
 		margin: 0;
 		/* width: 300px; */
-		position: sticky;
-  	top: 0px;
 	}
 	.row {
 		display: flex;

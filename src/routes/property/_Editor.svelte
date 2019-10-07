@@ -466,7 +466,7 @@
 		{/if}
 
 		{#if slug && !inProgress}
-			<Button type="button" disabled={inProgress} href="/property/{slug}?qr=true">Print</Button>
+			<Button type="button" disabled={inProgress} on:click="{() => { goto(`/property/${slug}?qr=true`) }}">Print</Button>
 		{/if}
 
 		<Button type="button" disabled={inProgress} on:click="{publish}">
