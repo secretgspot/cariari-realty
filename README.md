@@ -47,6 +47,7 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Store across pages (sapper/store?)
 - [x] Rethink access for client/admin
 - [x] Preview section scroll to top when marker selected
-- [ ] List, add checkbox for showing with photos or compact view
+- [x] List, add checkbox for showing with photos or compact view
+- [ ] List, reformat grid vs list view
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] Map snapshot for property details (gps)
