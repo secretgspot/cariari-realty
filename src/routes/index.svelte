@@ -42,7 +42,7 @@
         properties.setProperties(loadedProperties); // doesn't have to be .reverse()
         // turn off loading indicator
         isLoading = false;
-        isSplash = false;
+        // isSplash = false;
       });
   });
 
@@ -152,6 +152,7 @@
         bind:this={mapComponent}
         on:ready={() => {
           mapComponent.setCenter([-84.15756932466013, 9.973385405932916], 15, 14, 17);
+          isSplash = false;
         }}
         accessToken="pk.eyJ1Ijoic2VjcmV0Z3Nwb3QiLCJhIjoiY2swaGQ1Y2UzMDFmNDNucHNqdGRxeHBzNSJ9.AWKJgnwQUyfggl5fKCAw_A">
 

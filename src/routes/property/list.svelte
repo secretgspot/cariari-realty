@@ -87,6 +87,11 @@
 @media (min-width: 768px) {
 	.properties_list { padding: 3rem 0; }
 	.properties_list.grid {
+		grid-template-columns: repeat(auto-fit, minmax(min-content, 252px));
+	}
+}
+@media (min-width: 1024px) {
+	.properties_list.grid {
 		grid-template-columns: repeat(auto-fit, minmax(min-content, 313px));
 	}
 }

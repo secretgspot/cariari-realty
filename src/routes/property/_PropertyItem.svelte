@@ -15,6 +15,7 @@
     "property-details";
 	padding: 1rem 0 0;
 }
+.properties_list.grid > .property .property-image img { border-radius: 0; }
 
 /* PROPERTIES LIST -> PROPERTY */
 .property {
@@ -27,6 +28,12 @@
   border: 1px solid var(--color-black);
   border-radius: 9px;
 	margin: 1rem;
+}
+@media (min-width: 1024px) {
+	.property {
+  	grid-template-areas: "property-image property-header"
+												 "property-image property-details";
+	}
 }
 
 /* PROPERTIES LIST -> PROPERTY -> HEADER */
@@ -62,14 +69,28 @@ header span { margin: 0 1rem; }
 	grid-area: property-image;
 	display: flex;
 	flex-direction: column;
-	margin: 0 0.3rem;
+	align-items: center;
+	margin: 0;
+	position: relative;
 }
 .property-image img { width: auto; }
+/* .property-image caption { display: none; } */
 @media (min-width: 768px) {
-	.property-image img { width: 180px; height: auto; }
+	.property-image img { width: 208px; height: auto; }
 }
 @media (min-width: 1024px) {
-	.property-image img { width: 270px; height: auto; }
+	.property-image img {
+		width: 270px;
+		height: auto;
+		border-top-left-radius: 9px;
+		border-bottom-left-radius: 9px;
+	}
+	/* .property-image caption {
+		position: absolute;
+		bottom: 1rem; left: 1rem;
+		color: var(--color-white);
+		text-shadow: 0 0 2px var(--color-black);
+	} */
 }
 
 /* PROPERTIES LIST -> PROPERTY -> DETAILS */
@@ -112,7 +133,7 @@ header span { margin: 0 1rem; }
 	{#if property.photos}
 	<figure class="property-image">
 		<img src="{property.photos[0]}" alt="{property.id} photo" loading="auto" width="111" height="62.44">
-		<caption>{property.photos.length} images</caption>
+		<!-- <caption>{property.photos.length} images</caption> -->
 	</figure>
 	{/if}
 
