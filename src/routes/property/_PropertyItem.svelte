@@ -5,10 +5,21 @@
 </script>
 
 <style>
+
+.properties_list.grid > .property {
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content min-content auto;
+  grid-template-areas:
+    "property-header"
+    "property-image"
+    "property-details";
+	padding: 1rem 0 0;
+}
+
 /* PROPERTIES LIST -> PROPERTY */
 .property {
   display: grid;
-  grid-template-columns: 0.6fr 1.4fr;
+  grid-template-columns: min-content auto;
 	grid-template-rows: auto 1fr;
   grid-template-areas: "property-header property-header"
 											 "property-image property-details";
