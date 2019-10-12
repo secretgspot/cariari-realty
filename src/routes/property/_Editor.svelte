@@ -138,6 +138,7 @@
 		grid-template-columns: repeat(1, 1fr);
 		margin: 3rem 0rem 3rem;
 		grid-row-gap: 1rem;
+		width: 90vw;
 		/* grid-template-columns: repeat(auto-fit, minmax(222px, 1fr)); */
 		/* grid-template-columns: repeat(3, 1fr); */
 		/* margin: 6rem 6rem 3rem; */
@@ -158,8 +159,8 @@
 		font-size: 0.6em;
 		font-family: sans-serif;
 	}
-	fieldset.active { background: var(--color-cyan); }
-	fieldset.removed { background: var(--color-magenta); }
+	fieldset.active { background: var(--color-success); }
+	fieldset.removed { background: var(--color-danger); }
 
 	fieldset input[type="text"],
 	fieldset select,
@@ -172,6 +173,7 @@
 		border: 1px solid rgba(0, 0, 0, 0.15);
 		border-radius: 0.25rem;
 		width: -webkit-fill-available;
+		box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
 	}
 
 	fieldset :global(button) {
@@ -230,36 +232,41 @@
 	.photo-list {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(auto, 120px));
-		/* grid-template-rows: repeat(auto-fit, minmax(90px, 222px)); */
+		/* grid-template-rows: repeat(auto-fit, minmax(90px, 120px)); */
 		grid-gap: 1rem;
 		justify-content: center;
 		margin: 1rem 0;
 	}
 	.photo {
 		position: relative;
-		border: 1px solid var(--color-black);
+		border: 0px solid var(--color-black);
+		box-shadow: 0 2px 3px 0 hsla(0, 0%, 0%, 0.3);
 		border-radius: 9px;
 		text-align: center;
-		overflow: hidden;
+		/* overflow: hidden; */
 		display: flex;
+		background-size: cover;
+		height: 120px;
 	}
-	.photo .preview {
+	/* .photo .preview {
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
-	}
+	} */
 	.photo .close {
 		width: 27px;
 		height: 27px;
-		color: var(--color-magenta);
-		border: 1px solid var(--color-magenta);
-		border-radius: 6px;
+		color: var(--color-danger);
+		border: 1px solid var(--color-danger);
+		border-radius: 50%;
 		position: absolute;
-		right: 0;
-		top: 0;
+		right: -9px;
+		top: -9px;
 		box-sizing: border-box;
 		cursor: pointer;
 		display: block;
+		background: hsla(0, 0%, 100%, 0.81);
+		font-style: normal;
 	}
 	.photo .close::after {
 		content: 'x';
@@ -447,9 +454,9 @@
 			<input type="text" placeholder="ex: //placekitten.com/g/1080/810" use:enter={addPhoto}>
 			<div class="photo-list">
 				{#each property.photos as photo, i}
-					<div class="photo">
+					<div class="photo" style="background-image: url({photo})">
 						<i class="close" on:click="{() => removePhoto(i)}" />
-						<img class="preview" src="{photo}" alt="{photo}">
+						<!-- <img class="preview" src="{photo}" alt="{photo}"> -->
 					</div>
 				{/each}
 			</div>
@@ -459,17 +466,17 @@
 
 	<footer class="buttons-group">
 		{#if slug && property.is_active && !$isAdmin}
-			<Button type="button" color="magenta" disabled={inProgress} on:click="{remove}">Remove</Button>
+			<Button type="button" color="danger" disabled={inProgress} on:click="{remove}">Remove</Button>
 		{/if}
 		{#if slug && $isAdmin}
-			<Button type="button" color="magenta" disabled={inProgress} on:click="{remove}">Delete</Button>
+			<Button type="button" color="danger" disabled={inProgress} on:click="{remove}">Delete</Button>
 		{/if}
 
 		{#if slug && !inProgress}
 			<Button type="button" disabled={inProgress} on:click="{() => { goto(`/property/${slug}?qr=true`) }}">Print</Button>
 		{/if}
 
-		<Button type="button" disabled={inProgress} on:click="{publish}">
+		<Button type="button" color="success" disabled={inProgress} on:click="{publish}">
 			{#if slug}
 				Submit Changes
 			{:else}

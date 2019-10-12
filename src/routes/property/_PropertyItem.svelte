@@ -8,31 +8,36 @@
 
 .properties_list.grid > .property {
   grid-template-columns: 1fr;
-  grid-template-rows: min-content min-content auto;
+  grid-template-rows: min-content minmax(180px, auto) auto min-content;
   grid-template-areas:
     "property-header"
     "property-image"
-    "property-details";
+		"property-details"
+		"property-footer";
 	padding: 1rem 0 0;
 }
-.properties_list.grid > .property .property-image img { border-radius: 0; }
+.properties_list.grid > .property .property-details { padding: 1rem; }
 
 /* PROPERTIES LIST -> PROPERTY */
 .property {
   display: grid;
-  grid-template-columns: min-content auto;
-	grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 1fr auto;
   grid-template-areas: "property-header property-header"
-											 "property-image property-details";
+											 "property-image property-details"
+											 "property-footer property-footer";
 	position: relative;
-  border: 1px solid var(--color-black);
+  border: 0px solid var(--color-black);
   border-radius: 9px;
 	margin: 1rem;
+	background: var(--color-white, white);
+  box-shadow: 0 3px 6px 0 hsla(0, 0%, 0%, 0.2);
 }
 @media (min-width: 1024px) {
 	.property {
   	grid-template-areas: "property-image property-header"
-												 "property-image property-details";
+												 "property-image property-details"
+												 "property-image property-footer";
 	}
 }
 
@@ -51,18 +56,11 @@
   width: 100%;
   display: flex;
 	flex-wrap: wrap;
-  justify-content: space-between;
+	justify-content: space-between;
+	color: var(--color-dark);
+	padding: 0.3rem;
 }
 
-header {
-	position: absolute;
-	right: 1rem;
-	top: -1.2rem;
-	display: flex;
-	background: white;
-	align-items: center;
-}
-header span { margin: 0 1rem; }
 
 /* PROPERTIES LIST -> PROPERTY -> IMAGE */
 .property-image {
@@ -72,25 +70,15 @@ header span { margin: 0 1rem; }
 	align-items: center;
 	margin: 0;
 	position: relative;
+	background-size: cover;
 }
-.property-image img { width: auto; }
+/* .property-image img { width: auto; } */
 /* .property-image caption { display: none; } */
 @media (min-width: 768px) {
-	.property-image img { width: 208px; height: auto; }
+	/* .property-image img { width: 208px; height: auto; } */
 }
 @media (min-width: 1024px) {
-	.property-image img {
-		width: 270px;
-		height: auto;
-		border-top-left-radius: 9px;
-		border-bottom-left-radius: 9px;
-	}
-	/* .property-image caption {
-		position: absolute;
-		bottom: 1rem; left: 1rem;
-		color: var(--color-white);
-		text-shadow: 0 0 2px var(--color-black);
-	} */
+	.properties_list:not(.grid) > .property .property-image { border-radius: 9px 0 0 9px; }
 }
 
 /* PROPERTIES LIST -> PROPERTY -> DETAILS */
@@ -106,16 +94,33 @@ header span { margin: 0 1rem; }
 		border-radius: 9px;
 		background: whitesmoke;
 	}
+
+/* PROPERTIES LIST -> PROPERTY -> FOOTER */
+.property-footer {
+	grid-area: property-footer;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1rem;
+	background: var(--color-light);
+	box-shadow: 0 3px 6px 0 hsla(0, 0%, 0%, 0.2);
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+.property-footer span { margin-left: auto; }
+.property-footer :global(a) {
+	flex: 0 1 auto;
+}
 </style>
 
 <section class="property" class:deactivated="{!property.is_active}">
-	<header>
+	<footer class="property-footer">
 		{#if $isAdmin}
 			<Button href="property/{property.id}">Edit</Button>
 		{/if}
 		<Button href="/{property.id}">View</Button>
 		<span>[{property.msl}]</span>
-	</header>
+	</footer>
 
 	<div class="property-header">
 		<div class="land_use">
@@ -125,32 +130,32 @@ header span { margin: 0 1rem; }
 		</div>
 
 		<div class="dates wrap">
-			<small>added: {property.date_listed}</small>
-			<small>updated: {property.date_updated}</small>
+			<span>added: {new Date(property.date_listed).toLocaleDateString("en-US")}</span>
+			<span>updated: {new Date(property.date_updated).toLocaleDateString("en-US")}</span>
 		</div>
 	</div>
 
 	{#if property.photos}
-	<figure class="property-image">
-		<img src="{property.photos[0]}" alt="{property.id} photo" loading="auto" width="111" height="62.44">
+	<figure class="property-image" style="background-image: url({property.photos[0]})">
+		<!-- <img src="{property.photos[0]}" alt="{property.id} photo" loading="auto" width="111" height="62.44"> -->
 		<!-- <caption>{property.photos.length} images</caption> -->
 	</figure>
 	{/if}
 
 	<div class="property-details">
-		<details class="column">
+		<details class="column" open>
 			<summary>Contacts</summary>
 			{#if property.contact_phone}<span>{property.contact_phone}</span>{/if}
 			{#if property.contact_email}<span>{property.contact_email}</span>{/if}
 		</details>
 
-		<details class="column">
+		<details class="column" open>
 			<summary>Location</summary>
 			{#if property.address}<span>{property.address}</span>{/if}
 			{#if property.location}<span>{property.location.lat} / {property.location.lng}</span>{/if}
 		</details>
 
-		<details class="column wrap">
+		<details class="column wrap" open>
 			<summary>Details</summary>
 			{#if property.id}<span>id: {property.id}</span>{/if}
 			{#if property.land_use}<span>land use: {property.land_use}</span>{/if}
@@ -170,7 +175,7 @@ header span { margin: 0 1rem; }
 		</details>
 
 		{#if property.features}
-		<details class="features">
+		<details class="features" open>
 			<summary>Features</summary>
 			{#each property.features as feature}
 			<span>{feature}</span>
@@ -178,12 +183,12 @@ header span { margin: 0 1rem; }
 		</details>
 		{/if}
 
-		{#if property.description}
+		<!-- {#if property.description}
 		<details class="description">
 			<summary>Description</summary>
 			<p>{property.description}</p>
 		</details>
-		{/if}
+		{/if} -->
 	</div>
 
 </section>

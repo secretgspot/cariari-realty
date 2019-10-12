@@ -13,7 +13,7 @@
   .toggle + .toggle {
     margin-top: 1.25em;
     padding-top: 1em;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--color-light);
   }
   .toggle {
     position: relative;
@@ -48,14 +48,14 @@
     top: -0.125em;
     width: 2.8125em;
     height: 1.875em;
-    background-color: #eee;
+    background-color: var(--color-light);
     border: 0.0625em solid rgba(0, 0, 0, 0.15);
     border-radius: 24em;
     transition: 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     transition-property: background-color, border-color;
   }
   .toggle-label .toggle-input:checked ~ .toggle-track {
-    background-color: #bbe572;
+    background-color: var(--color-success);
     border-color: rgba(0, 0, 0, 0.05);
   }
   .toggle-track + .toggle-title {
@@ -67,7 +67,7 @@
     right: 0.9375em;
     bottom: 0;
     left: 0;
-    background-color: white;
+    background-color: var(--color-white);
     border-radius: 24em;
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2),
       inset 1px 1px 3px rgba(255, 255, 255, 0.8);

@@ -7,9 +7,11 @@
 	--color-cyan: #00E5FF;
 	--color-magenta: #FF00F7;
 	--color-lime: #76c900;
-	--color-light: #f6f6f6;
-	--color-dark: #a9a9a9;
-	--color-darker: #6f6f6f;
+	--color-light: hsl(0, 0%, 96%);
+	--color-dark: hsl(0, 0%, 72%);
+	--color-darker: hsl(0, 0%, 45%);
+	--color-danger: #f16262;
+	--color-success: #27c190;
 }
 
 * {

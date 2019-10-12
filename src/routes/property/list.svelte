@@ -26,7 +26,7 @@
 	export let fetchedProperties;
 	// console.log('>>> ', fetchedProperties);
 	let filter;
-	let view_style = 'list';
+	let view_style = 'grid';
 
 	const filters = {
 		is_active: is_active => is_active == filter.active,
@@ -70,6 +70,7 @@
 		grid-template-columns: auto min-content;
 		grid-template-rows: 1fr;
 		grid-template-areas: "list filter";
+		min-height: 100vh;
 	}
 }
 .grid-container :global(a) { height: auto; }
@@ -82,7 +83,13 @@
 	grid-area: list;
 	display: grid;
 	grid-template-columns: minmax(min-content, auto);
+	grid-auto-flow: dense;
 	grid-gap: 1rem;
+	background: var(--color-light, whitesmoke);
+	box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+	padding: 3rem 0;
+	justify-content: center;
+	/* align-items: baseline; */
 }
 @media (min-width: 768px) {
 	.properties_list { padding: 3rem 0; }
@@ -94,6 +101,16 @@
 	.properties_list.grid {
 		grid-template-columns: repeat(auto-fit, minmax(min-content, 313px));
 	}
+}
+
+
+/*
+	NOTHING TO SEE LIST SECTION
+ */
+p.nothing_to_see {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -110,7 +127,7 @@
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
 	justify-items: center;
-	margin: 0 3rem;
+	margin: 0 2rem;
 }
 .filter .view_type { display: none; }
 @media (min-width: 720px) {
@@ -146,11 +163,15 @@
 <Logo type="regular" color="bw" fixed="fixed" on:click="{() => goto('/')}" />
 
 <div class="grid-container">
-  <div class="properties_list {view_style}">
-	{#each filtered as property (property.id)}
-		<PropertyItem {property} />
-	{/each}
-	</div>
+	{#if filtered.length > 0}
+		<div class="properties_list {view_style}">
+			{#each filtered as property (property.id)}
+				<PropertyItem {property} />
+			{/each}
+		</div>
+	{:else}
+		<p class="nothing_to_see">Nothing to see</p>
+	{/if}
 
   <div class="filter">
 		<div class="filters-wrappers">

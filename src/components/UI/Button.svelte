@@ -17,7 +17,7 @@
     padding: 0.5rem 1rem;
     color: var(--color-black);
     border-radius: 9px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
+    box-shadow: 0px 1px 2px hsla(0, 0%, 0%, 0.36);
     cursor: pointer;
     text-decoration: none;
     flex: 1 1 auto;
@@ -46,29 +46,27 @@
   a:active {
     background: var(--color-white);
     border-color: var(--color-black);
-    box-shadow: 1px 1px 8px rgba(77, 51, 51, 0.26);
+    outline: none;
+  }
+
+  button:hover,
+  a:hover {
+    box-shadow: 0px 0px 2px hsla(0, 0%, 0%, 0.36);
+  }
+
+  button:active,
+  a:active {
+    box-shadow: inset 0px 1px 3px hsla(0, 0%, 0%, 0.36);
   }
 
   button:disabled,
   button:disabled:hover,
   button:disabled:active {
-    background: #ccc;
-    border-color: #ccc;
-    color: #959595;
+    background: var(--color-light);
+    border-color: var(--color-light);
+    color: var(--color-dark);
     box-shadow: none;
     cursor: not-allowed;
-  }
-
-  /* SUCCESS  */
-  .success {
-    background: #01a129;
-    border-color: #01a129;
-  }
-
-  .success:hover,
-  .success:active {
-    background: #1ac745;
-    border-color: #1ac745;
   }
 
   /* BLACK  */
@@ -123,6 +121,32 @@
     color: var(--color-white);
   }
 
+ /* SUCCESS  */
+  .success {
+    background: inherit;
+    border-color: var(--color-success);
+    color: var(--color-success);
+  }
+  .success:hover,
+  .success:active {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-white);
+  }
+
+ /* DANGER  */
+  .danger {
+    background: inherit;
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+  }
+  .danger:hover,
+  .danger:active {
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+    color: var(--color-white);
+  }
+
 
   /* CLOSE */
   .close {
@@ -149,7 +173,7 @@
   .close:disabled:hover,
   .close:disabled:active {
     background: transparent;
-    color: #ccc;
+    color: var(--color-light);
   }
 </style>
 
