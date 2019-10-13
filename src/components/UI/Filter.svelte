@@ -1,5 +1,6 @@
 <script>
 	import Toggle from '../UI/Toggle.svelte';
+	import { formatter } from 'helpers.js';
 
 	export let filter = {
 		rent: 10000,
@@ -117,13 +118,13 @@
 		<div class="column">
 			{#if (filter.filter_for).includes('Rent')}
 			<label class="range column">
-				{filter.rent} <input type="range" min="100" max="10000" step="100" bind:value="{filter.rent}"/> <small>monthly</small>
+				{formatter.format(filter.rent)} <input type="range" min="100" max="10000" step="100" bind:value="{filter.rent}"/> <small>monthly</small>
 			</label>
 			{/if}
 
 			{#if (filter.filter_for).includes('Sale') || (filter.filter_for).includes('Investment')}
 			<label class="range column">
-				{filter.price} <input type="range" min="10000" max="10000000" step="10000" bind:value="{filter.price}"/> <small>price</small>
+				{formatter.format(filter.price)} <input type="range" min="10000" max="10000000" step="10000" bind:value="{filter.price}"/> <small>price</small>
 			</label>
 			{/if}
 		</div>
