@@ -152,7 +152,7 @@
 
 	fieldset {
 		border: 0px dotted #e6e6e6;
-		border-radius: 9px;
+		border-radius: var(--border-radius);
 	}
 	legend {
 		text-transform: uppercase;
@@ -174,6 +174,7 @@
 		border-radius: 0.25rem;
 		width: -webkit-fill-available;
 		box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
+		background: var(--color-light);
 	}
 
 	fieldset :global(button) {
@@ -210,7 +211,7 @@
 		height: 18px;
 		color: var(--color-dark);
 		/* border: 1px dotted var(--color-magenta); */
-		border-radius: 9px;
+		border-radius: var(--border-radius);
 		margin-right: 0.2rem;
 		position: relative;
 		box-sizing: border-box;
@@ -241,7 +242,7 @@
 		position: relative;
 		border: 0px solid var(--color-black);
 		box-shadow: 0 2px 3px 0 hsla(0, 0%, 0%, 0.3);
-		border-radius: 9px;
+		border-radius: var(--border-radius);
 		text-align: center;
 		/* overflow: hidden; */
 		display: flex;

@@ -12,6 +12,7 @@
 	--color-darker: hsl(0, 0%, 45%);
 	--color-danger: #f16262;
 	--color-success: #27c190;
+	--border-radius: 9px;
 }
 
 * {

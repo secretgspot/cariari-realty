@@ -30,6 +30,7 @@
 
 	const filters = {
 		is_active: is_active => is_active == filter.active,
+		land_use: land_use => land_use == filter.filter_type,
 		property_for: property_for => property_for.find(x => filter.filter_for.includes(x)),
 		rent: rent => rent <= filter.rent,
 		price: price => price <= filter.price,
@@ -86,13 +87,12 @@
 	grid-auto-flow: dense;
 	grid-gap: 1rem;
 	background: var(--color-light, whitesmoke);
-	box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
 	padding: 3rem 0;
-	justify-content: center;
+	/* justify-content: center; */
 	/* align-items: baseline; */
 }
 @media (min-width: 768px) {
-	.properties_list { padding: 3rem 0; }
+	/* .properties_list { padding: 3rem 0; } */
 	.properties_list.grid {
 		grid-template-columns: repeat(auto-fit, minmax(min-content, 252px));
 	}
@@ -107,11 +107,14 @@
 /*
 	NOTHING TO SEE LIST SECTION
  */
-p.nothing_to_see {
-  display: flex;
+.nothing_to_see {
+	display: flex;
+	flex-direction: column;
   justify-content: center;
-  align-items: center;
+	align-items: center;
+	background: var(--color-light);
 }
+.nothing_to_see img { max-width: 63%; }
 
 
 /*
@@ -170,7 +173,10 @@ p.nothing_to_see {
 			{/each}
 		</div>
 	{:else}
-		<p class="nothing_to_see">Nothing to see</p>
+		<div class="nothing_to_see">
+			<img src="/images/placeholder/empty_list.svg" alt="empty list image" />
+			<p >Nothing to see</p>
+		</div>
 	{/if}
 
   <div class="filter">
