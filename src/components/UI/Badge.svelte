@@ -6,7 +6,7 @@
 	export let loop = false; // for cases where object is passed
 </script>
 
-<style lang='scss'>
+<style>
 	.badge {
 		display: inline-flex;
 		align-items: center;
@@ -17,13 +17,13 @@
 	}
 	.label {
 		text-transform: uppercase;
-		font-size: 1.2em;
-		line-height: 1;
+		/* line-height: 1; */
 		font-family: 'Economica', sans-serif;
+		color: var(--color-dark);
 	}
 	.value {
 		font-size: 1.8em;
-		line-height: 1;
+		/* line-height: 1; */
 		font-family: 'Cabin', sans-serif;
 	}
 	.row {

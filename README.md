@@ -40,3 +40,4 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] LocalStorage for some of the settings
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] Map snapshot for property details (gps)
+- [ ] Cleanup Preview, Details

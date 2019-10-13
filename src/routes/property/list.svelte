@@ -84,6 +84,7 @@
 	grid-area: list;
 	display: grid;
 	grid-template-columns: minmax(min-content, auto);
+	grid-template-rows: max-content;
 	grid-auto-flow: dense;
 	grid-gap: 1rem;
 	background: var(--color-light, whitesmoke);
