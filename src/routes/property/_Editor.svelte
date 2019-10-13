@@ -159,8 +159,8 @@
 		font-size: 0.6em;
 		font-family: sans-serif;
 	}
-	fieldset.active { background: var(--color-success); }
-	fieldset.removed { background: var(--color-danger); }
+	fieldset.active { border: 1px solid var(--color-success); }
+	fieldset.removed { border: 1px solid var(--color-danger); }
 
 	fieldset input[type="text"],
 	fieldset select,

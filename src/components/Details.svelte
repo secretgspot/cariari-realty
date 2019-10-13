@@ -81,9 +81,10 @@
 	}
 
 	.side .description {
-		max-height: 336px;
+		max-height: 369px;
 		overflow: auto;
 		padding: 0 0.3rem;
+		white-space: pre-wrap;
 	}
 
 	.side .ad-wrapper {
@@ -245,5 +246,4 @@
 			{/if}
 		</div>
 	</div>
-
 </section>
