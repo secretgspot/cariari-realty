@@ -124,7 +124,8 @@
 .property-footer .dates {
   display: flex;
   justify-content: space-between;
-  color: var(--color-dark);
+	color: var(--color-dark);
+	font-size: smaller;
   margin: 1rem;
 }
 .property-footer .buttons {

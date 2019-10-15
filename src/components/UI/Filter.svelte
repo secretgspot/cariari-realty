@@ -36,7 +36,7 @@
 		line-height: 1.25;
 		color: #55595c;
 		border: 1px solid rgba(0, 0, 0, 0.15);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		width: -webkit-fill-available;
 		box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
 		background: var(--color-light);
@@ -112,6 +112,7 @@
 		</div>
 	</div>
 
+	{#if (filter.filter_for).includes('Rent') || (filter.filter_for).includes('Sale') || (filter.filter_for).includes('Investment')}
 	<div class="price_range">
 		<h3>Price Range</h3>
 
@@ -129,6 +130,7 @@
 			{/if}
 		</div>
 	</div>
+	{/if}
 
 	<div class="features">
 		<h3>Features</h3>
@@ -152,15 +154,15 @@
 		<h3>Others</h3>
 
 		<div class="row">
-			<label class="text">
-				<input type="text" bind:value="{filter.msl}" /> msl
-			</label>
-
 			<Toggle bind:checked="{filter.active}" label="{filter.active ? 'Listed' : 'Delisted'}" />
 			<!-- <label class="checkbox">
 				<input type="checkbox" bind:checked="{filter.active}" />
 				<span>Active</span>
 			</label> -->
+
+			<label class="text">
+				<input type="text" bind:value="{filter.msl}" /> msl
+			</label>
 		</div>
 	</div>
 </section>

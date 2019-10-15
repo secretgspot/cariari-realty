@@ -50,7 +50,7 @@
     height: 1.875em;
     background-color: var(--color-light);
     border: 0.0625em solid rgba(0, 0, 0, 0.15);
-    border-radius: 24em;
+    border-radius: var(--border-radius);
     transition: 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     transition-property: background-color, border-color;
   }
@@ -68,7 +68,7 @@
     bottom: 0;
     left: 0;
     background-color: var(--color-white);
-    border-radius: 24em;
+    border-radius: var(--border-radius);
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2),
       inset 1px 1px 3px rgba(255, 255, 255, 0.8);
     transition: 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);

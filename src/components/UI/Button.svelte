@@ -16,7 +16,7 @@
     height: 81px;
     padding: 0.5rem 1rem;
     color: var(--color-black);
-    border-radius: 9px;
+    border-radius: var(--border-radius);
     box-shadow: 0px 1px 2px hsla(0, 0%, 0%, 0.36);
     cursor: pointer;
     text-decoration: none;
@@ -154,7 +154,7 @@
     /* color: #cf0056; */
     box-shadow: none;
     padding: 0 0;
-    border-radius: 50px;
+    border-radius: 50%;
     position: absolute;
     top: 10px;
     right: 10px;

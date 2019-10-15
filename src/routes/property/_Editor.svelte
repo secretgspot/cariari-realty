@@ -145,7 +145,7 @@
 		line-height: 1.25;
 		color: var(--color-black);
 		border: 1px solid var(--color-white);
-		border-radius: 0.25rem;
+		border-radius: var(--border-radius);
 		width: -webkit-fill-available;
 		box-shadow: inset 0 3px 4px 0 var(--color-dark);
 	}
@@ -187,7 +187,7 @@
 	.section_property_type .active { border: 1px solid var(--color-success); }
 	.section_property_type .removed { border: 1px solid var(--color-danger); }
 	.section_property_type .checkbox { display: inline-block; }
-	.section_property_type .checkbox:nth-child(odd) { padding: 1rem; }
+	.section_property_type .checkbox:nth-child(odd) { margin: 0 1rem; }
 
 	.section_location .location input:first-of-type { border-bottom: 0; }
 	.section_location .location input:last-of-type { border-top: 0; }
@@ -334,13 +334,13 @@
 				<fieldset>
 					<legend>Property For</legend>
 					<label class="checkbox">
-						<input type="checkbox" bind:group="{property.property_for}" value="Rent">	Rent
+						<input type="checkbox" bind:group="{property.property_for}" value="Rent"><span>Rent</span>
 					</label>
 					<label class="checkbox">
-						<input type="checkbox" bind:group="{property.property_for}" value="Sale">	Sale
+						<input type="checkbox" bind:group="{property.property_for}" value="Sale"><span>Sale</span>
 					</label>
 					<label class="checkbox">
-						<input type="checkbox" bind:group="{property.property_for}" value="Investment">	Investment
+						<input type="checkbox" bind:group="{property.property_for}" value="Investment"><span>Investment</span>
 					</label>
 				</fieldset>
 			</div>
@@ -535,11 +535,11 @@
 				<Button type="button" color="danger" disabled={inProgress} on:click="{remove}">Delete</Button>
 			{/if}
 
-			{#if slug && !inProgress}
+			{#if slug && $isAdmin}
 				<Button type="button" disabled={inProgress} on:click="{() => { goto(`/property/${slug}?qr=true`) }}">Print</Button>
 			{/if}
 
-			<Button type="button" color="success" disabled={inProgress} on:click="{publish}">
+			<Button type="button" color="black" disabled={inProgress} on:click="{publish}">
 				{#if slug}
 					Submit Changes
 				{:else}

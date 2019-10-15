@@ -36,8 +36,11 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 
 - [ ] Map Filter
 - [ ] Store across pages (sapper/store?)
-- [x] List, reformat grid vs list view
 - [ ] LocalStorage for some of the settings
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] Map snapshot for property details (gps)
 - [ ] Cleanup Preview, Details
+- [ ] Validation of add/edit property
+- [x] style checkboxes (global)
+- [ ] Realtor details (name, image), optional
+- [ ] Env var for company name, phone, email for use across site

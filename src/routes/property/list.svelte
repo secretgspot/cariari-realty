@@ -155,7 +155,7 @@
 	border-bottom-right-radius: 0;
 }
 .filter .view_type input[type="radio"] { display: none; }
-.filter .view_type input[type="radio"]:checked + label { border: 1px solid var(--color-magenta); }
+.filter .view_type input[type="radio"]:checked + label { border: 1px solid var(--color-success); }
 </style>
 
 <svelte:window on:keydown="{konami}"/>
