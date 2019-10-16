@@ -1,7 +1,8 @@
 <script>
 	import * as api from 'api.js';
 	import { goto } from '@sapper/app';
-	import {isAdmin, current, pattern, konami} from 'konami.js'; // to activate $isAdmin
+	import { isAdmin, current, pattern, konami } from 'konami.js'; // to activate $isAdmin
+	import { isEmpty } from 'validation.js';
 	// import properties from "../../properties-store.js";
 	import Error from "../../components/UI/Error.svelte";
 	import Button from "../../components/UI/Button.svelte";
@@ -13,6 +14,7 @@
 	export let slug = false;
 
 	let inProgress = false;
+	let formIsValid = false;
 	let errors;
 
 	// workaround for empty photo and features array that are returned from firebase as string
@@ -22,6 +24,10 @@
 	// const { session } = stores();
 	// console.log('session> ', session);
 	// console.log('$properties> ', $properties);
+
+	$: formIsValid =
+			!isEmpty(property.msl); // && isValidEmail(email);
+
 
 	function addFeature(input) {
 		property.features = [...property.features, input.value];
@@ -539,7 +545,7 @@
 				<Button type="button" disabled={inProgress} on:click="{() => { goto(`/property/${slug}?qr=true`) }}">Print</Button>
 			{/if}
 
-			<Button type="button" color="black" disabled={inProgress} on:click="{publish}">
+			<Button type="button" color="black" disabled={inProgress || !formIsValid} on:click="{publish}">
 				{#if slug}
 					Submit Changes
 				{:else}

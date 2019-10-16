@@ -133,6 +133,7 @@
 	justify-items: center;
 	margin: 0 2rem;
 }
+.filter .filters-menu h3 { white-space: nowrap; }
 .filter .view_type { display: none; }
 @media (min-width: 720px) {
 	.filter .view_type { display: flex; }

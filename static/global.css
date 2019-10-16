@@ -83,7 +83,7 @@ body {
   width: 27px;
   height: 27px;
   vertical-align: top;
-	transition: border-color 0.2s, background-color 0.2s;
+	transition: border-color 0.1s, background-color 0.1s;
 	box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
   background: var(--color-light);
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -147,14 +147,10 @@ body {
 
 
 /**
-* Checkbox
+* Range slider
 */
 .range {
-	--pure-material-safari-helper1: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.04);
-	--pure-material-safari-helper2: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.12);
-	--pure-material-safari-helper3: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.16);
-	--pure-material-safari-helper4: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24);
-	color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
+	color: rgba(var(--color-darker, 0, 0, 0), 0.87);
 }
 
 /* Input */
@@ -191,7 +187,7 @@ body {
 	border-radius: 1px;
 	width: 100%;
 	height: 2px;
-	background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24);
+	background-color: rgba(33, 150, 243, 0.24);
 }
 
 /* Webkit | Thumb */
@@ -200,177 +196,21 @@ body {
 	-webkit-appearance: none;
 	border: none;
 	border-radius: 50%;
-	height: 2px;
-	width: 2px;
-	background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+	height: 3px;
+	width: 3px;
+	background-color: rgb(33, 150, 243);
 	transform: scale(6, 6);
-	transition: box-shadow 0.2s;
-}
-
-/* Webkit | Hover, Focus */
-.range:hover > input::-webkit-slider-thumb {
-	box-shadow: 0 0 0 2px var(--pure-material-safari-helper1);
-}
-
-.range > input:focus::-webkit-slider-thumb {
-	box-shadow: 0 0 0 2px var(--pure-material-safari-helper2);
-}
-
-.range:hover > input:focus::-webkit-slider-thumb {
-	box-shadow: 0 0 0 2px var(--pure-material-safari-helper3);
-}
-
-/* Webkit | Active */
-.range > input:active::-webkit-slider-thumb {
-	 box-shadow: 0 0 0 2px var(--pure-material-safari-helper4) !important;
+	transition: box-shadow 0.1s;
 }
 
 /* Webkit | Disabled */
 .range > input:disabled::-webkit-slider-runnable-track {
-	background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+	background-color: rgba(0, 0, 0, 0.38);
 }
 
 .range > input:disabled::-webkit-slider-thumb {
-	background-color: rgb(var(--pure-material-onsurface-rgb, 0, 0, 0));
-	color: rgb(var(--pure-material-surface-rgb, 255, 255, 255)); /* Safari */
-	box-shadow: 0 0 0 1px rgb(var(--pure-material-surface-rgb, 255, 255, 255)) !important;
-	transform: scale(4, 4);
-}
-
-/* Moz | Track */
-.range > input::-moz-range-track {
-	margin: 17px 0;
-	border-radius: 1px;
-	width: 100%;
-	height: 2px;
-	background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24);
-}
-
-/* Moz | Thumb */
-.range > input::-moz-range-thumb {
-	appearance: none;
-	-moz-appearance: none;
-	border: none;
-	border-radius: 50%;
-	height: 2px;
-	width: 2px;
-	background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-	transform: scale(6, 6);
-	transition: box-shadow 0.2s;
-}
-
-/* Moz | Progress */
-.range > input::-moz-range-progress {
-	border-radius: 1px;
-	height: 2px;
-	background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-}
-
-/* Moz | Hover, Focus */
-.range:hover > input:hover::-moz-range-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.04);
-}
-
-.range > input:focus::-moz-range-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.12);
-}
-
-.range:hover > input:focus::-moz-range-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.16);
-}
-
-/* Moz | Active */
-.range > input:active::-moz-range-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24) !important;
-}
-
-/* Moz | Disabled */
-.range > input:disabled::-moz-range-track {
-	background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
-}
-
-.range > input:disabled::-moz-range-progress {
-	background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.87);
-}
-
-.range > input:disabled::-moz-range-thumb {
-	background-color: rgb(var(--pure-material-onsurface-rgb, 0, 0, 0));
-	box-shadow: 0 0 0 1px rgb(var(--pure-material-surface-rgb, 255, 255, 255)) !important;
-	transform: scale(4, 4);
-}
-
-.range > input::-moz-focus-outer {
-	border: none;
-}
-
-/* MS | Track */
-.range > input::-ms-track {
-	box-sizing: border-box;
-	margin: 17px 0;
-	border: none;
-	border-radius: 1px;
-	padding: 0 17px;
-	width: 100%;
-	height: 2px;
-	background-color: transparent;
-}
-
-.range > input::-ms-fill-lower {
-	border-radius: 1px;
-	height: 2px;
-	background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-}
-
-/* MS | Progress */
-.range > input::-ms-fill-upper {
-	border-radius: 1px;
-	height: 2px;
-	background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24);
-}
-
-/* MS | Thumb */
-.range > input::-ms-thumb {
-	appearance: none;
-	margin: 0 17px;
-	border: none;
-	border-radius: 50%;
-	height: 2px;
-	width: 2px;
-	background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-	transform: scale(6, 6);
-	transition: box-shadow 0.2s;
-}
-
-/* MS | Hover, Focus */
-.range:hover > input::-ms-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.04);
-}
-
-.range > input:focus::-ms-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.12);
-}
-
-.range:hover > input:focus::-ms-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.16);
-}
-
-/* MS | Active */
-.range > input:active::-ms-thumb {
-	box-shadow: 0 0 0 2px rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24) !important;
-}
-
-/* MS | Disabled */
-.range > input:disabled::-ms-fill-lower {
-	background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
-}
-
-.range > input:disabled::-ms-fill-upper {
-	background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
-	opacity: 0.38;
-}
-
-.range > input:disabled::-ms-thumb {
-	background-color: rgb(var(--pure-material-onsurface-rgb, 0, 0, 0));
-	box-shadow: 0 0 0 1px rgb(var(--pure-material-surface-rgb, 255, 255, 255)) !important;
-	transform: scale(4, 4);
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255); /* Safari */
+	box-shadow: 0 0 0 1px rgb(255, 255, 255) !important;
+	transform: scale(3, 3);
 }

@@ -6,17 +6,7 @@
 
 <style>
   .toggle {
-    margin-bottom: 1em;
-    font-size: 1rem;
     user-select: none;
-  }
-  .toggle + .toggle {
-    margin-top: 1.25em;
-    padding-top: 1em;
-    border-top: 1px solid var(--color-light);
-  }
-  .toggle {
-    position: relative;
   }
   .toggle-input {
     border: 0;
@@ -46,13 +36,14 @@
   .toggle-track {
     position: relative;
     top: -0.125em;
-    width: 2.8125em;
-    height: 1.875em;
+    width: 54px;
+    height: 27px;
     background-color: var(--color-light);
-    border: 0.0625em solid rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: var(--border-radius);
     transition: 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     transition-property: background-color, border-color;
+    box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
   }
   .toggle-label .toggle-input:checked ~ .toggle-track {
     background-color: var(--color-success);
@@ -64,7 +55,7 @@
   .toggle-switch {
     position: absolute;
     top: 0;
-    right: 0.9375em;
+    right: 27px;
     bottom: 0;
     left: 0;
     background-color: var(--color-white);
@@ -82,23 +73,20 @@
   }
   .toggle-label .toggle-input:checked ~ .toggle-track > .toggle-switch {
     right: 0;
-    left: 0.9375em;
+    left: 27px;
     transition: 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86);
     transition-property: left, right;
     transition-delay: 0.01s, 0s;
   }
 </style>
 
+
 <div class="toggle">
-  <div class="controls">
-    <div class="toggle">
-      <label class="toggle-label">
-        <input class="toggle-input" type="checkbox" bind:checked value="{label}" on:change {disabled} />
-        <span class="toggle-track">
-          <span class="toggle-switch" />
-        </span>
-        <span class="toggle-title">{label}</span>
-      </label>
-    </div>
-  </div>
+  <label class="toggle-label">
+    <input class="toggle-input" type="checkbox" bind:checked value="{label}" on:change {disabled} />
+    <span class="toggle-track">
+      <span class="toggle-switch" />
+    </span>
+    <span class="toggle-title">{label}</span>
+  </label>
 </div>
