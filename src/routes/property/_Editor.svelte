@@ -5,6 +5,7 @@
 	import { isEmpty } from 'validation.js';
 	// import properties from "../../properties-store.js";
 	import Error from "../../components/UI/Error.svelte";
+	import Modal from "../../components/UI/Modal.svelte";
 	import Button from "../../components/UI/Button.svelte";
 	import Toggle from "../../components/UI/Toggle.svelte";
 	import Logo from '../../components/UI/Logo.svelte';
@@ -15,6 +16,7 @@
 
 	let inProgress = false;
 	let formIsValid = false;
+	let showModal = false;
 	let errors;
 
 	// workaround for empty photo and features array that are returned from firebase as string
@@ -535,10 +537,10 @@
 		<!-- BUTTONS -->
 		<footer class="buttons-group">
 			{#if slug && property.is_active && !$isAdmin}
-				<Button type="button" color="danger" disabled={inProgress} on:click="{remove}">Remove</Button>
+				<Button type="button" color="danger" disabled={inProgress} on:click="{() => showModal = true}">Remove</Button>
 			{/if}
 			{#if slug && $isAdmin}
-				<Button type="button" color="danger" disabled={inProgress} on:click="{remove}">Delete</Button>
+				<Button type="button" color="danger" disabled={inProgress} on:click="{() => showModal = true}">Delete</Button>
 			{/if}
 
 			{#if slug && $isAdmin}
@@ -555,3 +557,12 @@
 		</footer>
 	</div>
 </section>
+
+<!-- CONFIRMATION MODAL -->
+<Modal title="Delete listing?" bind:showModal>
+	<div slot="content">
+		Are you sure you want to delete this listing? By doing this, all data will be permenantly deleted.
+	</div>
+	<Button mode="clean" on:click={() => showModal = false}>Cancel</Button>
+	<Button mode="danger"  on:click={() => { showModal = false; remove() }}>Confirm</Button>
+</Modal>

@@ -85,11 +85,8 @@
 <style>
   .main-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-      "map map"
-      "map map";
+    grid: 1fr / 1fr;
+    grid-template-areas: "map";
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -97,26 +94,25 @@
     /* min-height: -webkit-fill-available; */
   }
   .main-wrapper.previewing {
+    grid: 1fr 1fr / 1fr;
     grid-template-areas:
-      "map map"
-      "preview preview";
+      "map"
+      "preview";
   }
   @media (orientation: landscape) {
     .main-wrapper.previewing {
-      grid-template-areas:
-        "map preview"
-        "map preview";
+      grid: 1fr / 1fr 1fr;
+      grid-template-areas: "map preview";
     }
   }
-  @media (min-width: 60em) and (orientation: landscape) {
-    .main-wrapper {
-      grid-template-columns: 1fr auto;
+  @media (min-width: 768px) and (orientation: landscape) {
+    .main-wrapper.previewing {
+      /* grid-template-columns: 1fr auto; */
+      grid: 1fr / 1fr minmax(450px, min-content);
     }
   }
 
-  .map {
-    grid-area: map;
-  }
+  .map { grid-area: map; }
 
   .preview {
     grid-area: preview;

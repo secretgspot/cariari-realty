@@ -2,12 +2,16 @@
 	import Modal from './Modal.svelte';
 
 	export let message;
+	let showModal = true;
 </script>
 
-<style lang='scss'>
+<style>
 
 </style>
 
-<Modal title="An error occured!" on:cancel>
-	<p>{message}</p>
+<!-- ERROR MODAL -->
+<Modal title="An error has occured!" bind:showModal>
+	<div slot="content">
+		{message}
+	</div>
 </Modal>

@@ -43,5 +43,6 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Cleanup Preview, Details
 - [x] Validation of add/edit property
 - [x] style checkboxes (global)
+- [x] confirmation dialog when deleting property
 - [ ] Realtor details (name, image), optional
 - [ ] Env var for company name, phone, email for use across site

@@ -70,8 +70,8 @@
 		figure { height: 72vh; }
 	}
 
-	@media (min-width: 60em) and (orientation: landscape) {
-		.preview-content { max-width: 450px; }
+	@media (min-width: 768px) and (orientation: landscape) {
+		/* .preview-content { max-width: 450px; } */
 		figure { height: 45vh; }
 	}
 </style>
