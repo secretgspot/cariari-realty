@@ -3,7 +3,7 @@
 	import Badge from '../components/UI/Badge.svelte';
 	import Button from '../components/UI/Button.svelte';
 	import Ad from "../components/UI/Ad.svelte";
-	import { formatter } from 'helpers.js';
+	import { formatter, ago } from 'helpers.js';
 
 	export let previewProperty;
 
@@ -55,8 +55,36 @@
 	.preview-group {
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
 		justify-content: space-evenly;
+		width: 100%;
+		padding: 0rem 5rem;
+	}
+	.preview-group .land_use {
+		display: flex;
+		justify-content: space-between;
+	}
+	.preview-group .type_age {
+		text-transform: uppercase;
+		color: var(--color-darker);
+	}
+	.preview-group .price_rent {
+		font-size: 1.8em;
+		display: flex;
+		justify-content: space-between;
+		margin: 0.3rem 0;
+	}
+	/* .preview-group .loc_address {
+		font-size: smaller;
+		display: flex;
+		flex-direction: column;
+		color: var(--color-dark);
+	} */
+
+	.ad-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		flex: 1;
 	}
 
@@ -105,29 +133,32 @@
 		</div>
 
 		<div class="preview-group">
-			{#if previewProperty.land_use}
-				<Badge label="type" direction="row" value="{previewProperty.land_use}" />
-			{/if}
-			{#if previewProperty.property_for}
-				<Badge label="for" direction="row" loop="{true}" value="{previewProperty.property_for}" />
-			{/if}
-			<!-- {#if previewProperty.building_style}
-				<Badge label="style" direction="row" value="{previewProperty.building_style}" />
-			{/if} -->
-			{#if previewProperty.price > 0}
-				<Badge label="price" direction="row" value="{formatter.format(previewProperty.price)}" />
-			{/if}
-			{#if previewProperty.rent > 0}
-				<Badge label="rent" direction="row" value="{formatter.format(previewProperty.rent)}" />
-			{/if}
-		</div>
+			<div class="land_use">
+				{#each previewProperty.property_for as p_for}
+					<span>{p_for}</span>
+				{/each}
+			</div>
 
-		<!-- <pre>
-		{JSON.stringify(previewProperty, null, 2)}
-		</pre> -->
-		<Ad width="320" height="100" />
+			<div class="price_rent">
+				{#if previewProperty.rent}<span>{formatter.format(previewProperty.rent)}/m</span>{/if}
+				{#if previewProperty.price}<span>{formatter.format(previewProperty.price)}</span>{/if}
+			</div>
+
+			<div class="type_age">
+				{#if previewProperty.land_use}<span>{previewProperty.land_use}</span>{/if}
+				{#if previewProperty.building_style}<span>&bull; {previewProperty.building_style}</span>{/if}
+				{#if previewProperty.year_built}<span>&bull; {ago(new Date(previewProperty.year_built))} old</span>{/if}
+			</div>
+
+			<!-- <div class="loc_address">
+				{#if previewProperty.location}<span>{previewProperty.location.lat} / {previewProperty.location.lng}</span>{/if}
+			</div> -->
+		</div>
 	</div>
 
+	<div class="ad-wrapper">
+		<Ad width="320" height="100" />
+	</div>
 
 	<footer>
 		<Button type="button" on:click={() => dispatch('showdetails', previewProperty.id)}>

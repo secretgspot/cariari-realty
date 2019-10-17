@@ -3,15 +3,15 @@
 	export let height;
 </script>
 
-<style lang='scss'>
+<style>
 	.advertising {
 		position: relative;
 		background: white;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		box-shadow: 0 0 1px lavender;
-		margin: 2rem 0;
+		box-shadow: 0px 3px 3px 0px hsla(215, 27%, 19%, 0.12);
+		/* margin: 2rem 0; */
 		text-align: center;
 	}
 	.advertising::after {
