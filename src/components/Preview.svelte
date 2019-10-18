@@ -14,7 +14,7 @@
 
 <style>
 	.preview-content {
-		background: rgba(255, 255, 255, 0.9);
+		background: linear-gradient(0deg, rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.9));
 		position: relative;
 		/* width: 450px; */
 		z-index: 2;
@@ -46,10 +46,12 @@
 	}
 
 	.badge-group {
-		margin: 2rem 0;
+		padding: 2rem 0;
 		display: flex;
 		justify-content: space-evenly;
 		width: 100%;
+		/* box-shadow: inset 0px 1px 0px hsl(0, 0%, 100%),
+								inset 0px 2px 0px #00000045; */
 	}
 
 	.preview-group {
@@ -57,7 +59,7 @@
 		flex-direction: column;
 		justify-content: space-evenly;
 		width: 100%;
-		padding: 0rem 5rem;
+		padding: 2rem 3rem 0rem;
 	}
 	.preview-group .land_use {
 		display: flex;
@@ -89,7 +91,7 @@
 	}
 
 	footer {
-		margin: 1rem;
+		margin: 2rem 1rem 1rem;
 		display: flex;
 		justify-content: center;
 	}
@@ -101,6 +103,7 @@
 	@media (min-width: 768px) and (orientation: landscape) {
 		/* .preview-content { max-width: 450px; } */
 		figure { height: 45vh; }
+		.preview-group { padding: 2rem 5rem 1rem; }
 	}
 </style>
 
@@ -114,24 +117,6 @@
 	</figure>
 
 	<div class="content">
-		<div class="badge-group">
-			{#if previewProperty.rooms_count > 0}
-				<Badge type="icon" label="rooms" value="{previewProperty.rooms_count}" />
-			{/if}
-			{#if previewProperty.beds_count > 0}
-				<Badge type="icon" label="beds" value="{previewProperty.beds_count}" />
-			{/if}
-			{#if previewProperty.baths_count > 0}
-				<Badge type="icon" label="baths" value="{previewProperty.baths_count}" />
-			{/if}
-			{#if previewProperty.half_baths_count > 0}
-				<Badge type="icon" label="half baths" value="{previewProperty.half_baths_count}" />
-			{/if}
-			{#if previewProperty.parking_spaces > 0}
-				<Badge type="icon" label="parkings" value="{previewProperty.parking_spaces}" />
-			{/if}
-		</div>
-
 		<div class="preview-group">
 			<div class="land_use">
 				{#each previewProperty.property_for as p_for}
@@ -153,6 +138,24 @@
 			<!-- <div class="loc_address">
 				{#if previewProperty.location}<span>{previewProperty.location.lat} / {previewProperty.location.lng}</span>{/if}
 			</div> -->
+		</div>
+
+		<div class="badge-group">
+			{#if previewProperty.rooms_count > 0}
+				<Badge type="icon" label="rooms" value="{previewProperty.rooms_count}" />
+			{/if}
+			{#if previewProperty.beds_count > 0}
+				<Badge type="icon" label="beds" value="{previewProperty.beds_count}" />
+			{/if}
+			{#if previewProperty.baths_count > 0}
+				<Badge type="icon" label="baths" value="{previewProperty.baths_count}" />
+			{/if}
+			{#if previewProperty.half_baths_count > 0}
+				<Badge type="icon" label="half baths" value="{previewProperty.half_baths_count}" />
+			{/if}
+			{#if previewProperty.parking_spaces > 0}
+				<Badge type="icon" label="parkings" value="{previewProperty.parking_spaces}" />
+			{/if}
 		</div>
 	</div>
 

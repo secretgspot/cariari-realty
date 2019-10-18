@@ -10,7 +10,7 @@
 	}
 </script>
 
-<style lang='scss'>
+<style>
 	.splash {
 		z-index: 11;
 		position: fixed; top: 0; bottom: 0; left: 0; right: 0;
@@ -39,7 +39,8 @@
 	.logo-group h1 {
 		color: white;
 		text-transform: uppercase;
-		font-family: 'Economica', sans-serif;
+		/* font-family: 'Economica', sans-serif; */
+		font-weight: lighter;
 		margin: 1rem 2rem;
 	}
 </style>

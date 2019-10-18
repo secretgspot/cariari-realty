@@ -12,19 +12,19 @@
 		align-items: center;
 	}
 	.icon {
-		width: 45px;
-		height: 42px;
+		width: 30px;
+		height: 27px;
 	}
 	.label {
 		text-transform: uppercase;
 		/* line-height: 1; */
-		font-family: 'Economica', sans-serif;
+		/* font-family: 'Economica', sans-serif; */
 		color: var(--color-dark);
 	}
 	.value {
 		font-size: 1.8em;
 		/* line-height: 1; */
-		font-family: 'Cabin', sans-serif;
+		/* font-family: 'Cabin', sans-serif; */
 	}
 	.row {
 		flex-direction: row-reverse;

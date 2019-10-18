@@ -93,6 +93,7 @@
 		flex: 1;
 		align-items: center;
 		width: 100%;
+		margin: 3rem 0 1rem;
 	}
 
 	/* BASE SECTION */
