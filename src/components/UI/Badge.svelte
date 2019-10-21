@@ -41,7 +41,7 @@
 
 	span {
 		margin: 0 0.2rem;
-		border: 1px dashed;
+		border: 1px dashed hsla(0, 0%, 100%, 0.3);
 		padding: 0 0.2rem;
 		border-radius: 6px;
 		border-top: none;

@@ -28,10 +28,12 @@
 	// console.log('$properties> ', $properties);
 
 	$: formIsValid =
-			!isEmpty(property.msl); // && isValidEmail(email);
+			!isEmpty(property.msl) &&
+			!isEmpty(property.property_for); // && isValidEmail(email);
 
 
 	function addFeature(input) {
+		if (input.value == '') return;
 		property.features = [...property.features, input.value];
 		input.value = '';
 	}
@@ -40,6 +42,9 @@
 	}
 
 	function addPhoto(input) {
+		// let valInput = /(https?:\/\/.*\.(?:png|jpg|gif))/i;
+		// if (!valInput.test(input.value)) return;
+		if (input.value == '') return;
 		property.photos = [...property.photos, input.value];
 		input.value = '';
 	}
@@ -394,6 +399,11 @@
 				<fieldset>
 					<legend>Email</legend>
 					<input type="text" placeholder="ex: this@that.there" bind:value="{property.contact_email}">
+				</fieldset>
+
+				<fieldset>
+					<legend>Realtor</legend>
+					<input type="text" placeholder="ex: Re/Max or Jane Doe" bind:value="{property.contact_realtor}">
 				</fieldset>
 			</div>
 		</section>

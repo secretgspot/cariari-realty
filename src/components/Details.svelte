@@ -5,6 +5,7 @@
 	import Badge from "../components/UI/Badge.svelte";
 	import Button from "../components/UI/Button.svelte";
 	import Carousel from "../components/UI/Carousel.svelte";
+	import Gravatar from "../components/UI/Gravatar.svelte";
 	import { formatter } from 'helpers.js';
 
 	export let id;
@@ -84,6 +85,7 @@
 		max-height: 369px;
 		overflow: auto;
 		padding: 0 0.3rem;
+		margin: 2rem 0;
 		white-space: pre-wrap;
 	}
 
@@ -93,8 +95,27 @@
 		flex: 1;
 		align-items: center;
 		width: 100%;
-		margin: 3rem 0 1rem;
 	}
+
+	.side .realtor-group {
+		display: flex;
+		align-items: center;
+		background: linear-gradient(-45deg, var(--color-light), transparent);
+		width: 100%;
+	}
+	.side .realtor-group :global(.gravatar) {
+		border-radius: 50%;
+		border: 3px solid var(--color-white);
+	}
+	.side .realtor-group div {
+		display: flex;
+		flex-direction: column;
+		margin-left: 1rem;
+	}
+	.side .realtor-group h3 {
+		margin: 0;
+	}
+
 
 	/* BASE SECTION */
 	.base {
@@ -104,17 +125,19 @@
 		grid-gap: 1rem;
 		align-items: center;
 		padding: 1rem;
+		background: var(--color-black);
+		color: var(--color-white);
 	}
 
 	.base .badge-group,
-	.base .price-group {
+	.side .price-group {
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
 	}
 	.side .badge-group :global(.badge),
 	.base .badge-group :global(.badge),
-	.base .price-group :global(.badge) { margin: 0.6rem; }
+	.side .price-group :global(.badge) { margin: 0.6rem; }
 
 	@media (orientation: landscape) {
 		#details :global(.close) { top: 83vh; }
@@ -136,7 +159,11 @@
 		#details :global(.close) { top: 10px; }
 		.image { width: auto; }
 		.slide-content { height: 63vh; }
-		.base { grid-template-columns: repeat(3, minmax(auto, 1fr)); }
+		.base {
+			grid-template-columns: repeat(2, minmax(min-content, auto));
+			grid-gap: 3rem;
+			padding: 3rem;
+		}
 	}
 </style>
 
@@ -163,15 +190,6 @@
   <div class="side">
 
 		<div class="badge-group">
-			{#if selectedProperty.land_use}
-				<Badge type="text" label="type" value="{selectedProperty.land_use}" />
-			{/if}
-			{#if selectedProperty.property_for}
-				<Badge type="text" label="for" loop="{true}" value="{selectedProperty.property_for}" />
-			{/if}
-		</div>
-
-		<div class="badge-group">
 			{#if selectedProperty.year_built}
 				<Badge type="text" label="built" value="{selectedProperty.year_built}" />
 			{/if}
@@ -186,33 +204,6 @@
 				<Badge type="text" label="lot" value="{selectedProperty.lot_size}㎡" />
 			{/if}
 		</div>
-
-		{#if selectedProperty.features}
-		<div class="features">
-			{#each selectedProperty.features as feature}
-			<div class="feature">{feature}</div>
-			{/each}
-		</div>
-		{/if}
-
-		<div class="ad-wrapper">
-			<Ad width="320" height="100" />
-		</div>
-
-		{#if selectedProperty.description}
-		<div class="description scroller">
-			{selectedProperty.description}
-		</div>
-		{/if}
-
-		{#if btn}
-		<Button type="button" mode="close" on:click={() => dispatch('close')}>X</Button>
-		{/if}
-	</div>
-
-	<!-- BASE PANE -->
-  <div class="base">
-		<Badge type="text" label="msl" value="{selectedProperty.msl}" />
 
 		<div class="badge-group">
 			{#if selectedProperty.rooms_count > 0}
@@ -244,6 +235,55 @@
 			{/if}
 			{#if selectedProperty.fees > 0}
 				<Badge type="text" label="condo fees" value="{formatter.format(selectedProperty.fees)}" />
+			{/if}
+		</div>
+
+
+		<div class="realtor-group">
+			{#if selectedProperty.contact_email}
+				<Gravatar email="{selectedProperty.contact_email}" size="90" base="mp" />
+			{/if}
+			<div>
+				{#if selectedProperty.contact_realtor}<h3>{selectedProperty.contact_realtor}</h3>{/if}
+				{#if selectedProperty.contact_email}<span>{selectedProperty.contact_email}</span>{/if}
+				{#if selectedProperty.contact_phone}<span>{selectedProperty.contact_phone}</span>{/if}
+			</div>
+		</div>
+
+
+		{#if selectedProperty.features}
+		<div class="features">
+			{#each selectedProperty.features as feature}
+			<div class="feature">{feature}</div>
+			{/each}
+		</div>
+		{/if}
+
+		<div class="ad-wrapper">
+			<Ad width="320" height="100" />
+		</div>
+
+		{#if selectedProperty.description}
+		<div class="description scroller">
+			{selectedProperty.description}
+		</div>
+		{/if}
+
+		{#if btn}
+		<Button type="button" mode="close" on:click={() => dispatch('close')}>X</Button>
+		{/if}
+	</div>
+
+	<!-- BASE PANE -->
+  <div class="base">
+		<Badge type="text" label="msl" value="{selectedProperty.msl}" />
+
+		<div class="badge-group">
+			{#if selectedProperty.land_use}
+				<Badge type="text" label="type" value="{selectedProperty.land_use}" />
+			{/if}
+			{#if selectedProperty.property_for}
+				<Badge type="text" label="for" loop="{true}" value="{selectedProperty.property_for}" />
 			{/if}
 		</div>
 	</div>
