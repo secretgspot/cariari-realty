@@ -6,7 +6,7 @@
 	import Button from "../components/UI/Button.svelte";
 	import Carousel from "../components/UI/Carousel.svelte";
 	import Gravatar from "../components/UI/Gravatar.svelte";
-	import { formatter } from 'helpers.js';
+	import { formatter, ago } from 'helpers.js';
 
 	export let id;
 	export let btn = true;
@@ -69,6 +69,14 @@
 		justify-content: space-around;
 		align-items: flex-start;
 	}
+	.side .badge-group,
+	.side .price-group {
+		display: flex;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+		margin: 1rem 0;
+		width: 100%;
+	}
 
 	.side .features {
 		margin: 2rem 0;
@@ -100,8 +108,12 @@
 	.side .realtor-group {
 		display: flex;
 		align-items: center;
+		justify-content: flex-end;
 		background: linear-gradient(-45deg, var(--color-light), transparent);
 		width: 100%;
+		border-radius: 0 var(--border-radius) var(--border-radius) 0;
+		box-shadow: 6px 0px 6px #00000030;
+		margin: 1rem 0;
 	}
 	.side .realtor-group :global(.gravatar) {
 		border-radius: 50%;
@@ -110,10 +122,18 @@
 	.side .realtor-group div {
 		display: flex;
 		flex-direction: column;
-		margin-left: 1rem;
+		margin: 1rem;
 	}
 	.side .realtor-group h3 {
 		margin: 0;
+	}
+	.side .realtor-group a[href^="mailto:"]:before {
+		content: "\2709";
+		margin-right: 0.5em;
+	}
+	.side .realtor-group a[href^="tel:"]:before {
+		content: "\260e";
+		margin-right: 0.5em;
 	}
 
 
@@ -129,8 +149,7 @@
 		color: var(--color-white);
 	}
 
-	.base .badge-group,
-	.side .price-group {
+	.base .badge-group {
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
@@ -239,16 +258,18 @@
 		</div>
 
 
+		{#if selectedProperty.contact_realtor}
 		<div class="realtor-group">
 			{#if selectedProperty.contact_email}
 				<Gravatar email="{selectedProperty.contact_email}" size="90" base="mp" />
 			{/if}
 			<div>
-				{#if selectedProperty.contact_realtor}<h3>{selectedProperty.contact_realtor}</h3>{/if}
-				{#if selectedProperty.contact_email}<span>{selectedProperty.contact_email}</span>{/if}
-				{#if selectedProperty.contact_phone}<span>{selectedProperty.contact_phone}</span>{/if}
+				<h3>{selectedProperty.contact_realtor}</h3>
+				{#if selectedProperty.contact_email}<span><a href="mailto:{selectedProperty.contact_email}" rel="nofollow">{selectedProperty.contact_email}</a></span>{/if}
+				{#if selectedProperty.contact_phone}<span><a href="tel:{selectedProperty.contact_phone}" rel="nofollow">{selectedProperty.contact_phone}</a></span>{/if}
 			</div>
 		</div>
+		{/if}
 
 
 		{#if selectedProperty.features}

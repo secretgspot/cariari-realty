@@ -47,3 +47,4 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Env var for company name, phone, email for use across site
 - [x] Edit, check that photo is a photo and not empty, check that feature is a feature and not empty
 - [ ] Perhaps an indicator that property is sold or rented.
+- [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images
