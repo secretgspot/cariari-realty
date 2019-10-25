@@ -2,6 +2,7 @@
 	export let email = '';
 	export let size = '80'; // default 80px. 1px up to 2048px. must be a number
 	export let base = ''; // change default image
+	export let type = ''; // round or square by default
 
 	$: avatar = `https://www.gravatar.com/avatar/${md5(email.trim().toLowerCase())}?s=${Number(size)}&d=${encodeURIComponent(base)}`;
 
@@ -75,6 +76,7 @@
 
 <style>
 	img { object-fit: cover; }
+	img.round { border-radius: 50%; }
 </style>
 
-<img class="gravatar" src="{avatar}" alt="gravatar for {email}" width="{size}" height="{size}" />
+<img class="gravatar {type}" src="{avatar}" alt="gravatar for {email}" width="{size}" height="{size}" />

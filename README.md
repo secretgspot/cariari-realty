@@ -42,9 +42,7 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Map snapshot for property details (gps)
 - [ ] Cleanup Preview, Details
 - [x] Validation of add/edit property
-- [x] confirmation dialog when deleting property
-- [ ] Realtor details (name, image), optional GRAVATAR
+- [x] Realtor details (name, image), optional GRAVATAR
 - [ ] Env var for company name, phone, email for use across site
-- [x] Edit, check that photo is a photo and not empty, check that feature is a feature and not empty
 - [ ] Perhaps an indicator that property is sold or rented.
 - [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images

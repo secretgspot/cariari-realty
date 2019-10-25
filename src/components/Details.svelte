@@ -53,6 +53,9 @@
 	.image {
 		grid-area: main;
 		width: 100vw;
+		overflow: hidden;
+		height: 50vh;
+		/* height: max-content; */
 	}
 
 	.slide-content {
@@ -105,36 +108,34 @@
 		width: 100%;
 	}
 
-	.side .realtor-group {
+	.realtor-group {
 		display: flex;
 		align-items: center;
-		justify-content: flex-end;
-		background: linear-gradient(-45deg, var(--color-light), transparent);
+		justify-content: center;
+		/* background: linear-gradient(-45deg, #00000036, transparent); */
 		width: 100%;
-		border-radius: 0 var(--border-radius) var(--border-radius) 0;
-		box-shadow: 6px 0px 6px #00000030;
+		/* border-radius: 50px var(--border-radius) var(--border-radius) 50px; */
+		/* box-shadow: 6px 0px 6px #00000030; */
 		margin: 1rem 0;
 	}
-	.side .realtor-group :global(.gravatar) {
-		border-radius: 50%;
-		border: 3px solid var(--color-white);
-	}
-	.side .realtor-group div {
+	.realtor-group div {
 		display: flex;
 		flex-direction: column;
 		margin: 1rem;
 	}
-	.side .realtor-group h3 {
+	.realtor-group h3 {
 		margin: 0;
 	}
-	.side .realtor-group a[href^="mailto:"]:before {
-		content: "\2709";
-		margin-right: 0.5em;
+	.realtor-group a {
+		color: var(--color-blue, dodgerblue);
+		text-decoration: none;
 	}
-	.side .realtor-group a[href^="tel:"]:before {
-		content: "\260e";
+	.realtor-group a:before {
 		margin-right: 0.5em;
+		color: var(--color-dark);
 	}
+	.realtor-group a[href^="mailto:"]:before { content: "\2709"; }
+	.realtor-group a[href^="tel:"]:before { content: "\260e"; }
 
 
 	/* BASE SECTION */
@@ -160,8 +161,9 @@
 
 	@media (orientation: landscape) {
 		#details :global(.close) { top: 83vh; }
+		.image { height: 90vh; }
 		.slide-content {
-			height: 81vh;
+			height: 90vh;
 			background-repeat: no-repeat;
 			background-position: center;
 		}
@@ -176,8 +178,8 @@
 				"base aside";
 		}
 		#details :global(.close) { top: 10px; }
-		.image { width: auto; }
-		.slide-content { height: 63vh; }
+		.image { width: auto; height: 63vh; }
+		/* .slide-content { height: 63vh; } */
 		.base {
 			grid-template-columns: repeat(2, minmax(min-content, auto));
 			grid-gap: 3rem;
@@ -199,16 +201,13 @@
 				<div class="slide-content" style="background-image: url(/images/placeholder/1080x810.png)" />
 			{/if}
 		</Carousel>
-
-		<!-- <pre>
-		{JSON.stringify(selectedProperty.photos, null, 2)}
-		</pre> -->
 	</div>
 
 	<!-- SIDE PANE -->
   <div class="side">
-
 		<div class="badge-group">
+			<Badge type="text" label="msl" value="{selectedProperty.msl}" />
+
 			{#if selectedProperty.year_built}
 				<Badge type="text" label="built" value="{selectedProperty.year_built}" />
 			{/if}
@@ -257,21 +256,6 @@
 			{/if}
 		</div>
 
-
-		{#if selectedProperty.contact_realtor}
-		<div class="realtor-group">
-			{#if selectedProperty.contact_email}
-				<Gravatar email="{selectedProperty.contact_email}" size="90" base="mp" />
-			{/if}
-			<div>
-				<h3>{selectedProperty.contact_realtor}</h3>
-				{#if selectedProperty.contact_email}<span><a href="mailto:{selectedProperty.contact_email}" rel="nofollow">{selectedProperty.contact_email}</a></span>{/if}
-				{#if selectedProperty.contact_phone}<span><a href="tel:{selectedProperty.contact_phone}" rel="nofollow">{selectedProperty.contact_phone}</a></span>{/if}
-			</div>
-		</div>
-		{/if}
-
-
 		{#if selectedProperty.features}
 		<div class="features">
 			{#each selectedProperty.features as feature}
@@ -297,7 +281,23 @@
 
 	<!-- BASE PANE -->
   <div class="base">
-		<Badge type="text" label="msl" value="{selectedProperty.msl}" />
+		{#if selectedProperty.contact_realtor}
+		<div class="realtor-group">
+			{#if selectedProperty.contact_email}
+				<Gravatar email="{selectedProperty.contact_email}" type="round" size="90" base="mp" />
+			{/if}
+			<div>
+				<h3>{selectedProperty.contact_realtor}</h3>
+				{#if selectedProperty.contact_email}<span><a href="mailto:{selectedProperty.contact_email}" rel="nofollow">{selectedProperty.contact_email}</a></span>{/if}
+				{#if selectedProperty.contact_phone}<span><a href="tel:{selectedProperty.contact_phone}" rel="nofollow">{selectedProperty.contact_phone}</a></span>{/if}
+			</div>
+		</div>
+		{:else}
+		<div class="badge-group">
+			{#if selectedProperty.contact_email}<Badge type="text" label="email" value="{selectedProperty.contact_email}" />{/if}
+			{#if selectedProperty.contact_phone}<Badge type="text" label="call" value="{selectedProperty.contact_phone}" />{/if}
+		</div>
+		{/if}
 
 		<div class="badge-group">
 			{#if selectedProperty.land_use}
