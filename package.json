@@ -1,7 +1,10 @@
 {
   "name": "cariari-realty",
   "description": "Property listing and management for Cariari, CR",
-  "version": "0.9",
+  "version": "0.0.9",
+  "engines": {
+    "node": "11.11.0"
+  },
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
