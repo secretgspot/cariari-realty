@@ -5,7 +5,7 @@
   import Details from "../components/Details.svelte";
   import Preview from "../components/Preview.svelte";
   import Splash from "../components/UI/Splash.svelte";
-  import Logo from "../components/UI/Logo.svelte";
+  import LogoSvg from "../components/UI/LogoSvg.svelte";
   import { Map, controls } from "../components/Map/components.js";
   import Marker from "../components/Map/Marker.svelte";
   import * as api from "api.js";
@@ -131,11 +131,12 @@
 {/if}
 
 {#if !isSplash}
-  <Logo
+  <!-- <LogoSvg
     type="regular"
     color="gold"
     fixed="fixed"
-    on:click={() => (isSplash = true)} />
+    on:click={() => (isSplash = true)} /> -->
+  <LogoSvg animate="{true}" style="gold" fixed="fixed" on:click="{() => (isSplash = true)}" />
 {/if}
 
 {#if isLoading}

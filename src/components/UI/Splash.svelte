@@ -1,7 +1,7 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
   import { fly, fade } from 'svelte/transition';
-	import Logo from '../UI/Logo.svelte';
+	import LogoSvg from '../UI/LogoSvg.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -50,7 +50,8 @@
 
 	<div class="logo-group">
 		<h1>Cariari</h1>
-		<Logo type="regular" color="gold" size="150" />
+		<!-- <Logo type="regular" color="gold" size="150" /> -->
+		<LogoSvg animate="{true}" style="gold" size="150" time="{3}" />
 		<h1>Realty</h1>
 	</div>
 </div>

@@ -17,7 +17,7 @@
 
 <script>
 	import { goto } from '@sapper/app';
-	import Logo from "../../components/UI/Logo.svelte";
+	import LogoSvg from "../../components/UI/LogoSvg.svelte";
 	import Button from "../../components/UI/Button.svelte";
 	import Filter from "../../components/UI/Filter.svelte";
 	import PropertyItem from './_PropertyItem.svelte';
@@ -165,7 +165,8 @@
 	<title>List of Properties</title>
 </svelte:head>
 
-<Logo type="regular" color="bw" fixed="fixed" on:click="{() => goto('/')}" />
+<!-- <Logo type="regular" color="bw" fixed="fixed" on:click="{() => goto('/')}" /> -->
+<LogoSvg animate="{true}" style="gold" fixed="fixed" on:click="{() => goto('/')}" />
 
 <div class="grid-container">
 	{#if filtered.length > 0}

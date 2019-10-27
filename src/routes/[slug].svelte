@@ -11,7 +11,7 @@
 
 <script>
 	import { goto } from '@sapper/app';
-	import Logo from "../components/UI/Logo.svelte";
+	import LogoSvg from "../components/UI/LogoSvg.svelte";
 	import properties from "../properties-store.js";
 	import Details from '../components/Details.svelte';
 
@@ -43,6 +43,7 @@
 	<title>{property.msl}</title>
 </svelte:head>
 
-<Logo type="coin" color="gold" fixed="fixed" on:click="{() => goto('/')}" />
+<!-- <Logo type="coin" color="gold" fixed="fixed" on:click="{() => goto('/')}" /> -->
+<LogoSvg animate="{true}" style="gold" fixed="fixed" on:click="{() => goto('/')}" />
 
 <Details id="{slug}" btn="{false}" />

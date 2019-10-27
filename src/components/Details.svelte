@@ -84,6 +84,7 @@
 	.side .features {
 		margin: 2rem 0;
 		text-align: center;
+		width: 100%;
 	}
 	.side .feature {
 		border: 1px dashed var(--color-light);
