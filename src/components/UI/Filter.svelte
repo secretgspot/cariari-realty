@@ -1,18 +1,9 @@
 <script>
+	import filterStore from '../../filter-store.js';
 	import Toggle from '../UI/Toggle.svelte';
 	import { formatter } from 'helpers.js';
 
-	export let filter = {
-		rent: 10000,
-		price: 10000000,
-		beds: 99,
-		baths: 99,
-		rooms: 99,
-		filter_type: "Residential",
-		filter_for: ['Rent','Sale','Investment'],
-		active: true,
-		msl: '',
-	};
+	export let filter = $filterStore;
 
 </script>
 

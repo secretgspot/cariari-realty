@@ -83,9 +83,10 @@
 
 	.side .features {
 		margin: 2rem 0;
+		text-align: center;
 	}
 	.side .feature {
-		border: 1px dashed lavender;
+		border: 1px dashed var(--color-light);
 		padding: 0 0.2rem;
 		margin: 0.1rem;
 		border-radius: 6px;
@@ -127,8 +128,9 @@
 		margin: 0;
 	}
 	.realtor-group a {
-		color: var(--color-blue, dodgerblue);
+		color: var(--color-orange, dodgerblue);
 		text-decoration: none;
+		white-space: nowrap;
 	}
 	.realtor-group a:before {
 		margin-right: 0.5em;
@@ -171,7 +173,8 @@
 
 	@media (min-width: 1024px) {
 		#details {
-			grid-template-columns: minmax(auto, 60vw) 1fr;
+			/* grid-template-columns: minmax(auto, 60vw) 1fr; */
+			grid-template-columns: 1fr minmax(540px, min-content);
 			grid-template-rows: repeat(2, 1fr);
 			grid-template-areas:
 				"main aside"
@@ -209,12 +212,14 @@
 			<Badge type="text" label="msl" value="{selectedProperty.msl}" />
 
 			{#if selectedProperty.year_built}
-				<Badge type="text" label="built" value="{selectedProperty.year_built}" />
+				<Badge type="text" label="built" value="{ago(new Date(selectedProperty.year_built))} &bull; {selectedProperty.year_built}" />
 			{/if}
 			{#if selectedProperty.building_style}
 				<Badge type="text" label="style" value="{selectedProperty.building_style}" />
 			{/if}
+		</div>
 
+		<div class="badge-group">
 			{#if selectedProperty.building_size > 0}
 				<Badge type="text" label="building" value="{selectedProperty.building_size}㎡" />
 			{/if}

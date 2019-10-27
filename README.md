@@ -40,7 +40,7 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] LocalStorage for some of the settings
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] Map snapshot for property details (gps)
-- [ ] Cleanup Preview, Details
+- [x] Cleanup Preview, Details
 - [x] Validation of add/edit property
 - [x] Realtor details (name, image), optional GRAVATAR
 - [ ] Env var for company name, phone, email for use across site

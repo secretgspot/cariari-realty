@@ -3,7 +3,7 @@
   "description": "Property listing and management for Cariari, CR",
   "version": "0.0.9",
   "engines": {
-    "node": "11.11.0"
+    "node": "12.13.0"
   },
   "scripts": {
     "dev": "sapper dev",
