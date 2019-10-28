@@ -151,6 +151,7 @@
 		padding: 1rem;
 		background: var(--color-black);
 		color: var(--color-white);
+		background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%23130825' fill-opacity='0.06' fill-rule='evenodd'/%3E%3C/svg%3E");
 	}
 
 	.base .badge-group {
@@ -213,7 +214,7 @@
 			<Badge type="text" label="msl" value="{selectedProperty.msl}" />
 
 			{#if selectedProperty.year_built}
-				<Badge type="text" label="built" value="{ago(new Date(selectedProperty.year_built))} &bull; {selectedProperty.year_built}" />
+				<Badge type="text" label="built" value="{selectedProperty.year_built} &bull; {ago(new Date(selectedProperty.year_built))}" />
 			{/if}
 			{#if selectedProperty.building_style}
 				<Badge type="text" label="style" value="{selectedProperty.building_style}" />
