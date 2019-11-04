@@ -25,6 +25,7 @@
   let isLoading = true;
 
   // console.log('PHONE: ', process.env.phoneNumber)
+  // console.log('MAPBOX: ', process.env.mapboxToken)
   // console.log('FIREBASE: ', process.env.Firebase)
 
   onMount(async () => {
@@ -151,7 +152,7 @@
           mapComponent.setCenter([-84.15756932466013, 9.973385405932916], 15, 14, 17);
           isSplash = false;
         }}
-        accessToken="pk.eyJ1Ijoic2VjcmV0Z3Nwb3QiLCJhIjoiY2swaGQ1Y2UzMDFmNDNucHNqdGRxeHBzNSJ9.AWKJgnwQUyfggl5fKCAw_A">
+        accessToken="{process.env.mapboxToken}">
 
         {#each $properties as property}
           {#if property.is_active}

@@ -6,6 +6,7 @@
 	import Button from "../components/UI/Button.svelte";
 	import Carousel from "../components/UI/Carousel.svelte";
 	import Gravatar from "../components/UI/Gravatar.svelte";
+	import StaticMap from "../components/Map/StaticMap.svelte";
 	import { formatter, ago } from 'helpers.js';
 
 	export let id;
@@ -72,6 +73,7 @@
 		justify-content: space-around;
 		align-items: flex-start;
 	}
+	.side .map-group,
 	.side .badge-group,
 	.side .price-group {
 		display: flex;
@@ -262,6 +264,12 @@
 				<Badge type="text" label="condo fees" value="{formatter.format(selectedProperty.fees)}" />
 			{/if}
 		</div>
+
+		{#if selectedProperty.location.lat && selectedProperty.location.lng}
+		<div class="map-group">
+			<StaticMap lat="{selectedProperty.location.lat}" lon="{selectedProperty.location.lng}" zoom="15" marker="https://i.imgur.com/gA01omN.png" />
+		</div>
+		{/if}
 
 		{#if selectedProperty.features}
 		<div class="features">

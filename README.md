@@ -36,13 +36,12 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 
 - [ ] Map Filter
 - [ ] Store across pages (sapper/store?)
-- [ ] Filters settings should be in store
+- [x] Filters settings should be in store (works yet incomplete, why?)
 - [ ] LocalStorage for some of the settings
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] Map snapshot for property details (gps)
-- [x] Cleanup Preview, Details
 - [x] Validation of add/edit property
-- [x] Realtor details (name, image), optional GRAVATAR
 - [ ] Env var for company name, phone, email for use across site
 - [ ] Perhaps an indicator that property is sold or rented.
 - [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images
+- [ ] MapboxGL has issues on chrome and any other browsers that don't support webgl. HereMap?!
