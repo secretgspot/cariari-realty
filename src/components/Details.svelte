@@ -213,8 +213,6 @@
 	<!-- SIDE PANE -->
   <div class="side">
 		<div class="badge-group">
-			<Badge type="text" label="msl" value="{selectedProperty.msl}" />
-
 			{#if selectedProperty.year_built}
 				<Badge type="text" label="built" value="{selectedProperty.year_built} &bull; {ago(new Date(selectedProperty.year_built))}" />
 			{/if}
@@ -321,6 +319,8 @@
 			{#if selectedProperty.property_for}
 				<Badge type="text" label="for" loop="{true}" value="{selectedProperty.property_for}" />
 			{/if}
+
+			<Badge type="text" label="msl" value="{selectedProperty.msl}" />
 		</div>
 	</div>
 </section>

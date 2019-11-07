@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	export let lat = "0";
 	export let lon = "0";
 	export let width = "300";
@@ -8,10 +9,15 @@
 	export let bearing = '';
 	export let marker = "https://www.mapbox.com/img/rocket.png";
 
+	let isMounted = false;
 	let baseUrl = 'https://api.mapbox.com/styles/v1/mapbox/streets-v11/static';
 	let apiKey = process.env.mapboxToken;
 
-	let imgSrc = `${baseUrl}/url-${encodeURIComponent(marker)}(${lon},${lat})/${lon},${lat},${zoom}/${width}x${height}?access_token=${apiKey}`
+	onMount(() => isMounted = true); // hack to not trigger missing apiKey in image on first load
+
+	$: imgSrc = `${baseUrl}/url-${encodeURIComponent(marker)}(${lon},${lat})/${lon},${lat},${zoom}/${width}x${height}?access_token=${apiKey}`;
 </script>
 
-<img src="{imgSrc}" alt="static map with marker" />
+{#if isMounted}
+<img src="{imgSrc}" alt="static map for {lon}, {lat}" />
+{/if}

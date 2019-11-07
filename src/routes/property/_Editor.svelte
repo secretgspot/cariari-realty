@@ -9,6 +9,7 @@
 	import Button from "../../components/UI/Button.svelte";
 	import Toggle from "../../components/UI/Toggle.svelte";
 	import Logo from '../../components/UI/Logo.svelte';
+	import StaticMap from "../../components/Map/StaticMap.svelte";
 
 	export let property;
 	export let query = false;
@@ -204,6 +205,10 @@
 
 	.section_location .location input:first-of-type { border-bottom: 0; }
 	.section_location .location input:last-of-type { border-top: 0; }
+	.section_location .location :global(img) {
+		width: 100%;
+		padding: 1rem 0;
+	}
 
 	.section_features .feature-list { margin: 1rem 0; }
 	.section_features .feature {
@@ -378,6 +383,10 @@
 					<input type="text" placeholder="ex: -84.163443" bind:value="{property.location.lng}" disabled="{query.msl}">
 					{#if !query.msl}
 					<Button type="button" on:click="{getPosition}">Get current GPS</Button>
+					{/if}
+
+					{#if property.location.lat && property.location.lng}
+					<StaticMap lat="{property.location.lat}" lon="{property.location.lng}" zoom="15" marker="https://i.imgur.com/gA01omN.png" />
 					{/if}
 				</fieldset>
 			</div>

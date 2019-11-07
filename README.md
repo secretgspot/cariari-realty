@@ -36,12 +36,14 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 
 - [ ] Map Filter
 - [ ] Store across pages (sapper/store?)
-- [x] Filters settings should be in store (works yet incomplete, why?)
 - [ ] LocalStorage for some of the settings
-- [ ] Concider using geojson to have more control over layers and markers
-- [ ] Map snapshot for property details (gps)
-- [x] Validation of add/edit property
+- [x] Filters settings should be in store (works yet incomplete, why?)
+- [x] Map snapshot for property details (gps)
+- [x] Map snapshot for Editor if GPS is set
+- [x] RESOLVE ISSUE WITH StaticMap.svelte apiKey loading before everything else and causing 401 in imgSrc
+- [ ] Validation of add/edit property, (~~msl~~, ~~for~~, gps, phone, email, )
 - [ ] Env var for company name, phone, email for use across site
 - [ ] Perhaps an indicator that property is sold or rented.
 - [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images
-- [ ] MapboxGL has issues on chrome and any other browsers that don't support webgl. HereMap?!
+- [ ] Concider using geojson to have more control over layers and markers
+- [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
