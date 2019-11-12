@@ -2,6 +2,7 @@
   "name": "cariari-realty",
   "description": "Property listing and management for Cariari, CR",
   "version": "0.0.9",
+  "homepage": "https://secretgspot.github.io/cariari-realty",
   "engines": {
     "node": "12.13.0"
   },
@@ -12,7 +13,9 @@
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "predeploy": "npm run export",
+    "deploy": "gh-pages -d __sapper__/export"
   },
   "dependencies": {
     "compression": "^1.7.1",
@@ -30,6 +33,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/runtime": "^7.0.0",
     "autoprefixer": "^9.6.1",
+    "gh-pages": "^2.1.1",
     "mapbox-gl": "^1.3.1",
     "node-sass": "^4.12.0",
     "npm-run-all": "^4.1.5",

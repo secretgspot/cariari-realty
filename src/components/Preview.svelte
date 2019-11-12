@@ -164,7 +164,7 @@
 	</div>
 
 	<footer>
-		<Button type="button" on:click={() => dispatch('showdetails', previewProperty.id)}>
+		<Button type="button" mode="needy" on:click={() => dispatch('showdetails', previewProperty.id)}>
 			Show Details
 		</Button>
 	</footer>

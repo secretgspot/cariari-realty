@@ -102,8 +102,8 @@ body {
 	content: "";
   display: block;
   position: absolute;
-  top: 4px;
-  left: 3px;
+  top: 5px;
+  left: 4px;
   width: 12px;
   height: 6px;
   border: solid 2px transparent;

@@ -1,7 +1,7 @@
 <script>
   export let type = "button"; // button | submit | reset
   export let href = null;
-  export let mode = null; // outline
+  export let mode = null; // outline | needy
   export let color = null; // cyan | magenta | orange
   export let disabled = false;
 </script>
@@ -24,6 +24,8 @@
     /* display: flex; */
     /* justify-content: center; */
     /* align-items: center; */
+    position: relative;
+    overflow: hidden;
   }
 
   /* include a border on all button but the first, to avoid a border when only one element exist */
@@ -147,6 +149,26 @@
     color: var(--color-white);
   }
 
+
+  /* NEEDY */
+  .needy:before {
+		content: '';
+		position: absolute;
+		top: 0; left: 0;
+		z-index: 2;
+		/* background: white; */
+		opacity: 0.6;
+		height: 100%; width: 100%;
+		transform: skewX(-45deg);
+		background: linear-gradient(to right, var(--color-white), var(--color-white) 20px, transparent 20px);
+		transform-origin: left bottom;
+		animation: shine 6s ease-in infinite;
+  }
+	@keyframes shine {
+		0%   { transform: skewX(-45deg) translateX(-100%); }
+		10%  { transform: skewX(-45deg) translateX(100%); }
+		100% { transform: skewX(-45deg) translateX(100%); }
+	}
 
   /* CLOSE */
   .close {
