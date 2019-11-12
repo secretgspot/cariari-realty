@@ -1,0 +1,1 @@
+let e=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumSignificantDigits:3});function n(e){e=0|(Date.now()-e)/1e3;var n,r,i={sec:60,min:60,h:24,d:7,w:4.35,m:12,y:1e4};for(n in i)if(r=e%i[n],!(e=0|e/i[n]))return r+n}export{n as a,e as f};
