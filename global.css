@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin|Economica&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Cabin|Economica&display=swap'); */
 
 :root {
 	--color-white: #FFFFFF;
@@ -6,21 +6,219 @@
 	--color-orange: #FFC400;
 	--color-cyan: #00E5FF;
 	--color-magenta: #FF00F7;
+	--color-lime: #76c900;
+	--color-light: hsl(0, 0%, 96%);
+	--color-dark: hsl(0, 0%, 72%);
+	--color-darker: hsl(0, 0%, 45%);
+	--color-danger: #f16262;
+	--color-success: #27c190;
+	--border-radius: 6px;
 }
 
-* {
-	box-sizing: border-box;
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {
 	margin: 0;
-	font-family: sans-serif;
+	font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
 	font-size: 14px;
 	line-height: 1.5;
-	color: #333;
+	color: var(--color-black);
 }
 
-/* #sapper {
-	position: fixed;
-	top: 0; bottom: 0; left: 0; right: 0;
-} */
+#sapper {
+	min-height: 100vh;
+}
+
+
+/**
+* Style scrollbars (webkit)
+*/
+.scroller::-webkit-scrollbar {
+	width: 6px;
+}
+.scroller::-webkit-scrollbar-track {
+	border-radius: 3px;
+	background: var(--color-light);
+}
+.scroller::-webkit-scrollbar-thumb {
+	background-color: var(--color-black);
+	border-radius: 3px;
+}
+
+/**
+* Checkbox
+*/
+.checkbox {
+	z-index: 0;
+  position: relative;
+  display: flex;
+	color: var(--color-black);
+	user-select: none;
+}
+
+/* Input */
+.checkbox > input {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+  z-index: -1;
+  position: absolute;
+  outline: none;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Span */
+.checkbox > span {
+	display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+/* Box */
+.checkbox > span::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 0.3rem 0 0;
+  border-radius: var(--border-radius);
+  width: 27px;
+  height: 27px;
+  vertical-align: top;
+	transition: border-color 0.1s, background-color 0.1s;
+	box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
+  background: var(--color-light);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* Checkmark */
+.checkbox > span::after {
+	content: "";
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  width: 12px;
+  height: 6px;
+  border: solid 2px transparent;
+  border-right: none;
+  border-top: none;
+  transform: translate(3px, 4px) rotate(-45deg);
+}
+
+.checkbox > input:checked + span::before,
+.checkbox > input:indeterminate + span::before {
+	border-color: var(--color-success);
+  background-color: var(--color-white);
+}
+
+.checkbox > input:checked + span::after,
+.checkbox > input:indeterminate + span::after {
+	border-color: var(--color-success);
+}
+
+.checkbox > input:indeterminate + span::after {
+	border-left: none;
+	transform: translate(4px, 3px);
+}
+
+.checkbox > input:active + span::before {
+	border-color: var(--color-black);
+}
+
+.checkbox > input:checked:active + span::before {
+	border-color: transparent;
+	background-color: var(--color-white);
+}
+
+.checkbox > input:disabled + span {
+	color: var(--color-dark);
+	cursor: initial;
+}
+
+.checkbox > input:disabled + span::before { border-color: currentColor; }
+.checkbox > input:checked:disabled + span::after,
+.checkbox > input:indeterminate:disabled + span::after { border-color: var(--color-darker); }
+
+.checkbox > input:checked:disabled + span::before,
+.checkbox > input:indeterminate:disabled + span::before {
+	border-color: transparent;
+	background-color: currentColor;
+}
+
+
+
+/**
+* Range slider
+*/
+.range {
+	color: rgba(var(--color-darker, 0, 0, 0), 0.87);
+}
+
+/* Input */
+.range > input {
+	-webkit-appearance: none;
+	position: relative;
+	height: 18px;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+/* Without Span */
+.range > input:last-child {
+	position: static;
+	margin: 0;
+}
+
+/* Focus */
+.range > input:focus { outline: none; }
+
+/* Disabled */
+.range > input:disabled {
+	cursor: default;
+	opacity: 0.38;
+}
+
+.range > input:disabled + small {
+	color: var(--color-dark);
+}
+
+/* Webkit | Track */
+.range > input::-webkit-slider-runnable-track {
+	margin: 17px 0;
+	border-radius: 1px;
+	width: 100%;
+	height: 2px;
+	background-color: rgba(33, 150, 243, 0.24);
+}
+
+/* Webkit | Thumb */
+.range > input::-webkit-slider-thumb {
+	appearance: none;
+	-webkit-appearance: none;
+	border: none;
+	border-radius: 50%;
+	height: 3px;
+	width: 3px;
+	background-color: rgb(33, 150, 243);
+	transform: scale(6, 6);
+	transition: box-shadow 0.1s;
+}
+
+/* Webkit | Disabled */
+.range > input:disabled::-webkit-slider-runnable-track {
+	background-color: rgba(0, 0, 0, 0.38);
+}
+
+.range > input:disabled::-webkit-slider-thumb {
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255); /* Safari */
+	box-shadow: 0 0 0 1px rgb(255, 255, 255) !important;
+	transform: scale(3, 3);
+}
