@@ -171,7 +171,7 @@
 
 	@media (orientation: landscape) {
 		#details :global(.close) { top: 83vh; }
-		.image { height: 90vh; }
+		.image { height: 81vh; }
 	}
 
 	@media (min-width: 1024px) {

@@ -45,7 +45,16 @@
 		align-items: center;
 	}
 
-	.slides { height: 100%; } /* needed? */
+	.slides { height: 100%; position: relative; }
+	.slides::after {
+		content: 'Loading..';
+		position: absolute;
+		color: var(--color-black);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: -1;
+	}
 	.slides :global(div) { height: 100%; }
 
 	button {
