@@ -85,6 +85,7 @@
 	background-size: cover;
 	border-radius: var(--border-radius) var(--border-radius) 0 0;
 }
+.property-image img { width: 100%; height: 100%; object-fit: cover; }
 /* .property-image caption { display: none; } */
 @media (min-width: 768px) {
 	/* .property-image img { width: 208px; height: auto; } */
@@ -141,8 +142,9 @@
 
 <section class="property" class:deactivated="{!property.is_active}">
 	{#if property.photos}
-		<figure class="property-image" style="background-image: url({property.photos[0]})">
-			<!-- <img src="{property.photos[0]}" alt="{property.id} photo" loading="auto" width="111" height="62.44"> -->
+		<figure class="property-image">
+		<!-- <figure class="property-image" style="background-image: url({property.photos[0]})" loading="lazy"> -->
+			<img src="{property.photos[0]}" alt="{property.id} photo" loading="lazy" />
 			<!-- <caption>{property.photos.length} images</caption> -->
 		</figure>
 	{/if}

@@ -62,7 +62,11 @@
 	.slide-content {
 		flex: 1;
 		background-size: cover;
-		height: 50vh;
+		background-repeat: no-repeat;
+		background-position: center;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
 	}
 
 	.side {
@@ -168,11 +172,6 @@
 	@media (orientation: landscape) {
 		#details :global(.close) { top: 83vh; }
 		.image { height: 90vh; }
-		.slide-content {
-			height: 90vh;
-			background-repeat: no-repeat;
-			background-position: center;
-		}
 	}
 
 	@media (min-width: 1024px) {
@@ -186,7 +185,6 @@
 		}
 		#details :global(.close) { top: 10px; }
 		.image { width: auto; height: 63vh; }
-		/* .slide-content { height: 63vh; } */
 		.base {
 			grid-template-columns: repeat(2, minmax(min-content, auto));
 			grid-gap: 3rem;
@@ -202,10 +200,12 @@
 		<Carousel>
 			{#if selectedProperty.photos}
 				{#each selectedProperty.photos as photo}
-				<div class="slide-content" style="background-image: url({photo})" />
+				<!-- <div class="slide-content" style="background-image: url({photo})" /> -->
+				<img class="slide-content" src="{photo}" alt="property" loading="lazy" />
 				{/each}
 			{:else}
-				<div class="slide-content" style="background-image: url(/images/placeholder/1080x810.png)" />
+				<img class="slide-content" src="/images/placeholder/1080x810.png" alt="property" loading="eager" />
+				<!-- <div class="slide-content" style="background-image: url(/images/placeholder/1080x810.png)" /> -->
 			{/if}
 		</Carousel>
 	</div>

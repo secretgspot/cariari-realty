@@ -42,22 +42,26 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [x] Map snapshot for Editor if GPS is set
 - [x] RESOLVE ISSUE WITH StaticMap.svelte apiKey loading before everything else and causing 401 in imgSrc
 - [ ] Validation of add/edit property, (~~msl~~, ~~for~~, gps, phone, email, )
-- [ ] Env var for company name, phone, email for use across site
+- [ ] Env var for company name, phone, email for use across site ** plan for deploying to different areas
 - [ ] Perhaps an indicator that property is sold or rented.
 - [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
+- [x] Details, fix image fiting. ✔ button to close needs positioning
 
 #### GitHub Pages (not deploying properly)
 
 package.json
-> "homepage":  "https://secretgspot.github.io/cariari-realty",
+> "homepage":  "<https://secretgspot.github.io/cariari-realty",>
 >"scripts":  {
   // ...
   "predeploy":  "npm run export",
   "deploy":  "gh-pages -d __sapper__/export"
   }
 
+bash
   npm  install --save-dev gh-pages
+
   npm run export
+
   npm run deploy

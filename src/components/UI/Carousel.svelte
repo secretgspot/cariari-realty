@@ -46,6 +46,7 @@
 	}
 
 	.slides { height: 100%; } /* needed? */
+	.slides :global(div) { height: 100%; }
 
 	button {
 		position: absolute;
