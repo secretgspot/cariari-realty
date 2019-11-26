@@ -1,20 +1,21 @@
 <script>
-	import { onMount } from 'svelte';
-	import { goto } from '@sapper/app';
+	// import { onMount } from 'svelte';
+	import { goto, stores } from '@sapper/app';
 	import QR from "../../components/UI/QR.svelte";
 	import Badge from "../../components/UI/Badge.svelte";
 	import Logo from '../../components/UI/Logo.svelte';
+
+	const { page } = stores();
 
 	export let property;
 	export let query = false;
 	export let slug = false;
 
-	// let loc = location ? location.origin : '';
-	let loc;
+	let loc = $page.host;
 
-	onMount(() => {
-		loc = location.origin;
-	});
+	// onMount(() => {
+	// 	loc = location.origin;
+	// });
 
 </script>
 
@@ -76,6 +77,7 @@
 		align-items: center;
 		padding: 1rem;
 	}
+	.qr small { margin: 1rem 0 0; text-align: center; }
 	.address { grid-area: address; }
 	.location { grid-area: location; }
 	.header { grid-area: header; padding: 2rem; }
