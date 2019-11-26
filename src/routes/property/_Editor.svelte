@@ -70,8 +70,8 @@
 		inProgress = true;
 
 		const response = await (slug
-			? api.patch(`cariari/${slug}.json`, {...property, date_updated: new Date()}, null)
-			: api.post(`cariari.json`, property, null));
+			? api.patch(`properties/${slug}.json`, {...property, date_updated: new Date()}, null)
+			: api.post(`properties.json`, property, null));
 
 			console.log('response: ', response)
 		if (response.name) {
@@ -93,8 +93,8 @@
 		inProgress = true;
 
 		const response = await (slug && $isAdmin
-			? api.del(`cariari/${slug}.json`, null)
-			: api.patch(`cariari/${slug}.json`, {...property, is_active: false, date_updated: new Date()}, null));
+			? api.del(`properties/${slug}.json`, null)
+			: api.patch(`properties/${slug}.json`, {...property, is_active: false, date_updated: new Date()}, null));
 
 			console.log('response: ', response)
 		if (response) {
@@ -113,7 +113,7 @@
 	}
 
 	async function getMsl() {
-		const response = await api.get(`cariari.json`, null);
+		const response = await api.get(`properties.json`, null);
 		let digits = [];
 		for (let [key, value] of Object.entries(response)) {
 			digits = [...digits, Number(value.msl.substring(3))];

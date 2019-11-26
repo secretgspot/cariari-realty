@@ -2,8 +2,10 @@
 	import * as api from 'api.js';
 
 	export async function preload({ params, query }) {
+		// console.log('FIREBASE: ', process.env.Firebase);
+		// const { dbName } = process.env.Firebase; // crashes on refresh with 500 (undefined)
 		const { slug } = params;
-		const property = await api.get(`cariari/${slug}.json`, null);
+		const property = await api.get(`properties/${slug}.json`, null);
 
 		return { property, slug, query };
 	}

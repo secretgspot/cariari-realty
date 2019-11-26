@@ -2,7 +2,7 @@
 	import * as api from 'api.js';
 
 	export async function preload({ params }) {
-		const properties = await api.get(`cariari.json`, null);
+		const properties = await api.get(`properties.json`, null);
 		// transform data into workable
 		const loadedProperties = [];
 		for (const key in properties) {

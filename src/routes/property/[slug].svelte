@@ -3,7 +3,7 @@
 
 	export async function preload({ params, query }) {
 		const { slug } = params;
-		const property = await api.get(`cariari/${slug}.json`, null);
+		const property = await api.get(`properties/${slug}.json`, null);
 
 		return { property, slug, query };
 	}

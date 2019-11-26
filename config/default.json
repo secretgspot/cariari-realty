@@ -4,7 +4,7 @@
   "emailAddress": "info@cariari.realty",
   "mapboxToken": "pk.eyJ1Ijoic2VjcmV0Z3Nwb3QiLCJhIjoiY2swaGQ1Y2UzMDFmNDNucHNqdGRxeHBzNSJ9.AWKJgnwQUyfggl5fKCAw_A",
   "Firebase": {
-    "baseURL": "https://svelte-meetups-course.firebaseio.com",
-    "dbName": "cariari"
+    "baseURL": "https://cariari-realty.firebaseio.com",
+    "dbName": "properties"
   }
 }

@@ -26,10 +26,10 @@
 
   // console.log('PHONE: ', process.env.phoneNumber)
   // console.log('MAPBOX: ', process.env.mapboxToken)
-  // console.log('FIREBASE: ', process.env.Firebase)
+  // console.log('FIREBASE: ', process.env.Firebase);
 
   onMount(async () => {
-    await api.get(`cariari.json`, null)
+    await api.get(`properties.json`, null)
       .then(data => {
         // transform into workable data
         const loadedProperties = [];
