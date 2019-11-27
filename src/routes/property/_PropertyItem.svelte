@@ -144,7 +144,7 @@
 	{#if property.photos}
 		<figure class="property-image">
 		<!-- <figure class="property-image" style="background-image: url({property.photos[0]})" loading="lazy"> -->
-			<img src="{property.photos[0]}" alt="{property.id} photo" loading="lazy" />
+			<img src="{property.photos[0]}" alt="{property.id} photo" loading="lazy" intrinsicsize="281x222" />
 			<!-- <caption>{property.photos.length} images</caption> -->
 		</figure>
 	{/if}

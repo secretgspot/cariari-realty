@@ -55,11 +55,16 @@
     link.href = "https://unpkg.com/mapbox-gl/dist/mapbox-gl.css";
     let el;
     link.onload = () => {
-      el = new mapbox.Map({
+      // el = new mapbox.Map({
+      //   container,
+      //   style,
+      //   ...options
+      // });
+      const optionsWithDefaults = Object.assign({
         container,
-        style,
-        ...options
-      });
+        style
+      }, options)
+      el = new mapbox.Map(optionsWithDefaults);
       el.on("dragend", () => dispatch("recentre", { center: el.getCenter() }));
       el.on("load", () => {
         map = el;

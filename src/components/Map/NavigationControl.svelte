@@ -9,9 +9,10 @@
   export let position = 'bottom-left';
   export let options = {};
 
-  const nav = new mapbox.NavigationControl({
-    ...options
-	});
+  // const nav = new mapbox.NavigationControl({
+  //   ...options
+	// });
 
+  const nav = new mapbox.NavigationControl(options);
   map.addControl(nav, position);
 </script>

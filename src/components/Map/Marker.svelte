@@ -36,20 +36,20 @@
 		return propClasses[`${Number(scaffold.sale)}${Number(scaffold.rent)}${Number(scaffold.investment)}`];
 	}
 
-		// Override internal functionality
-		mapbox.Marker.prototype.onClick = function(handleClick) {
-			this._handleClick = handleClick;
-			return this;
-		};
-		mapbox.Marker.prototype._onMapClick = function(t) {
-			const targetElement = t.originalEvent.target;
-			const element = this._element;
+	// Override internal functionality
+	mapbox.Marker.prototype.onClick = function(handleClick) {
+		this._handleClick = handleClick;
+		return this;
+	};
+	mapbox.Marker.prototype._onMapClick = function(t) {
+		const targetElement = t.originalEvent.target;
+		const element = this._element;
 
-			if (this._handleClick && (targetElement === element || element.contains((targetElement)))) {
-				this.togglePopup();
-				this._handleClick();
-			}
-		};
+		if (this._handleClick && (targetElement === element || element.contains((targetElement)))) {
+			this.togglePopup();
+			this._handleClick();
+		}
+	};
 
 	const popup = new mapbox.Popup({ offset: 25 }).setText(property.msl);
 	const marker = new mapbox.Marker({ color: createColor(property) })

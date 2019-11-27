@@ -110,7 +110,7 @@
 <section class="preview-content">
 	<figure>
 		{#if previewProperty.photos}
-			<img class="image" src="{previewProperty.photos[0]}" alt="{previewProperty.msl}" loading="lazy">
+			<img class="image" src="{previewProperty.photos[0]}" alt="{previewProperty.msl}" loading="lazy" intrinsicsize="450x360">
 		{:else}
 			<img class="image" src="/images/placeholder/450x360.png" alt="Property placeholder" loading="eager">
 		{/if}
