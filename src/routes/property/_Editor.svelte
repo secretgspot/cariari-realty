@@ -20,6 +20,11 @@
 	let showModal = false;
 	let errors;
 
+  let over = {};
+  let startLoc = 0;
+  let dragging = false;
+  let dragFrom = {};
+
 	// workaround for empty photo and features array that are returned from firebase as string
 	if (property.photos === undefined || property.photos.length == 0) property.photos = [];
 	if (property.features === undefined || property.features.length == 0) property.features = [];
@@ -32,6 +37,28 @@
 			!isEmpty(property.msl) &&
 			!isEmpty(property.property_for); // && isValidEmail(email);
 
+
+	function startDrag(item, i, e) {
+		startLoc = e.clientY;
+		dragging = true;
+		dragFrom = item;
+		console.log(dragFrom, i);
+	}
+
+	function finishDrag(item, pos) {
+		property.photos.splice(pos, 1)
+		property.photos.splice(over.pos, 0, item);
+		over = {}
+		property.photos = property.photos;
+	}
+
+	function onDragOver(item, pos, e) {
+		const dir = (startLoc < e.clientY) ? 'down': 'up';
+		setTimeout(() => {
+			over = { item, pos, dir };
+		}, 50);
+		console.log(dir, over);
+	}
 
 	function addFeature(input) {
 		if (input.value == '') return;
@@ -543,7 +570,13 @@
 					<input type="text" placeholder="ex: //placekitten.com/g/1080/810" use:enter={addPhoto}>
 					<div class="photo-list">
 						{#each property.photos as photo, i}
-							<div class="photo" style="background-image: url({photo})">
+							<div class="photo"
+									draggable={true}
+									id={i}
+									on:dragstart="{(e) => startDrag(photo, i, e)}"
+									on:dragend="{(e) => finishDrag(photo, i, e)}"
+									on:dragover="{(e) => onDragOver(photo, i, e)}"
+									style="background-image: url({photo})">
 								<i class="close" on:click="{() => removePhoto(i)}" />
 								<!-- <img class="preview" src="{photo}" alt="{photo}"> -->
 							</div>

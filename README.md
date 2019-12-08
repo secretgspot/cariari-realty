@@ -46,10 +46,12 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
+- [ ] Better Error page
 
 #### Notes
 
-DB must be changed in index.svelte, api.js, _Editor.svelte, both [slug].svelte, list.svelte, default.json (config). Should be made to work from central location of default.json.
+- [ ] DB must be changed in index.svelte, api.js, _Editor.svelte, both [slug].svelte, list.svelte, default.json (config). Should be made to work from central location of default.json.
+- [ ] .env needs dotenv alongside it
 
 #### GitHub Pages (not deploying properly)
 

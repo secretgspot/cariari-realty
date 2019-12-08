@@ -25,23 +25,41 @@
 		height: 100%;
 		position: absolute;
 	}
-
-	@media screen and (orientation: portrait) {
-		.logo-group { flex-direction: column; }
-	}
 	.logo-group {
 		z-index: 12;
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		user-select: none;
 		cursor: pointer;
+		position: relative;
 	}
-	.logo-group h1 {
-		color: white;
-		text-transform: uppercase;
-		/* font-family: 'Economica', sans-serif; */
+	.logo-group::before,
+	.logo-group::after {
+		position: absolute;
+		color: var(--color-white);
+		font-size: 2rem;
 		font-weight: lighter;
-		margin: 1rem 2rem;
+		text-transform: uppercase;
+		margin: 0 1rem;
+	}
+	.logo-group::before {
+		content: "Cariari";
+		right: 100%;
+	}
+	.logo-group::after {
+		content: "Realty";
+		left: 100%;
+	}
+	@media screen and (orientation: portrait) {
+		.logo-group::before,
+		.logo-group::after {
+			margin: 1rem 0;
+			left: 0; right: 0;
+			text-align: center;
+		}
+		.logo-group::before { bottom: 100%; }
+		.logo-group::after { top: 100%; }
 	}
 </style>
 
@@ -49,9 +67,7 @@
 	<div class="backdrop"></div>
 
 	<div class="logo-group">
-		<h1>Cariari</h1>
 		<!-- <Logo type="regular" color="gold" size="150" /> -->
 		<LogoSvg animate="{true}" style="gold" size="150" time="{3}" />
-		<h1>Realty</h1>
 	</div>
 </div>
