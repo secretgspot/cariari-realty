@@ -6,7 +6,7 @@
 <style>
 	.advertising {
 		position: relative;
-		background: white;
+		background: var(--color-white);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -20,7 +20,8 @@
 		bottom: 100%;
 		right: 0;
 		font-size: 9px;
-		color: lavender;
+		/* color: lavender; */
+		color: var(--color-dark);
 		line-height: 1;
 		text-transform: uppercase;
 	}

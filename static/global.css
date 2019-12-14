@@ -1,19 +1,41 @@
 /* @import url('https://fonts.googleapis.com/css?family=Cabin|Economica&display=swap'); */
 
-:root {
-	--color-white: #FFFFFF;
-	--color-black: #242F3E;
-	--color-orange: #FFC400;
-	--color-cyan: #00E5FF;
-	--color-magenta: #FF00F7;
-	--color-lime: #76c900;
-	--color-light: hsl(0, 0%, 96%);
-	--color-dark: hsl(0, 0%, 72%);
-	--color-darker: hsl(0, 0%, 45%);
-	--color-danger: #f16262;
-	--color-success: #27c190;
-	--border-radius: 6px;
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-white: #9e9e9e;
+		--color-black: #12171f;
+		--color-orange: #8b6b00;
+		--color-cyan: #007e8d;
+		--color-magenta: #90008b;
+		--color-lime: #406c00;
+		--color-light: hsl(0, 0%, 54%);
+		--color-dark: hsl(0, 0%, 39%);
+		--color-darker: hsl(0, 0%, 23%);
+		--color-danger: #863636;
+		--color-success: #14654b;
+		--border-radius: 6px;
+		--brightness: 0.5;
+	}
 }
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--color-white: #FFFFFF;
+		--color-black: #242F3E;
+		--color-orange: #FFC400;
+		--color-cyan: #00E5FF;
+		--color-magenta: #FF00F7;
+		--color-lime: #76c900;
+		--color-light: hsl(0, 0%, 96%);
+		--color-dark: hsl(0, 0%, 72%);
+		--color-darker: hsl(0, 0%, 45%);
+		--color-danger: #f16262;
+		--color-success: #27c190;
+		--border-radius: 6px;
+		--brightness: 1;
+	}
+}
+
 
 html {
   box-sizing: border-box;
@@ -195,7 +217,7 @@ body {
 	border-radius: 1px;
 	width: 100%;
 	height: 2px;
-	background-color: rgba(33, 150, 243, 0.24);
+	background: var(--color-dark);
 }
 
 /* Webkit | Thumb */
@@ -206,19 +228,19 @@ body {
 	border-radius: 50%;
 	height: 3px;
 	width: 3px;
-	background-color: rgb(33, 150, 243);
+	background: var(--color-success);
 	transform: scale(6, 6);
 	transition: box-shadow 0.1s;
 }
 
 /* Webkit | Disabled */
 .range > input:disabled::-webkit-slider-runnable-track {
-	background-color: rgba(0, 0, 0, 0.38);
+	background-color: rgba(var(--color-black, 0, 0, 0), 0.38);
 }
 
 .range > input:disabled::-webkit-slider-thumb {
-	background-color: rgb(0, 0, 0);
-	color: rgb(255, 255, 255); /* Safari */
-	box-shadow: 0 0 0 1px rgb(255, 255, 255) !important;
+	background-color: var(--color-black);
+	color: var(--color-white); /* Safari */
+	box-shadow: 0 0 0 1px var(--color-white) !important;
 	transform: scale(3, 3);
 }

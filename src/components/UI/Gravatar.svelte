@@ -75,7 +75,10 @@
 </script>
 
 <style>
-	img { object-fit: cover; }
+	img {
+		object-fit: cover;
+		filter: brightness(var(--brightness));
+	}
 	img.round { border-radius: 50%; }
 </style>
 

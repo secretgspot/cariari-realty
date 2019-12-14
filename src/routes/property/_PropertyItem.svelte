@@ -84,6 +84,7 @@
 	position: relative;
 	background-size: cover;
 	border-radius: var(--border-radius) var(--border-radius) 0 0;
+	filter: brightness(var(--brightness));
 }
 .property-image img { width: 100%; height: 100%; object-fit: cover; }
 /* .property-image caption { display: none; } */
@@ -108,7 +109,7 @@
 	display: inline-block;
 	padding: 0.2rem;
 	border-radius: 9px;
-	background: whitesmoke;
+	background: var(--color-white);
 }
 
 

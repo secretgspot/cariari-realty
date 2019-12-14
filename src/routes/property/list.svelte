@@ -121,7 +121,10 @@
 /*
 	FILTER SECTION
  */
-.filter { grid-area: filter; }
+.filter {
+	grid-area: filter;
+	background: var(--color-white);
+}
 .filter .filters-wrappers {
 	position: sticky;
 	top: 0px;

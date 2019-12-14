@@ -18,6 +18,10 @@
 	$: imgSrc = `${baseUrl}/url-${encodeURIComponent(marker)}(${lon},${lat})/${lon},${lat},${zoom}/${width}x${height}?access_token=${apiKey}`;
 </script>
 
+<style>
+	img { filter: brightness(var(--brightness)); }
+</style>
+
 {#if isMounted}
 <img src="{imgSrc}" alt="static map for {lon}, {lat}" />
 {/if}

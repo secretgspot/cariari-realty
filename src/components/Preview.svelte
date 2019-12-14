@@ -14,7 +14,8 @@
 
 <style>
 	.preview-content {
-		background: linear-gradient(0deg, rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.9));
+		/* background: linear-gradient(0deg, rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.9)); */
+		background: var(--color-white);
 		position: relative;
 		/* width: 450px; */
 		z-index: 2;
