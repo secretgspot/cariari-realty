@@ -1,4 +1,5 @@
 <script>
+	import { goto } from "@sapper/app";
 	import { onDestroy, createEventDispatcher } from "svelte";
 	import properties from "../properties-store.js";
 	import Ad from "../components/UI/Ad.svelte";
@@ -41,7 +42,7 @@
 		top: 0; bottom: 0; left: 0; right: 0;
 		width: 100vw; height: 100vh;
 		/* background: #fffffffa; */
-		background: var(--color-white);
+		background: var(--bg-primary);
 		overflow: auto;
 		z-index: 3;
 	}
@@ -75,8 +76,9 @@
 		padding: 2rem;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-around;
+		/* justify-content: space-around; */
 		align-items: flex-start;
+		/* overflow-y: auto; */
 	}
 	.side .map-group,
 	.side .badge-group,
@@ -94,11 +96,12 @@
 		width: 100%;
 	}
 	.side .feature {
-		border: 1px dashed var(--color-light);
+		border: 1px dashed var(--border);
 		padding: 0 0.2rem;
 		margin: 0.1rem;
 		border-radius: 6px;
 		display: inline-block;
+		color: var(--txt-secondary);
 	}
 
 	.side .description {
@@ -107,6 +110,7 @@
 		padding: 0 0.3rem;
 		margin: 2rem 0;
 		white-space: pre-wrap;
+		min-height: min-content;
 	}
 
 	.side .ad-wrapper {
@@ -136,13 +140,13 @@
 		margin: 0;
 	}
 	.realtor-group a {
-		color: var(--color-orange, dodgerblue);
+		color: var(--color-cyan);
 		text-decoration: none;
 		white-space: nowrap;
 	}
 	.realtor-group a:before {
 		margin-right: 0.5em;
-		color: var(--color-dark);
+		color: var(--txt-secondary);
 	}
 	.realtor-group a[href^="mailto:"]:before { content: "\2709"; }
 	.realtor-group a[href^="tel:"]:before { content: "\260e"; }
@@ -156,9 +160,9 @@
 		grid-gap: 1rem;
 		align-items: center;
 		padding: 1rem;
-		background: var(--color-black);
-		color: var(--color-white);
-		background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%23130825' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+		background: var(--bg-primary);
+		color: var(--txt-primary);
+		background-image: url("data:image/svg+xml,%3Csvg width='32' height='64' viewBox='0 0 32 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 28h20V16h-4v8H4V4h28v28h-4V8H8v12h4v-8h12v20H0v-4zm12 8h20v4H16v24H0v-4h12V36zm16 12h-4v12h8v4H20V44h12v12h-4v-8zM0 36h8v20H0v-4h4V40H0v-4z' fill='%23130825' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E");
 	}
 
 	.base .badge-group {
@@ -185,6 +189,7 @@
 				"base aside";
 		}
 		#details :global(.close) { top: 10px; }
+		.side { overflow-y: auto; }
 		.image { width: auto; height: 63vh; }
 		.base {
 			grid-template-columns: repeat(2, minmax(min-content, auto));
@@ -212,40 +217,13 @@
 	</div>
 
 	<!-- SIDE PANE -->
-  <div class="side">
+  <div class="side scroller">
 		<div class="badge-group">
 			{#if selectedProperty.year_built}
 				<Badge type="text" label="built" value="{selectedProperty.year_built} &bull; {ago(new Date(selectedProperty.year_built))}" />
 			{/if}
 			{#if selectedProperty.building_style}
 				<Badge type="text" label="style" value="{selectedProperty.building_style}" />
-			{/if}
-		</div>
-
-		<div class="badge-group">
-			{#if selectedProperty.building_size > 0}
-				<Badge type="text" label="building" value="{selectedProperty.building_size}㎡" />
-			{/if}
-			{#if selectedProperty.lot_size > 0}
-				<Badge type="text" label="lot" value="{selectedProperty.lot_size}㎡" />
-			{/if}
-		</div>
-
-		<div class="badge-group">
-			{#if selectedProperty.rooms_count > 0}
-				<Badge type="icon" label="rooms" value="{selectedProperty.rooms_count}" />
-			{/if}
-			{#if selectedProperty.beds_count > 0}
-				<Badge type="icon" label="beds" value="{selectedProperty.beds_count}" />
-			{/if}
-			{#if selectedProperty.baths_count > 0}
-				<Badge type="icon" label="baths" value="{selectedProperty.baths_count}" />
-			{/if}
-			{#if selectedProperty.half_baths_count > 0}
-				<Badge type="icon" label="half baths" value="{selectedProperty.half_baths_count}" />
-			{/if}
-			{#if selectedProperty.parking_spaces > 0}
-				<Badge type="icon" label="parkings" value="{selectedProperty.parking_spaces}" />
 			{/if}
 		</div>
 
@@ -270,13 +248,32 @@
 		</div>
 		{/if}
 
-		{#if selectedProperty.features}
-		<div class="features">
-			{#each selectedProperty.features as feature}
-			<div class="feature">{feature}</div>
-			{/each}
+		<div class="badge-group">
+			{#if selectedProperty.rooms_count > 0}
+				<Badge type="icon" label="rooms" value="{selectedProperty.rooms_count}" />
+			{/if}
+			{#if selectedProperty.beds_count > 0}
+				<Badge type="icon" label="beds" value="{selectedProperty.beds_count}" />
+			{/if}
+			{#if selectedProperty.baths_count > 0}
+				<Badge type="icon" label="baths" value="{selectedProperty.baths_count}" />
+			{/if}
+			{#if selectedProperty.half_baths_count > 0}
+				<Badge type="icon" label="half baths" value="{selectedProperty.half_baths_count}" />
+			{/if}
+			{#if selectedProperty.parking_spaces > 0}
+				<Badge type="icon" label="parkings" value="{selectedProperty.parking_spaces}" />
+			{/if}
 		</div>
-		{/if}
+
+		<div class="badge-group">
+			{#if selectedProperty.building_size > 0}
+				<Badge type="text" label="building" value="{selectedProperty.building_size}㎡" />
+			{/if}
+			{#if selectedProperty.lot_size > 0}
+				<Badge type="text" label="lot" value="{selectedProperty.lot_size}㎡" />
+			{/if}
+		</div>
 
 		<div class="ad-wrapper">
 			<Ad width="320" height="100" />
@@ -288,8 +285,18 @@
 		</div>
 		{/if}
 
+		{#if selectedProperty.features}
+		<div class="features">
+			{#each selectedProperty.features as feature}
+			<div class="feature">{feature}</div>
+			{/each}
+		</div>
+		{/if}
+
 		{#if btn}
-		<Button type="button" mode="close" on:click={() => dispatch('close')}>X</Button>
+		<Button type="button" mode="close needy" on:click="{() => dispatch('close')}">X</Button>
+		{:else}
+		<Button type="button" mode="close needy" on:click="{() => goto('/property/list')}">←</Button>
 		{/if}
 	</div>
 

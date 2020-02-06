@@ -11,7 +11,7 @@
 	/* .filters {} */
 	.filters h3 {
 		margin-bottom: 0.5rem;
-		color: var(--color-dark);
+		color: var(--txt-secondary);
 		font-weight: normal;
 	}
 
@@ -25,41 +25,41 @@
 		padding: 0.5rem 0.75rem;
 		font-size: 1rem;
 		line-height: 1.25;
-		color: #55595c;
-		border: 1px solid rgba(0, 0, 0, 0.15);
+		color: var(--txt-primary);
+		border: 1px solid var(--border);
 		border-radius: var(--border-radius);
 		width: -webkit-fill-available;
-		box-shadow: inset 0 2px 4px 0 hsla(0, 0%, 0%, 0.09);
-		background: var(--color-light);
+		box-shadow: inset 0 2px 4px 0 var(--shadow);
+		background: var(--bg-primary);
 	}
 	input[type="text"],
 	input[type="number"] { max-width: 81px; }
 
 	.property_type {
 		padding: 2rem;
-		box-shadow: 0 1px 0px var(--color-dark),
-								0 2px 0px var(--color-light);
+		box-shadow: 0 1px 0px var(--shadow),
+								0 2px 0px var(--bg-tertiary);
 	}
 
 	.transaction_type {
 		padding: 1rem 2rem 2rem;
-		box-shadow: 0 1px 0px var(--color-dark),
-								0 2px 0px var(--color-light);
+		box-shadow: 0 1px 0px var(--shadow),
+								0 2px 0px var(--bg-tertiary);
 	}
 	.transaction_type .checkbox:nth-child(even) { margin: 0 2rem; }
 
 	.price_range {
 		padding: 1rem 2rem 2rem;
-		box-shadow: 0 1px 0px var(--color-dark),
-								0 2px 0px var(--color-light);
+		box-shadow: 0 1px 0px var(--shadow),
+								0 2px 0px var(--bg-tertiary);
 	}
 	.price_range .range:nth-child(odd) { margin-bottom: 2rem; }
 	.price_range .range input { margin: 0; }
 
 	.features {
 		padding: 1rem 2rem 2rem;
-		box-shadow: 0 1px 0px var(--color-dark),
-								0 2px 0px var(--color-light);
+		box-shadow: 0 1px 0px var(--shadow),
+								0 2px 0px var(--bg-tertiary);
 	}
 	.features .number:nth-child(even) { margin: 0 1rem; }
 

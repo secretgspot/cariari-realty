@@ -172,7 +172,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		background: var(--color-light);
+		background: var(--bg-primary);
 		padding: 3rem 0;
 		/* flex-wrap: wrap; */
 	}
@@ -184,11 +184,12 @@
 		padding: 0.6rem 0.81rem;
 		font-size: 1rem;
 		line-height: 1.25;
-		color: var(--color-black);
-		border: 1px solid var(--color-white);
+		color: var(--txt-primary);
+		border: 1px solid var(--border);
 		border-radius: var(--border-radius);
 		width: -webkit-fill-available;
-		box-shadow: inset 0 3px 4px 0 var(--color-dark);
+		box-shadow: inset 0 3px 4px 0 var(--shadow);
+		background: transparent;
 	}
 	fieldset :global(button) {
 		height: auto;
@@ -201,18 +202,18 @@
 		grid-template-rows: auto 1fr;
 		grid-gap: 1rem;
 		padding: 1rem 2rem 2rem;
-		box-shadow: 0 1px 0px var(--color-dark), 0 2px 0px var(--color-light);
+		box-shadow: 0 1px 0px var(--shadow), 0 2px 0px var(--bg-secondary);
 	}
-	.section .header p { color: var(--color-darker); }
+	.section .header p { color: var(--txt-tertiary); }
 	.section fieldset {
-		border: 0px dotted #e6e6e6;
+		border: 0px dotted var(--bg-tertiary);
 		border-radius: var(--border-radius);
 		margin: 0 0 2rem;
 	}
 	.section legend {
 		text-transform: uppercase;
 		font-size: 0.81em;
-		color: var(--color-dark);
+		color: var(--txt-secondary);
 	}
 
 	@media (min-width: 768px) {
@@ -234,24 +235,25 @@
 	.section_location .location input:last-of-type { border-top: 0; }
 	.section_location .location :global(img) {
 		width: 100%;
-		padding: 1rem 0;
+		margin: 1rem 0;
+		border-radius: var(--border-radius);
 	}
 
 	.section_features .feature-list { margin: 1rem 0; }
 	.section_features .feature {
 		display: inline-flex;
 		align-items: center;
-		background: var(--color-white);
-		color: var(--color-darker);
+		background: var(--bg-secondary);
+		color: var(--txt-secondary);
 		border-radius: var(--border-radius);
 		padding: 0.2rem 0.4rem 0.2rem 0.2rem;
 		margin: 0.2rem;
-		box-shadow: 0 1px 2px var(--color-dark);
+		box-shadow: 0 1px 2px var(--shadow);
 	}
 	.section_features .feature .close {
 		width: 18px;
 		height: 18px;
-		color: var(--color-dark);
+		color: var(--color-danger);
 		border-radius: var(--border-radius);
 		margin-right: 0.2rem;
 		position: relative;
@@ -261,7 +263,7 @@
 		font-weight: bold;
 	}
 	.section_features .feature .close::after {
-		content: 'x';
+		content: '×';
 		font-size: 0.6rem;
 		position: absolute;
 		top: 50%;
@@ -280,13 +282,14 @@
 	}
 	.section_features .photo {
 		position: relative;
-		box-shadow: 0 1px 1px var(--color-white),
-								0 2px 3px var(--color-darker);
+		box-shadow: 0 1px 1px var(--bg-secondary),
+								0 2px 3px var(--shadow);
 		border-radius: var(--border-radius);
 		text-align: center;
 		display: flex;
 		background-size: cover;
 		height: 120px;
+		filter: brightness(var(--brightness));
 	}
 	.section_features .photo .close {
 		width: 27px;
@@ -304,7 +307,7 @@
 		font-style: normal;
 	}
 	.section_features .photo .close::after {
-		content: 'x';
+		content: '×';
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -599,7 +602,7 @@
 				<Button type="button" disabled={inProgress} on:click="{() => { goto(`/property/${slug}?qr=true`) }}">Print</Button>
 			{/if}
 
-			<Button type="button" color="black" disabled={inProgress || !formIsValid} on:click="{publish}">
+			<Button type="button" disabled={inProgress || !formIsValid} on:click="{publish}">
 				{#if slug}
 					Submit Changes
 				{:else}

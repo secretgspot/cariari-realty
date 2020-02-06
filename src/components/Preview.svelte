@@ -15,7 +15,7 @@
 <style>
 	.preview-content {
 		/* background: linear-gradient(0deg, rgba(255, 255, 255, 0.81), rgba(255, 255, 255, 0.9)); */
-		background: var(--color-white);
+		background: var(--bg-primary);
 		position: relative;
 		/* width: 450px; */
 		z-index: 2;
@@ -68,7 +68,7 @@
 	}
 	.preview-group .type_age {
 		text-transform: uppercase;
-		color: var(--color-darker);
+		color: var(--txt-tertiary);
 	}
 	.preview-group .price_rent {
 		font-size: 1.8em;

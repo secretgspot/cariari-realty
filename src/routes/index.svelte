@@ -137,7 +137,7 @@
     color="gold"
     fixed="fixed"
     on:click={() => (isSplash = true)} /> -->
-  <LogoSvg animate="{true}" style="gold" fixed="fixed" on:click="{() => (isSplash = true)}" />
+  <LogoSvg animate="{true}" kind="gold" fixed="fixed" on:click="{() => (isSplash = true)}" />
 {/if}
 
 {#if isLoading}

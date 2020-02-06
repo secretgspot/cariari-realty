@@ -1,4 +1,5 @@
 <script>
+	import Icon from './Icon.svelte';
 	export let type = 'text'; // icon | text
 	export let label;
 	export let value;
@@ -11,18 +12,22 @@
 		display: inline-flex;
 		align-items: center;
 	}
-	.icon {
+	/* .icon {
 		width: 30px;
 		height: 27px;
+	} */
+	.badge :global(svg) {
+		color: var(--txt-primary);
 	}
 	.label {
 		text-transform: uppercase;
 		/* line-height: 1; */
 		/* font-family: 'Economica', sans-serif; */
-		color: var(--color-dark);
+		color: var(--txt-tertiary);
 	}
 	.value {
 		font-size: 1.8em;
+		color: var(--txt-primary);
 		/* line-height: 1; */
 		/* font-family: 'Cabin', sans-serif; */
 	}
@@ -41,7 +46,7 @@
 
 	span {
 		margin: 0 0.2rem;
-		border: 1px dashed hsla(0, 0%, 100%, 0.3);
+		border: 1px dashed var(--bg-secondary);
 		padding: 0 0.2rem;
 		border-radius: 6px;
 		border-top: none;
@@ -52,7 +57,8 @@
 
 <div class="badge {direction}">
 {#if type === 'icon'}
-	<img class="icon" src="images/icons/icon_{label}.svg" alt="{label}">
+	<!-- <img class="icon" src="images/icons/icon_{label}.svg" alt="{label}"> -->
+	<Icon type="{label}" size="30" />
 	<div class="value">{value}</div>
 {:else if type === 'text'}
 	{#if loop}

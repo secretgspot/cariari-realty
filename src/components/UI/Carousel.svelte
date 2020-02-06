@@ -49,7 +49,7 @@
 	.slides::after {
 		content: 'Loading..';
 		position: absolute;
-		color: var(--color-black);
+		color: var(--txt-primary);
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);

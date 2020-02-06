@@ -38,8 +38,6 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Store across pages (sapper/store?)
 - [ ] LocalStorage for some of the settings
 - [x] Filters settings should be in store (works yet incomplete, why?)
-- [x] Map snapshot for property details (gps)
-- [x] Map snapshot for Editor if GPS is set
 - [ ] Validation of add/edit property, (~~msl~~, ~~for~~, gps, phone, email, )
 - [ ] Env var for company name, phone, email for use across site ** plan for deploying to different areas (onMount?!)
 - [ ] Perhaps an indicator that property is sold or rented.
@@ -47,7 +45,8 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
 - [ ] Better Error page
-- [ ] Light/Dark colors across site
+- [x] Light/Dark colors across site (redo css variables)
+- [x] Redo styling for Switch/Radio/Checkbox/Slider
 
 #### Notes
 

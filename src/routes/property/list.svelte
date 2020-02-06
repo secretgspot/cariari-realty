@@ -87,7 +87,7 @@
 	grid-template-rows: max-content;
 	grid-auto-flow: dense;
 	grid-gap: 1rem;
-	background: var(--color-light, whitesmoke);
+	background: var(--bg-tertiary);
 	padding: 3rem 0;
 	/* justify-content: center; */
 	/* align-items: baseline; */
@@ -113,9 +113,12 @@
 	flex-direction: column;
   justify-content: center;
 	align-items: center;
-	background: var(--color-light);
+	background: var(--bg-secondary);
 }
-.nothing_to_see img { max-width: 63%; }
+.nothing_to_see img {
+	max-width: 63%;
+	filter: brightness(var(--brightness));
+}
 
 
 /*
@@ -123,7 +126,7 @@
  */
 .filter {
 	grid-area: filter;
-	background: var(--color-white);
+	background: var(--bg-primary);
 }
 .filter .filters-wrappers {
 	position: sticky;
@@ -142,11 +145,11 @@
 	.filter .view_type { display: flex; }
 }
 .filter .view_type label {
-  border: 1px solid var(--color-black);
+  border: 1px solid var(--border);
   padding: 0.5rem 1rem;
-  color: var(--color-black);
+  color: var(--txt-primary);
   border-radius: 9px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.26);
+  box-shadow: 1px 1px 3px var(--shadow);
   cursor: pointer;
 }
 
@@ -169,7 +172,7 @@
 </svelte:head>
 
 <!-- <Logo type="regular" color="bw" fixed="fixed" on:click="{() => goto('/')}" /> -->
-<LogoSvg animate="{true}" style="gold" fixed="fixed" on:click="{() => goto('/')}" />
+<LogoSvg animate="{true}" kind="gold" fixed="fixed" on:click="{() => goto('/')}" />
 
 <div class="grid-container">
 	{#if filtered.length > 0}

@@ -6,11 +6,12 @@
 <style>
 	.advertising {
 		position: relative;
-		background: var(--color-white);
+		background: var(--bg-secondary);
+		color: var(--txt-secondary);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		box-shadow: 0px 3px 3px 0px hsla(215, 27%, 19%, 0.12);
+		box-shadow: 0px 1px 1px 0px var(--shadow);
 		/* margin: 2rem 0; */
 		text-align: center;
 	}
@@ -20,8 +21,7 @@
 		bottom: 100%;
 		right: 0;
 		font-size: 9px;
-		/* color: lavender; */
-		color: var(--color-dark);
+		color: var(--txt-secondary);
 		line-height: 1;
 		text-transform: uppercase;
 	}

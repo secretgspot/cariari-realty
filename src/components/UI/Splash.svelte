@@ -68,6 +68,6 @@
 
 	<div class="logo-group">
 		<!-- <Logo type="regular" color="gold" size="150" /> -->
-		<LogoSvg animate="{true}" style="gold" size="150" time="{3}" />
+		<LogoSvg animate="{true}" kind="gold" size="150" time="{3}" />
 	</div>
 </div>

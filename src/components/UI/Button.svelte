@@ -10,14 +10,14 @@
   button,
   a {
     font: inherit;
-    border: 1px solid var(--color-black);
+    border: 1px solid var(--border);
     background: transparent;
     /* width: 369px; */
     height: 81px;
     padding: 0.5rem 1rem;
-    color: var(--color-black);
+    color: var(--txt-primary);
     border-radius: var(--border-radius);
-    box-shadow: 0px 1px 2px hsla(0, 0%, 0%, 0.36);
+    box-shadow: 0px 1px 1px var(--shadow);
     cursor: pointer;
     text-decoration: none;
     flex: 1 1 auto;
@@ -46,27 +46,27 @@
   button:active,
   a:hover,
   a:active {
-    background: var(--color-white);
-    border-color: var(--color-black);
+    background: var(--bg-tertiary);
+    border-color: var(--border);
     outline: none;
   }
 
   button:hover,
   a:hover {
-    box-shadow: 0px 0px 2px hsla(0, 0%, 0%, 0.36);
+    box-shadow: 0px 0px 2px var(--shadow);
   }
 
   button:active,
   a:active {
-    box-shadow: inset 0px 1px 3px hsla(0, 0%, 0%, 0.36);
+    box-shadow: inset 0px 1px 3px var(--shadow);
   }
 
   button:disabled,
   button:disabled:hover,
   button:disabled:active {
-    background: var(--color-light);
-    border-color: var(--color-light);
-    color: var(--color-dark);
+    background: var(--bg-secondary);
+    border-color: var(--bg-tertiary);
+    color: var(--txt-secondary);
     box-shadow: none;
     cursor: not-allowed;
   }
@@ -151,7 +151,7 @@
 
 
   /* NEEDY */
-  .needy:before {
+  .needy:not(:disabled):before {
 		content: '';
 		position: absolute;
 		top: 0; left: 0;
@@ -195,7 +195,7 @@
   .close:disabled:hover,
   .close:disabled:active {
     background: transparent;
-    color: var(--color-light);
+    color: var(--txt-secondary);
   }
 </style>
 
@@ -204,7 +204,7 @@
     <slot />
   </a>
 {:else}
-  <button class="{mode} {color}" {type} on:click {disabled}>
+  <button class="{mode} {color}" {type} on:click|stopPropagation {disabled}>
     <slot />
   </button>
 {/if}

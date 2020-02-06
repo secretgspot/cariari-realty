@@ -51,7 +51,7 @@
 	<div class="logo-group" on:click="{() => goto('/')}">
 		<h1>Cariari</h1>
 		<!-- <Logo type="regular" color="gold" size="150" /> -->
-		<LogoSvg animate="{true}" style="gold" size="150" time="{12}" />
+		<LogoSvg animate="{true}" kind="gold" size="150" time="{12}" />
 		<h1>Realty</h1>
 	</div>
 

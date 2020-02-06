@@ -3,7 +3,6 @@ import replace from 'rollup-plugin-replace';
 import commonjs from 'rollup-plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
-import { sass } from "svelte-preprocess-sass";
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import conf from 'config'; // used with appConfig
@@ -34,10 +33,7 @@ export default {
 			svelte({
 				dev,
 				hydratable: true,
-				emitCss: true,
-        preprocess: {
-          style: sass({}, { name: 'scss' })
-        }
+				emitCss: true
 			}),
 			resolve({
 				browser: true,
@@ -80,10 +76,7 @@ export default {
 			}),
 			svelte({
 				generate: 'ssr',
-				dev,
-        preprocess: {
-          style: sass({}, { name: 'scss' })
-        }
+				dev
 			}),
 			resolve({
 				dedupe

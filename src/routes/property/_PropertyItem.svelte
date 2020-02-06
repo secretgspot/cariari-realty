@@ -1,4 +1,5 @@
 <script>
+	import { goto } from "@sapper/app";
 	import Button from '../../components/UI/Button.svelte';
 	import { isAdmin, current, pattern, konami } from 'konami.js'; // to activate $isAdmin
 	import { formatter, ago } from 'helpers.js';
@@ -9,11 +10,12 @@
 
 .properties_list.grid > .property {
   grid-template-columns: 1fr;
-  grid-template-rows: minmax(auto, 222px) min-content auto min-content;
+  /* grid-template-rows: minmax(auto, 222px) min-content auto min-content; */
+  grid-template-rows: minmax(auto, 222px) min-content min-content;
   grid-template-areas:
     "property-image"
     "property-header"
-		"property-details"
+		/* "property-details" */
 		"property-footer";
 	/* padding: 1rem 0 0; */
 }
@@ -23,22 +25,24 @@
 .property {
   display: grid;
   grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto 1fr auto;
+	/* grid-template-rows: auto 1fr auto; */
+	grid-template-rows: 1fr auto;
   grid-template-areas: "property-header property-header"
-											 "property-image property-details"
+											 /* "property-image property-details" */
 											 "property-footer property-footer";
 	position: relative;
-  border: 0px solid var(--color-black);
+  border: 0px solid var(--border);
   border-radius: var(--border-radius);
 	/* margin: 1rem; */
-	background: var(--color-white, white);
-	box-shadow: 0 1px 0px 0 var(--color-white),
-							0 3px 3px 0 var(--color-dark);
+	background: var(--bg-primary);
+	box-shadow: 0 1px 0px 0 var(--bg-tertiary),
+							0 3px 3px 0 var(--shadow);
+	cursor: pointer;
 }
 @media (min-width: 1024px) {
 	.property {
   	grid-template-areas: "property-image property-header"
-												 "property-image property-details"
+												 /* "property-image property-details" */
 												 "property-image property-footer";
 		margin: 1rem;
 	}
@@ -50,7 +54,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 1rem;
-	box-shadow: 0 1px 0px var(--color-dark), 0 2px 0px var(--color-light);
+	box-shadow: 0 1px 0px var(--shadow), 0 2px 0px var(--bg-tertiary);
 }
 .property-header .land_use {
   display: flex;
@@ -58,7 +62,7 @@
 }
 .property-header .type_age {
   text-transform: uppercase;
-  color: var(--color-darker);
+  color: var(--txt-secondary);
 }
 .property-header .price_rent {
   font-size: 144%;
@@ -70,7 +74,8 @@
   font-size: 90%;
   display: flex;
   flex-direction: column;
-  color: var(--color-dark);
+  color: var(--txt-secondary);
+	display: none;
 }
 
 
@@ -99,17 +104,18 @@
 .property-details {
 	grid-area: property-details;
 	padding: 1rem;
+	display: none;
 }
 .property-details details summary {
 	cursor: pointer;
-	color: var(--color-dark);
+	color: var(--txt-tertiary);
 }
 .property-details details > span {
 	margin: 0.2rem;
 	display: inline-block;
 	padding: 0.2rem;
 	border-radius: 9px;
-	background: var(--color-white);
+	background: var(--bg-secondary);
 }
 
 
@@ -119,29 +125,50 @@
 	grid-area: property-footer;
 	display: flex;
 	flex-direction: column;
-	background: var(--color-light);
+	background: var(--bg-secondary);
 	border-bottom-left-radius: var(--border-radius);
 	border-bottom-right-radius: var(--border-radius);
 }
 .property-footer .dates {
   display: flex;
   justify-content: space-between;
-	color: var(--color-dark);
+	color: var(--txt-tertiary);
 	font-size: smaller;
   margin: 1rem;
 }
-.property-footer .buttons {
+.property-footer .details {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	margin: 0 1rem 1rem;
- }
-.property-footer .buttons span { margin-left: auto; }
-.property-footer :global(a) {
-	flex: 0 1 auto;
 }
+.property-footer .details .loc {
+	color: var(--txt-tertiary);
+}
+
+.property:hover .property-footer .buttons { display: block; }
+.property-footer .buttons {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.property-footer :global(button) {
+	height: auto;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-top-width: 0;
+	border-right-width: 0;
+	background: var(--bg-primary);
+	color: var(--txt-primary);
+}
+/* .property-footer :global(a) {
+	flex: 0 1 auto;
+} */
 </style>
 
-<section class="property" class:deactivated="{!property.is_active}">
+<section class="property" class:deactivated="{!property.is_active}" on:click="{() => goto(`/${property.id}`)}">
 	{#if property.photos}
 		<figure class="property-image">
 		<!-- <figure class="property-image" style="background-image: url({property.photos[0]})" loading="lazy"> -->
@@ -202,12 +229,17 @@
 			<span>updated {ago(new Date(property.date_updated))} ago</span>
 		</div>
 
+		<div class="details wrap">
+			{#if property.location}<small class="loc">{property.location.lat} / {property.location.lng}</small>{/if}
+			<span>[{property.msl}]</span>
+		</div>
+
 		<div class="buttons">
 			{#if $isAdmin}
-				<Button href="property/{property.id}">Edit</Button>
+				<!-- <Button href="property/{property.id}">Edit</Button> -->
+				<Button on:click="{() => goto(`property/${property.id}`)}">Edit</Button>
 			{/if}
-			<Button href="/{property.id}">View</Button>
-			<span>[{property.msl}]</span>
+			<!-- <Button href="/{property.id}">View</Button> -->
 		</div>
 	</footer>
 </section>
