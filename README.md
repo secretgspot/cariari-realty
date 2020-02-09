@@ -47,6 +47,8 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Better Error page
 - [x] Light/Dark colors across site (redo css variables)
 - [x] Redo styling for Switch/Radio/Checkbox/Slider
+- [x] Sticky close buttton in Detail section
+- [ ] Phone, Email svg icons for Details
 
 #### Notes
 

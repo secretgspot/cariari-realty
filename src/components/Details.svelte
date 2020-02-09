@@ -48,9 +48,13 @@
 	}
 
 	#details :global(.close) {
-		top: 51vh;
+		top: 10px;
 		width: 45px;
 		height: 45px;
+		position: sticky;
+		align-self: flex-end;
+		margin-right: -2rem;
+		margin-top: -1rem;
 	}
 
 	.image {
@@ -175,7 +179,7 @@
 	.side .price-group :global(.badge) { margin: 0.6rem; }
 
 	@media (orientation: landscape) {
-		#details :global(.close) { top: 83vh; }
+		/* #details :global(.close) { top: 83vh; } */
 		.image { height: 81vh; }
 	}
 
@@ -188,7 +192,7 @@
 				"main aside"
 				"base aside";
 		}
-		#details :global(.close) { top: 10px; }
+		#details :global(.close) { top: 10px; position: absolute; margin-right: initial; margin-top: initial; }
 		.side { overflow-y: auto; }
 		.image { width: auto; height: 63vh; }
 		.base {
@@ -218,6 +222,12 @@
 
 	<!-- SIDE PANE -->
   <div class="side scroller">
+		{#if btn}
+		<Button type="button" mode="close needy" on:click="{() => dispatch('close')}">X</Button>
+		{:else}
+		<Button type="button" mode="close needy" on:click="{() => goto('/property/list')}">←</Button>
+		{/if}
+
 		<div class="badge-group">
 			{#if selectedProperty.year_built}
 				<Badge type="text" label="built" value="{selectedProperty.year_built} &bull; {ago(new Date(selectedProperty.year_built))}" />
@@ -291,12 +301,6 @@
 			<div class="feature">{feature}</div>
 			{/each}
 		</div>
-		{/if}
-
-		{#if btn}
-		<Button type="button" mode="close needy" on:click="{() => dispatch('close')}">X</Button>
-		{:else}
-		<Button type="button" mode="close needy" on:click="{() => goto('/property/list')}">←</Button>
 		{/if}
 	</div>
 
