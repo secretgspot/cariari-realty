@@ -182,6 +182,9 @@
     right: 10px;
     width: 63px;
     height: 63px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .close:hover,

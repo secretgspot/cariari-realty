@@ -64,6 +64,7 @@ body {
 	font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
 	font-size: 14px;
 	line-height: 1.5;
+	background: var(--bg-primary);
 	color: var(--txt-primary);
 }
 

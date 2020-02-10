@@ -28,6 +28,8 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		color: var(--color-black);
+		background: var(--color-white);
 	}
 
 	@media (min-width: 768px) {
@@ -67,7 +69,7 @@
 	.grid-container :global(.badge) { margin: 1rem; }
 	.grid-container :global(.label) { font-size: 1em; }
 	.grid-container :global(.value) { font-size: 1.3em; }
-	.grid-container > div { border: 1px dotted lavender; }
+	.grid-container > div { border: 1px dotted var(--border); }
 
 	.qr {
 		grid-area: qr;

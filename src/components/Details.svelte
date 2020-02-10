@@ -4,6 +4,7 @@
 	import properties from "../properties-store.js";
 	import Ad from "../components/UI/Ad.svelte";
 	import Badge from "../components/UI/Badge.svelte";
+	import Icon from "../components/UI/Icon.svelte";
 	import Button from "../components/UI/Button.svelte";
 	import Carousel from "../components/UI/Carousel.svelte";
 	import Gravatar from "../components/UI/Gravatar.svelte";
@@ -223,9 +224,13 @@
 	<!-- SIDE PANE -->
   <div class="side scroller">
 		{#if btn}
-		<Button type="button" mode="close needy" on:click="{() => dispatch('close')}">X</Button>
+		<Button type="button" mode="close needy" on:click="{() => dispatch('close')}">
+			<Icon type="close" size="18" />
+		</Button>
 		{:else}
-		<Button type="button" mode="close needy" on:click="{() => goto('/property/list')}">←</Button>
+		<Button type="button" mode="close needy" on:click="{() => goto('/property/list')}">
+			<Icon type="return" size="18" />
+		</Button>
 		{/if}
 
 		<div class="badge-group">
