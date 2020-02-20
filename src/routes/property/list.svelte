@@ -18,6 +18,7 @@
 <script>
 	import { goto } from '@sapper/app';
 	import LogoSvg from "../../components/UI/LogoSvg.svelte";
+	import Image from "../../components/UI/Image.svelte";
 	import Button from "../../components/UI/Button.svelte";
 	import Filter from "../../components/UI/Filter.svelte";
 	import PropertyItem from './_PropertyItem.svelte';
@@ -115,9 +116,9 @@
 	align-items: center;
 	background: var(--bg-secondary);
 }
-.nothing_to_see img {
+.nothing_to_see :global(svg) {
 	max-width: 63%;
-	filter: brightness(var(--brightness));
+	/* filter: brightness(var(--brightness)); */
 }
 
 
@@ -183,8 +184,9 @@
 		</div>
 	{:else}
 		<div class="nothing_to_see">
-			<img src="/images/placeholder/empty_list.svg" alt="empty list image" />
-			<p >Nothing to see</p>
+			<Image type="empty" />
+			<!-- <img src="/images/placeholder/empty_list.svg" alt="empty list image" /> -->
+			<!-- <p>Nothing to see</p> -->
 		</div>
 	{/if}
 

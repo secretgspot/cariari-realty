@@ -46,25 +46,19 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [x] Better Error page
 - [ ] Turn checkbox/radio/switch into toggle component
 - [ ] Phone, Email and maybe Back icon (for close) svg icons for Details
+- [x] Turned SVG images into own component Image.svelte
 
 #### Notes
 
-- [ ] DB must be changed in index.svelte, api.js, _Editor.svelte, both [slug].svelte, list.svelte, default.json (config). Should be made to work from central location of default.json.
+-- DB config
+
+Must be changed in index.svelte, api.js, _Editor.svelte, both [slug].svelte, list.svelte, default.json (config). Should be made to work from central location of default.json.
+
+-- RegEx for SLUGS
+
+- [slug(-[a-zA-Z0-9-_]{19})].svelte
+- [slug(-[a-zA-Z0-9-_]+)].svelte
+
+-- OTHER
+
 - [ ] .env needs dotenv alongside it
-
-#### GitHub Pages (not deploying properly)
-
-package.json
-> "homepage":  "<https://secretgspot.github.io/cariari-realty",>
->"scripts":  {
-  // ...
-  "predeploy":  "npm run export",
-  "deploy":  "gh-pages -d __sapper__/export"
-  }
-
-bash
-  npm  install --save-dev gh-pages
-
-  npm run export
-
-  npm run deploy
