@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
-	export let lat = "0";
-	export let lon = "0";
+	export let lat = "9.9714";
+	export let lon = "-84.1666";
 	export let width = "300";
 	export let height = "150";
 	export let zoom = "15";

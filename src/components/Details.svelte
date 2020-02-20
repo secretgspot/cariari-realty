@@ -14,7 +14,7 @@
 	export let id;
 	export let btn = true;
 
-	let selectedProperty;
+	let selectedProperty = {};
 
 	const unsubscribe = properties.subscribe(items => {
 		selectedProperty = items.find(i => i.id === id);
@@ -257,7 +257,7 @@
 			{/if}
 		</div>
 
-		{#if selectedProperty.location.lat && selectedProperty.location.lng}
+		{#if selectedProperty.location && selectedProperty.location.lat && selectedProperty.location.lng}
 		<div class="map-group">
 			<StaticMap lat="{selectedProperty.location.lat}" lon="{selectedProperty.location.lng}" zoom="15" marker="https://i.imgur.com/gA01omN.png" />
 		</div>

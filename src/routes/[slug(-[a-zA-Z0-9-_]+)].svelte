@@ -47,5 +47,4 @@
 
 <!-- <Logo type="coin" color="gold" fixed="fixed" on:click="{() => goto('/')}" /> -->
 <LogoSvg animate="{true}" kind="gold" fixed="fixed" on:click="{() => goto('/')}" />
-
-<Details id="{slug}" btn="{false}" />
+<Details id="{slug}" btn="{false}"></Details>
