@@ -228,7 +228,7 @@
 			<Icon type="close" size="18" />
 		</Button>
 		{:else}
-		<Button type="button" mode="close needy" on:click="{() => goto('/property/list')}">
+		<Button type="button" mode="close needy" on:click="{() => goto('/properties')}">
 			<Icon type="return" size="18" />
 		</Button>
 		{/if}

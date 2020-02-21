@@ -27,7 +27,7 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 | / | main map view with preview and details |
 | /id | displays property details for id provided (used for sharing) |
 | /property | add new property |
-| /property/list | lists all of the properties with filter |
+| /properties | lists all of the properties with filter |
 | /property/id | modify property (client view), able to remove by switching active status |
 | /property/id | modify property (admin view) after entering **konami**, able to remove from db and switch active status |
 | /property/id?qr=true | property printout sheet |
@@ -47,6 +47,8 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Turn checkbox/radio/switch into toggle component
 - [ ] Phone, Email and maybe Back icon (for close) svg icons for Details
 - [x] Turned SVG images into own component Image.svelte
+- [x] move /property/list to /properties route
+- [ ] redo list view in properties
 
 #### Notes
 
