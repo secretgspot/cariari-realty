@@ -24,7 +24,8 @@
 /* PROPERTIES LIST -> PROPERTY */
 .property {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+	grid-template-columns: minmax(270px, min-content) auto;
+  /* grid-template-columns: 1fr 1fr; */
 	/* grid-template-rows: auto 1fr auto; */
 	grid-template-rows: 1fr auto;
   grid-template-areas: "property-header property-header"

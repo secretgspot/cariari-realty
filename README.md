@@ -43,12 +43,10 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
-- [x] Better Error page
 - [ ] Turn checkbox/radio/switch into toggle component
 - [ ] Phone, Email and maybe Back icon (for close) svg icons for Details
-- [x] Turned SVG images into own component Image.svelte
 - [x] move /property/list to /properties route
-- [ ] redo list view in properties
+- [x] redo list view in properties
 
 #### Notes
 
