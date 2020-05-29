@@ -1,8 +1,8 @@
-import resolve from 'rollup-plugin-node-resolve';
-import replace from 'rollup-plugin-replace';
-import commonjs from 'rollup-plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import conf from 'config'; // used with appConfig
@@ -37,7 +37,7 @@ export default {
 			}),
 			resolve({
 				browser: true,
-				dedupe
+				dedupe: ['svelte']
 			}),
 			commonjs(),
 
@@ -63,6 +63,7 @@ export default {
 			})
 		],
 
+		preserveEntrySignatures: false,
 		onwarn,
 	},
 
@@ -79,7 +80,7 @@ export default {
 				dev
 			}),
 			resolve({
-				dedupe
+				dedupe: ['svelte']
 			}),
 			commonjs()
 		],
@@ -87,6 +88,7 @@ export default {
 			require('module').builtinModules || Object.keys(process.binding('natives'))
 		),
 
+		preserveEntrySignatures: 'strict',
 		onwarn,
 	},
 
@@ -103,6 +105,7 @@ export default {
 			!dev && terser()
 		],
 
+		preserveEntrySignatures: false,
 		onwarn,
 	}
 };

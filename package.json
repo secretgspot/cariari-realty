@@ -13,38 +13,35 @@
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run",
-    "predeploy": "npm run export",
-    "deploy": "gh-pages -d __sapper__/export"
+    "test": "run-p --race dev cy:run"
   },
   "dependencies": {
     "compression": "^1.7.1",
-    "config": "^3.2.2",
+    "config": "^3.3.1",
     "node-fetch": "^2.6.0",
     "polka": "next",
     "qr.js": "0.0.0",
     "siema": "^1.5.1",
-    "sirv": "^0.4.0"
+    "sirv": "^0.4.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
-    "autoprefixer": "^9.6.1",
-    "gh-pages": "^2.1.1",
+    "@babel/core": "^7.10.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "@babel/runtime": "^7.10.1",
+    "autoprefixer": "^9.8.0",
     "mapbox-gl": "^1.10.1",
     "npm-run-all": "^4.1.5",
-    "rollup": "^1.12.0",
-    "rollup-plugin-babel": "^4.0.2",
-    "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.0.0",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@rollup/plugin-replace": "^2.2.0",
+    "rollup": "^2.3.4",
     "rollup-plugin-svelte": "^5.0.1",
-    "rollup-plugin-terser": "^5.1.3",
+    "rollup-plugin-terser": "^5.3.0",
     "sapper": "^0.27.13",
-    "svelte": "^3.0.0",
-    "svelte-preprocess": "^3.1.1"
+    "svelte": "^3.23.0",
+    "svelte-preprocess": "^3.7.4"
   }
 }
