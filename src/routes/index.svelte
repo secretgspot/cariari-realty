@@ -110,6 +110,7 @@
     .main-wrapper.previewing {
       /* grid-template-columns: 1fr auto; */
       grid: 1fr / 1fr minmax(450px, min-content);
+      grid-template-areas: "map preview";
     }
   }
 

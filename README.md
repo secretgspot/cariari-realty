@@ -45,8 +45,8 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
 - [ ] Turn checkbox/radio/switch into toggle component
 - [ ] Phone, Email and maybe Back icon (for close) svg icons for Details
-- [x] move /property/list to /properties route
-- [x] redo list view in properties
+- [x] fix issue with css @media (min-width: 768px) and (orientation: landscape) grid: 1fr / 1fr minmax(450px, min-content). WHY DID THIS HAPPEN?
+
 
 #### Notes
 
