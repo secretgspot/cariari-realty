@@ -19,7 +19,7 @@
     "compression": "^1.7.1",
     "config": "^3.3.1",
     "node-fetch": "^2.6.0",
-    "polka": "next",
+    "polka": "^1.0.0-next.11",
     "qr.js": "0.0.0",
     "siema": "^1.5.1",
     "sirv": "^0.4.6"
