@@ -1,4 +1,5 @@
 <script>
+  import loader from './async-script-loader.js';
   import { onMount, createEventDispatcher, setContext } from "svelte";
   import { contextKey } from "./mapbox.js";
 
@@ -9,9 +10,12 @@
 
   const dispatch = createEventDispatcher();
 
+  export let map = null;
+  export let version = 'v1.10.0';
+
   let container;
-  let map;
   let mapbox;
+
   export let options = {};
   export let accessToken;
   export let style = "mapbox://styles/secretgspot/ck0n5b47v098x1co2yrdd57i5";
@@ -42,40 +46,44 @@
     }
   }
 
+  export function flyTo(destination) {
+    map && map.flyTo(destination)
+  }
+
   export function resize() {
     map && map.resize();
   }
 
+  export function getMap () {
+    return map
+  }
+
+  function onAvailable () {
+    mapbox = mapboxgl;
+    mapboxgl.accessToken = accessToken;
+    const optionsWithDefaults = Object.assign({
+      container,
+      style
+    }, options)
+    const el = new mapbox.Map(optionsWithDefaults)
+    el.on('dragend', () => dispatch('recentre', { center: el.getCenter() }))
+    el.on('load', () => {
+      map = el
+      dispatch('ready')
+    })
+  }
+
   onMount(async () => {
-    const mapboxModule = await import("mapbox-gl");
-    mapbox = mapboxModule.default;
-    mapbox.accessToken = accessToken;
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://unpkg.com/mapbox-gl/dist/mapbox-gl.css";
-    let el;
-    link.onload = () => {
-      // el = new mapbox.Map({
-      //   container,
-      //   style,
-      //   ...options
-      // });
-      const optionsWithDefaults = Object.assign({
-        container,
-        style
-      }, options)
-      el = new mapbox.Map(optionsWithDefaults);
-      el.on("dragend", () => dispatch("recentre", { center: el.getCenter() }));
-      el.on("load", () => {
-        map = el;
-        dispatch("ready");
-      });
-    };
-    document.head.appendChild(link);
+    loader([
+        { type: 'script', url: `//api.mapbox.com/mapbox-gl-js/${version}/mapbox-gl.js` },
+        { type: 'style', url: `//api.mapbox.com/mapbox-gl-js/${version}/mapbox-gl.css` }
+      ],
+      () => !!window.mapboxgl,
+      onAvailable
+    )
     return () => {
       map.remove();
-      link.parentNode.removeChild(link);
-    };
+    }
   });
 </script>
 
@@ -91,6 +99,6 @@
 
 <div class="map-wrapper" bind:this="{container}">
   {#if map}
-    <slot />
+    <slot></slot>
   {/if}
 </div>

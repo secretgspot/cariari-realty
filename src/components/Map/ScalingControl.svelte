@@ -9,12 +9,6 @@
   export let position = 'bottom-right';
   export let options = {};
 
-  // const scale = new mapbox.ScaleControl({
-  //   maxWidth: 80,
-  //   unit: 'metric',
-  //   ...options
-	// });
-
   const optionsWithDefaults = Object.assign({
     maxWidth: 80,
     unit: 'metric',

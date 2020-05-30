@@ -10,8 +10,10 @@
 
 	export let lat;
 	export let lon;
-	export let label;
+	export let lng;
+	export let label = 'Marker';
 	export let property;
+	export let popupClassName = 'mapbox-popup';
 
 	function createColor(property) {
 		const propClasses = {
@@ -51,9 +53,9 @@
 		}
 	};
 
-	const popup = new mapbox.Popup({ offset: 25 }).setText(property.msl);
+	const popup = new mapbox.Popup({ offset: 25, className: popupClassName }).setText(property.msl);
 	const marker = new mapbox.Marker({ color: createColor(property) })
-		.setLngLat([lon, lat])
+		.setLngLat([lng || lon, lat])
 		.setPopup(popup)
 		.onClick(() => {
 				dispatch('showpreview', property.id);

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "sapper dev",
-    "build": "sapper build --legacy",
+    "build": "sapper build",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
@@ -41,7 +41,6 @@
     "rollup-plugin-svelte": "^5.0.1",
     "rollup-plugin-terser": "^5.3.0",
     "sapper": "^0.27.13",
-    "svelte": "^3.23.0",
-    "svelte-preprocess": "^3.7.4"
+    "svelte": "^3.23.0"
   }
 }
