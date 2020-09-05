@@ -17,8 +17,10 @@ const appConfig = Object.keys(conf).reduce((acc, n) => {
 	return acc
 }, {}); 	// console.log('PHONENUMBER: ', process.env.phoneNumber)
 
-const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning);
-const dedupe = importee => importee === 'svelte' || importee.startsWith('svelte/');
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
 
 export default {
 	client: {
@@ -43,7 +45,7 @@ export default {
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],
-				runtimeHelpers: true,
+				babelHelpers: 'runtime',
 				exclude: ['node_modules/@babel/**'],
 				presets: [
 					['@babel/preset-env', {
@@ -77,6 +79,7 @@ export default {
 			}),
 			svelte({
 				generate: 'ssr',
+				hydratable: true,
 				dev
 			}),
 			resolve({
@@ -84,9 +87,7 @@ export default {
 			}),
 			commonjs()
 		],
-		external: Object.keys(pkg.dependencies).concat(
-			require('module').builtinModules || Object.keys(process.binding('natives'))
-		),
+		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
 
 		preserveEntrySignatures: 'strict',
 		onwarn,
@@ -109,3 +110,4 @@ export default {
 		onwarn,
 	}
 };
+

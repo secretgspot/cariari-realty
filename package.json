@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "sapper dev",
-    "build": "sapper build",
+    "build": "sapper build --legacy",
     "export": "sapper export --legacy",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
@@ -19,10 +19,10 @@
     "compression": "^1.7.1",
     "config": "^3.3.1",
     "node-fetch": "^2.6.0",
-    "polka": "^1.0.0-next.11",
+    "polka": "next",
     "qr.js": "0.0.0",
     "siema": "^1.5.1",
-    "sirv": "^0.4.6"
+    "sirv": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
@@ -34,12 +34,12 @@
     "mapbox-gl": "^1.10.1",
     "npm-run-all": "^4.1.5",
     "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^12.0.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-replace": "^2.2.0",
     "rollup": "^2.3.4",
-    "rollup-plugin-svelte": "^5.0.1",
-    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-svelte": "^6.0.0",
+    "rollup-plugin-terser": "^7.0.0",
     "sapper": "^0.27.13",
     "svelte": "^3.23.0"
   }

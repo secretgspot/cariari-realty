@@ -1,21 +1,38 @@
 # Cariari Realty
 
 ```txt
-                .;'.      ';.
-                ,kK0kxxxk0Kk,
-        .,:;'.   .o0NMMMN0o.   .';:,.
-        ;kNWN0o,   .cXMXc.   ,oONWNO;
-          'lONMNkc,;xNMNx,,ckNMNOl'.
-            .;kNMWXNMMMMMNXWMNk;.
-               :dc'oNMMMNo':d:
-                   lNMMMNl
-                 .oNMMMMMNo.
-                .xWMMMMMMMWx.
-              .c0WMMMMMMMMMW0c.
-            .l0WMMMMMMMMMMMMMW0l.
-         'cxXWMMMMMWNNNNNWMMMMMMXxc'
-        lNWMWXOdlc;,'   ',;cldOXWMMXl
-        'llc,.                 .;cll,
+
+
+                ░▓▓▓▓                      ▓▓▓▓░
+               ▓▓▓▓▓▓▓                   ▓▓▓▓▓▓▓░
+               ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░▓░▓▓▓▓▓▓▓▓▓▓▓▓▓▓░
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                 ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+      ░▓▓▓░▓        ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓        ▓▓▓▓▓
+     ▒▓▓▓▓▓▓▓▓▓▓░      ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓     ▓▓▓▓▓▓▓▓▓▓▓▓▒
+    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓   ░▓▓▓▓▓▓▓▓▓▓▓   ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░▓▓▓▓▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+      ▓░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░▒▓
+            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░
+              ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                   ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+                     ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░
+                       ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░
+                   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+                 ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+               ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+           ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+     ▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+   ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒
+   ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░             ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒                        ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+      ░▓▓▓▓▓▒                                     ░▓▓▓▓▓▓
+
 ```
 
 Small app dedicated to listing properties in an area, utilizing mapboxgl, firebase and svelte.
@@ -45,8 +62,8 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
 - [ ] Turn checkbox/radio/switch into toggle component
 - [ ] Phone, Email and maybe Back icon (for close) svg icons for Details
-- [x] fix issue with css @media (min-width: 768px) and (orientation: landscape) grid: 1fr / 1fr minmax(450px, min-content). WHY DID THIS HAPPEN?
-
+- [x] Updated packages
+- [ ] Error page doesn't look like in template, why?
 
 #### Notes
 
@@ -62,3 +79,10 @@ Must be changed in index.svelte, api.js, _Editor.svelte, both [slug].svelte, lis
 -- OTHER
 
 - [ ] .env needs dotenv alongside it
+
+-- SAPPER EXPORT
+
+Can give entry points to crawl
+.option('--entry', 'Custom entry points (space separated)', '/')
+
+> sapper export --entry '/admin /'
