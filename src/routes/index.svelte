@@ -122,6 +122,17 @@
     display: flex;
     flex-direction: column;
   }
+
+  .links {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: var(--txt-inverted);
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+  }
+  .links a { color: inherit; }
 </style>
 
 <svelte:head>
@@ -169,6 +180,11 @@
         <ScalingControl />
         <GeolocateControl />
         <NavigationControl />
+
+        <div class="links">
+          <a hide href="/property">Add your Property</a>
+          <a href="/properties">Properties</a>
+        </div>
       </Map>
     </div>
 

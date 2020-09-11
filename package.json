@@ -2,10 +2,8 @@
   "name": "cariari-realty",
   "description": "Property listing and management for Cariari, CR",
   "version": "0.0.9",
-  "homepage": "https://secretgspot.github.io/cariari-realty",
-  "engines": {
-    "node": "12.13.0"
-  },
+  "homepage": "https://cariari.agency",
+  "repository": "https://github.com/secretgspot/cariari-realty",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",

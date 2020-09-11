@@ -73,6 +73,10 @@ body {
 }
 
 
+[hide] {
+	display: none;
+}
+
 /**
 * Style scrollbars (webkit)
 */

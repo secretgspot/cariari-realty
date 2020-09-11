@@ -10,7 +10,7 @@
 
 	export let lat;
 	export let lon;
-	export let lng;
+	export let lng = null;
 	export let label = 'Marker';
 	export let property;
 	export let popupClassName = 'mapbox-popup';
