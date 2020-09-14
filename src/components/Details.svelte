@@ -148,13 +148,9 @@
 		color: var(--color-cyan);
 		text-decoration: none;
 		white-space: nowrap;
+		vertical-align: top;
+		margin-left: 0.3rem;
 	}
-	.realtor-group a:before {
-		margin-right: 0.5em;
-		color: var(--txt-secondary);
-	}
-	.realtor-group a[href^="mailto:"]:before { content: "\2709"; }
-	.realtor-group a[href^="tel:"]:before { content: "\260e"; }
 
 
 	/* BASE SECTION */
@@ -318,8 +314,8 @@
 			{/if}
 			<div>
 				<h3>{selectedProperty.contact_realtor}</h3>
-				{#if selectedProperty.contact_email}<span><a href="mailto:{selectedProperty.contact_email}" rel="nofollow">{selectedProperty.contact_email}</a></span>{/if}
-				{#if selectedProperty.contact_phone}<span><a href="tel:{selectedProperty.contact_phone}" rel="nofollow">{selectedProperty.contact_phone}</a></span>{/if}
+				{#if selectedProperty.contact_email}<span><Icon type="email" size="18" /><a href="mailto:{selectedProperty.contact_email}" rel="nofollow">{selectedProperty.contact_email}</a></span>{/if}
+				{#if selectedProperty.contact_phone}<span><Icon type="phone" size="18" /><a href="tel:{selectedProperty.contact_phone}" rel="nofollow">{selectedProperty.contact_phone}</a></span>{/if}
 			</div>
 		</div>
 		{:else}

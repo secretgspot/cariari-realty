@@ -5,8 +5,8 @@
 	export let width = "300";
 	export let height = "150";
 	export let zoom = "15";
-	export let pitch = '';
-	export let bearing = '';
+	// export let pitch = ''; // unused at the moment
+	// export let bearing = ''; // unused at the moment
 	export let marker = "https://www.mapbox.com/img/rocket.png";
 
 	let isMounted = false;

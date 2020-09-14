@@ -55,15 +55,12 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Store across pages (sapper/store?)
 - [ ] LocalStorage for some of the settings
 - [ ] Validation of add/edit property, (~~msl~~, ~~for~~, gps, phone, email, )
-- [ ] Env var for company name, phone, email for use across site ** plan for deploying to different areas (onMount?!)
 - [ ] Perhaps an indicator that property is sold or rented.
 - [ ] Implementation of poly.google.com/ or pannellum.org or matterport.com or sketchfab VR walkthru with or without images
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
 - [ ] Turn checkbox/radio/switch into toggle component
-- [ ] Phone, Email and maybe Back icon (for close) svg icons for Details
-- [x] Updated packages
-- [ ] Error page doesn't look like in template, why?
+- [x] Phone, Email and maybe Back icon (for close) svg icons for Details
 
 #### Notes
 
