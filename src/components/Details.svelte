@@ -110,8 +110,8 @@
 	}
 
 	.side .description {
-		max-height: 369px;
-		overflow: auto;
+		/* max-height: 369px; */
+		/* overflow: auto; */
 		padding: 0 0.3rem;
 		margin: 2rem 0;
 		white-space: pre-wrap;
