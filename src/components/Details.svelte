@@ -151,6 +151,9 @@
 		vertical-align: top;
 		margin-left: 0.3rem;
 	}
+	.realtor-group :global(svg) {
+		color: var(--txt-tertiary);
+	}
 
 
 	/* BASE SECTION */

@@ -60,7 +60,6 @@ Small app dedicated to listing properties in an area, utilizing mapboxgl, fireba
 - [ ] Concider using geojson to have more control over layers and markers
 - [ ] MapboxGL has issues on firefox and any other browsers that don't support webgl. HereMap?!
 - [ ] Turn checkbox/radio/switch into toggle component
-- [x] Phone, Email and maybe Back icon (for close) svg icons for Details
 
 #### Notes
 
