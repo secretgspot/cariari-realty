@@ -116,6 +116,7 @@
 		margin: 2rem 0;
 		white-space: pre-wrap;
 		min-height: min-content;
+		text-align: justify;
 	}
 
 	.side .ad-wrapper {
