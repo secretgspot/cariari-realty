@@ -16,7 +16,7 @@
   "dependencies": {
     "compression": "^1.7.1",
     "config": "^3.3.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "polka": "next",
     "qr.js": "0.0.0",
     "siema": "^1.5.1",
